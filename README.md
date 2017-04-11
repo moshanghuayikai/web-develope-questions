@@ -51,43 +51,41 @@
 
 > CSS3中新增了一种盒模型计算方式：`box-sizing`。盒模型默认的值是`content-box`, 新增的值是`padding-box`和`border-box`，几种盒模型计算元素宽高的区别如下：
 
-  #### `content-box`
-	
-  **布局所占宽度Width：**
+#### `content-box`
 
-	Width = width + padding-left + padding-right + border-left + border-right
+**布局所占宽度Width：**
 
+Width = width + padding-left + padding-right + border-left + border-right
 
-	**布局所占高度Height: **
+**布局所占高度Height: **
 
-	Height = height + padding-top + padding-bottom + border-top + border-bottom
-
-
-	
-	#### `padding-box`
-
-	**布局所占宽度Width：** padding计算入width内
-
-	
-	Width = width(包含padding-left + padding-right) + border-top + border-bottom
+Height = height + padding-top + padding-bottom + border-top + border-bottom
 
 
-	**布局所占高度Height: **
-	
-	Height = height(包含padding-top + padding-bottom) + border-top + border-bottom
+#### `padding-box`
+
+**布局所占宽度Width：** padding计算入width内
+
+
+Width = width(包含padding-left + padding-right) + border-top + border-bottom
+
+
+**布局所占高度Height: **
+
+Height = height(包含padding-top + padding-bottom) + border-top + border-bottom
 
 
 
-	#### `border-box`
+#### `border-box`
 
-	**布局所占宽度Width：**padding和border计算入width之内
+**布局所占宽度Width：**padding和border计算入width之内
 
-	Width = width(包含padding-left + padding-right + border-left + border-right)
+Width = width(包含padding-left + padding-right + border-left + border-right)
 
 
-	**布局所占高度Height:**
-	
-	Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
+**布局所占高度Height:**
+
+Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
 
