@@ -6,11 +6,11 @@
 
 > `display:none`和`visibility:hidden`的区别？
 
-
+```css
     display:none  隐藏对应的元素，在文档布局中不再给它分配空间，它各边的元素会合拢，就当他从来不存在。
 
     visibility:hidden  隐藏对应的元素，但是在文档布局中仍保留原来的空间。
-
+```
 
 
 > CSS中` link` 和`@import `的区别是？
@@ -28,16 +28,18 @@
 
 > `position:absolute`和`float`属性的异同
 
+```css
 	共同点：对内联元素设置`float`和`absolute`属性，可以让元素脱离文档流，并且可以设置其宽高。
 
 	不同点：`float`仍会占据位置，`absolute`会覆盖文档流中的其他元素。
-
+```
 
 
 > 介绍一下box-sizing属性？
 
 ```
 	`box-sizing`属性主要用来控制元素的盒模型的解析模式。默认值是`content-box`。
+  
   标准浏览器下，按照W3C规范对盒模型解析，一旦修改了元素的边框或内距，就会影响元素的盒子尺寸，就不得不重新计算元素的盒子尺寸，从而影响整个页面的布局。
 
 	`content-box`：让元素维持W3C的标准盒模型。元素的宽度/高度由`border + padding + content`的宽度/高度决定，设置`width/height`属性指的是`content`部分的宽/高
@@ -116,17 +118,19 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     8.属性选择器（a[rel = "external"]）
 
     9.伪类选择器（a: hover, li:nth-child）
+
 ```
 
 
 
 > **优先级为:**
 
+```css
+	!important >  id > class > tag 
 
-	`!important >  id > class > tag `
+	important 比 内联优先级高,但内联比 id 要高
 
-	`important` 比 内联优先级高,但内联比 `id` 要高
-
+```
 
 
 > CSS3新增伪类举例：
@@ -171,7 +175,11 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > 对BFC规范的理解？
 
 ```css
-    BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。（W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
+    BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。
+
+    在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。
+
+    W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
 ```
 
 
@@ -191,13 +199,13 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
 ```html
-    1.`<!DOCTYPE>` 声明位于文档中的最前面，处于 `<html>` 标签之前。告知浏览器以何种模式来渲染文档。
+    1.<!DOCTYPE> 声明位于文档中的最前面，处于 <html> 标签之前。告知浏览器以何种模式来渲染文档。
 
-    2.严格模式的排版和 `JS` 运作模式是  以该浏览器支持的最高标准运行。
+    2.严格模式的排版和 JS 运作模式是  以该浏览器支持的最高标准运行。
 
     3.在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。
 
-    4.`DOCTYPE`不存在或格式不正确会导致文档以混杂模式呈现。
+    4.<!DOCTYPE> 不存在或格式不正确会导致文档以混杂模式呈现。
 ```
 
 
@@ -240,6 +248,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 ```
 
+
 > 常见兼容性问题？
 
 ```css
@@ -277,16 +286,17 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
           }
 ```
 
+```html
     怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
     怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
-    可以使用[html5](http://www.w3.org/TR/html5/single-page.html)推荐的写法：`<doctype html>`
-
+    可以使用[html5](http://www.w3.org/TR/html5/single-page.html)推荐的写法：<doctype html>
+```
 
 
 > 上下margin重合问题
 
-``
-    ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
+```css
+    IE和FF都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
 
     解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
 ```
@@ -526,39 +536,41 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 浏览器本地存储
 
-```
-  在较高版本的浏览器中，`js`提供了`sessionStorage`和`globalStorage`。在`HTML5`中提供了`localStorage`来取代`globalStorage`。
+```js
+  在较高版本的浏览器中，js 提供了 sessionStorage 和 globalStorage 。在 HTML5 中提供了 localStorage 来取代 globalStorage 。
 
 
-  `html5`中的`Web Storage`包括了两种存储方式：`sessionStorage`和`localStorage`。
+  HTML5 中的 Web Storage 包括了两种存储方式： sessionStorage 和 localStorage 。
 
 
-  `sessionStorage`用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此`sessionStorage`不是一种持久化的本地存储，仅仅是会话级别的存储。
+  sessionStorage 用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。
+
+  因此 sessionStorage 不是一种持久化的本地存储，仅仅是会话级别的存储。
 
 
-  而`localStorage`用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+  而 localStorage 用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+
 ```
 
 
 > web storage和cookie的区别
 
-
-  `Web Storage`的概念和`cookie`相似，区别是它是为了更大容量存储设计的。`Cookie`的大小是受限的，并且每次你请求一个新的页面的时候`Cookie`都会被发送过去，这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
-
-
-  除此之外，`Web Storage`拥有`setItem,getItem,removeItem,clear`等方法，不像`cookie`需要前端开发者自己封装`setCookie，getCookie`。
+```
+  Web Storage 的概念和 cookie 相似，区别是它是为了更大容量存储设计的。 Cookie 的大小是受限的，并且每次你请求一个新的页面的时候 Cookie 都会被发送过去，这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
 
 
-  但是`cookie`也是不可以或缺的：`cookie`的作用是与服务器进行交互，作为`HTTP`规范的一部分而存在 ，而`Web Storage`仅仅是为了在本地“存储”数据而生
+  除此之外，Web Storage 拥有 setItem,getItem,removeItem,clear 等方法，不像 cookie 需要前端开发者自己封装 setCookie，getCookie 。
 
+
+  但是 cookie 也是不可以或缺的： cookie 的作用是与服务器进行交互，作为 HTTP 规范的一部分而存在 ，而 Web Storage 仅仅是为了在本地“存储”数据而生
 
 
   浏览器的支持除了`IE７`及以下不支持外，其他标准浏览器都完全支持(ie及FF需在web服务器里运行)，值得一提的是IE总是办好事，例如IE7、IE6中的`userData`其实就是`javascript`本地存储的解决方案。通过简单的代码封装可以统一到所有的浏览器都支持`web storage`。
 
 
-  `localStorage`和`sessionStorage`都具有相同的操作方法，例如`setItem、getItem`和`removeItem`等
+  localStorage 和 sessionStorage 都具有相同的操作方法，例 setItem、getItem 和 removeItem 等
 
-
+```
 
 
 > cookie 和session 的区别：
