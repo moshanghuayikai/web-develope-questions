@@ -15,6 +15,7 @@
 
 > CSS中` link` 和`@import `的区别是？
 
+```css
     1.link属于HTML标签，而@import是CSS提供的;
 
     2.页面被加载的时，link会同时被加载，而@import被引用的CSS会等到引用它的CSS文件被加载完再加载;
@@ -22,7 +23,7 @@
     3.import只在IE5以上才能识别，而link是HTML标签，无兼容问题;
 
     4.link方式的样式的权重 高于@import的权重.
-
+```
 
 
 > `position:absolute`和`float`属性的异同
@@ -35,14 +36,14 @@
 
 > 介绍一下box-sizing属性？
 
-
+```
 	`box-sizing`属性主要用来控制元素的盒模型的解析模式。默认值是`content-box`。
   标准浏览器下，按照W3C规范对盒模型解析，一旦修改了元素的边框或内距，就会影响元素的盒子尺寸，就不得不重新计算元素的盒子尺寸，从而影响整个页面的布局。
 
 	`content-box`：让元素维持W3C的标准盒模型。元素的宽度/高度由`border + padding + content`的宽度/高度决定，设置`width/height`属性指的是`content`部分的宽/高
 
 	`border-box`：让元素维持IE传统盒模型（IE6以下版本和IE6~7的怪异模式）。设置`width/height`属性指的是`border + padding + content`
-
+```
 	
 
 > CSS3中新增了一种盒模型计算方式：`box-sizing`。盒模型默认的值是`content-box`, 新增的值是`padding-box`和`border-box`，几种盒模型计算元素宽高的区别如下：
@@ -150,6 +151,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > CSS3有哪些新特性？
 
+```css
     CSS3实现圆角（border-radius），阴影（box-shadow），
 
     对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
@@ -163,7 +165,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     媒体查询，多栏布局
 
     border-image
-
+```
 
 
 > 对BFC规范的理解？
@@ -175,6 +177,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 说说你对语义化的理解？
 
+```
     1.去掉或者丢失样式的时候能够让页面呈现出清晰的结构
 
     2.有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；
@@ -182,7 +185,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     3.方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；
 
     4.便于团队开发和维护，语义化更具可读性，是下一步吧网页的重要动向，遵循W3C标准的团队都遵循这个标准，可以减少差异化。
-
+```
 
 
 > Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
@@ -200,20 +203,23 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 你知道多少种`Doctype`文档类型？
 
-     该标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。
+```
+   该标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。
 
-     HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。
+   HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。
 
-     XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。
+   XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。
 
-     Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks
+   Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks
 
-     （包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。
+   （包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。
+```
 
 
 
 > HTML与XHTML——二者有什么区别
 
+```
     区别：
 
     1.所有的标记都必须要有一个相应的结束标记
@@ -232,6 +238,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
     8.图片必须有说明文字
 
+```
 
 > 常见兼容性问题？
 
@@ -278,10 +285,11 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 上下margin重合问题
 
+``
     ie和ff都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生重合。
 
     解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
-
+```
 
 
 
