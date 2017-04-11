@@ -284,6 +284,25 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
 
+
+#### position的值， relative和absolute分别是相对于谁进行定位的？
+
+
+- `absolute` :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
+
+- `fixed` （老IE不支持）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
+
+- `relative` 生成相对定位的元素，相对于其在普通流中的位置进行定位。
+
+- `static`  默认值。没有定位，元素出现在正常的流中
+
+- `sticky` 生成粘性定位的元素，容器的位置根据正常文档流计算得出
+
+
+
+#### 浮动元素引起的问题和解决办法？
+
+
 > 解释下浮动和它的工作原理？清除浮动的技巧
 
 
@@ -304,23 +323,6 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
        该方法只适用于非IE浏览器。具体写法可参照以下示例。使用中需注意以下几点。一、该方法中必须为需要清除浮动元素的伪对象中设置 height:0，否则该元素会比实际高出若干像素；
 
 
-
-#### position的值， relative和absolute分别是相对于谁进行定位的？
-
-
-- `absolute` :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
-
-- `fixed` （老IE不支持）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
-
-- `relative` 生成相对定位的元素，相对于其在普通流中的位置进行定位。
-
-- `static`  默认值。没有定位，元素出现在正常的流中
-
-- `sticky` 生成粘性定位的元素，容器的位置根据正常文档流计算得出
-
-
-
-#### 浮动元素引起的问题和解决办法？
 
 
 > 浮动元素引起的问题：
