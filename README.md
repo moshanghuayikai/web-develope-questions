@@ -505,17 +505,20 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > Web Socket
 
+```
   `Web Socket`是`Web`应用程序的传输协议，它提供了双向的，按序到达的数据流。他是一个`HTML5`协议，`WebSocket`的连接是持久的，他通过在客户端和服务器之间保持双工连接，服务器的更新可以被及时推送给客户端，而不需要客户端以一定时间间隔去轮询。
-
+```
 
 > Web Storage
 
+```
   `Web Storage`是HTML5引入的一个非常重要的功能，可以在客户端本地存储数据，类似HTML4的cookie，但可实现功能要比cookie强大的多，cookie大小被限制在4KB，Web Storage官方建议为每个网站5MB。Web Storage又分为两种：sessionStorage、localStorage
-
+```
 
 
 > 浏览器本地存储
 
+```
   在较高版本的浏览器中，`js`提供了`sessionStorage`和`globalStorage`。在`HTML5`中提供了`localStorage`来取代`globalStorage`。
 
 
@@ -526,7 +529,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
   而`localStorage`用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
-
+```
 
 
 > web storage和cookie的区别
