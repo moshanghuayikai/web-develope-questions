@@ -561,17 +561,25 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > web storage和cookie的区别
 
 ```
-  Web Storage 的概念和 cookie 相似，区别是它是为了更大容量存储设计的。 Cookie 的大小是受限的，
+  1、Web Storage 的概念和 cookie 相似，区别是它是为了更大容量存储设计的。 
 
-  并且每次你请求一个新的页面的时候 Cookie 都会被发送过去，这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
+  2、Cookie 的大小是受限的，并且每次你请求一个新的页面的时候 Cookie 都会被发送过去，
+    
+    这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
 
-  除此之外，Web Storage 拥有 setItem,getItem,removeItem,clear 等方法，不像 cookie 需要前端开发者自己封装 setCookie，getCookie 。
+  3、除此之外，Web Storage 拥有 setItem,getItem,removeItem,clear 等方法，
+    
+    不像 cookie 需要前端开发者自己封装 setCookie，getCookie 。
 
-  但是 cookie 也是不可以或缺的： cookie 的作用是与服务器进行交互，作为 HTTP 规范的一部分而存在 ，而 Web Storage 仅仅是为了在本地“存储”数据而生
+  4、但是 cookie 也是不可以或缺的： cookie 的作用是与服务器进行交互，作为 
+    
+    HTTP 规范的一部分而存在 ，而 Web Storage 仅仅是为了在本地“存储”数据而生
+    
+    浏览器的支持除了`IE７`及以下不支持外，其他标准浏览器都完全支持(ie及FF需在
 
-  浏览器的支持除了`IE７`及以下不支持外，其他标准浏览器都完全支持(ie及FF需在web服务器里运行)，值得一提的是IE总是办好事，
+    web服务器里运行)，值得一提的是IE总是办好事，
 
-  例如IE7、IE6中的`userData`其实就是`javascript`本地存储的解决方案。通过简单的代码封装可以统一到所有的浏览器都支持`web storage`。
+  例如IE7、IE6中的 userData 其实就是 javascript 本地存储的解决方案。通过简单的代码封装可以统一到所有的浏览器都支持 web storage 。
 
   localStorage 和 sessionStorage 都具有相同的操作方法，例 setItem、getItem 和 removeItem 等
 
