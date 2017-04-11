@@ -51,49 +51,43 @@
 
 > CSS3中新增了一种盒模型计算方式：`box-sizing`。盒模型默认的值是`content-box`, 新增的值是`padding-box`和`border-box`，几种盒模型计算元素宽高的区别如下：
 
-	布局所占宽度Width：
+  #### `content-box`
+	
+  **布局所占宽度Width：**
 
-	```css
 	Width = width + padding-left + padding-right + border-left + border-right
 
-	```
 
-	布局所占高度Height:
+	**布局所占高度Height: **
 
-	```css
 	Height = height + padding-top + padding-bottom + border-top + border-bottom
 
-	```
+
+	
 	#### `padding-box`
 
-	布局所占宽度Width：padding计算入width内
+	**布局所占宽度Width：** padding计算入width内
 
-	```css
+	
 	Width = width(包含padding-left + padding-right) + border-top + border-bottom
 
-	```
 
-	布局所占高度Height:
-
-	```css
+	**布局所占高度Height: **
+	
 	Height = height(包含padding-top + padding-bottom) + border-top + border-bottom
 
 
-	```
 
 	#### `border-box`
 
-	布局所占宽度Width：padding和border计算入width之内
+	**布局所占宽度Width：**padding和border计算入width之内
 
-	```css
 	Width = width(包含padding-left + padding-right + border-left + border-right)
-	```
 
-	布局所占高度Height:
 
-	```css
+	**布局所占高度Height:**
+	
 	Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
-	```
 
 
 
@@ -170,9 +164,7 @@
 
 >对BFC规范的理解？
 
-          BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。
-
-        （W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
+  BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。（W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
 
 
 
