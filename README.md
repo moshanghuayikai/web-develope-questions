@@ -187,7 +187,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
-```css
+```html
     1.`<!DOCTYPE>` 声明位于文档中的最前面，处于 `<html>` 标签之前。告知浏览器以何种模式来渲染文档。
 
     2.严格模式的排版和 `JS` 运作模式是  以该浏览器支持的最高标准运行。
@@ -206,7 +206,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
      XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。
 
-    Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks
+     Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，而 Quirks
 
      （包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。
 
@@ -235,7 +235,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 常见兼容性问题？
 
-
+```css
     png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.也可以引用一段脚本处理.
 
     浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。
@@ -256,8 +256,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
       接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。
 
-      css
-
+     
           .bb{
 
            background-color:#f1ee18;/*所有识别*/
@@ -269,7 +268,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
           _background-color:#1e0bd1;/*IE6识别*/
 
           }
-
+```
 
     怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
     怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
@@ -306,7 +305,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
 
-> position的值， relative和absolute分别是相对于谁进行定位的？
+#### position的值， relative和absolute分别是相对于谁进行定位的？
 
 
 - `absolute` :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
@@ -574,7 +573,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 **每个特定的域名下最多生成20个`cookie`**
 
-```css
+```
     1.IE6或更低版本最多20个cookie
 
     2.IE7和之后的版本最后可以有50个cookie。
