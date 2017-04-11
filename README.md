@@ -66,7 +66,7 @@
 	```
 	#### `padding-box`
 
-	布局所占宽度Width：
+	布局所占宽度Width：padding计算入width内
 
 	```css
 	Width = width(包含padding-left + padding-right) + border-top + border-bottom
@@ -83,7 +83,7 @@
 
 	#### `border-box`
 
-	布局所占宽度Width：
+	布局所占宽度Width：padding和border计算入width之内
 
 	```css
 	Width = width(包含padding-left + padding-right + border-left + border-right)
