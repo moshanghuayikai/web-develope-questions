@@ -524,13 +524,21 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > Web Socket
 
 ```
-  `Web Socket`是`Web`应用程序的传输协议，它提供了双向的，按序到达的数据流。他是一个`HTML5`协议，`WebSocket`的连接是持久的，他通过在客户端和服务器之间保持双工连接，服务器的更新可以被及时推送给客户端，而不需要客户端以一定时间间隔去轮询。
+  Web Socket 是 Web 应用程序的传输协议，它提供了双向的，按序到达的数据流。
+
+  他是一个`HTML5`协议， WebSocket 的连接是持久的，他通过在客户端和服务器之间保持双工连接，
+
+  服务器的更新可以被及时推送给客户端，而不需要客户端以一定时间间隔去轮询。
 ```
 
 > Web Storage
 
 ```
-  `Web Storage`是HTML5引入的一个非常重要的功能，可以在客户端本地存储数据，类似HTML4的cookie，但可实现功能要比cookie强大的多，cookie大小被限制在4KB，Web Storage官方建议为每个网站5MB。Web Storage又分为两种：sessionStorage、localStorage
+  Web Storage 是HTML5引入的一个非常重要的功能，可以在客户端本地存储数据。
+
+  类似HTML4的cookie，但可实现功能要比cookie强大的多，cookie大小被限制在4KB，Web Storage官方建议为每个网站5MB。
+
+  Web Storage又分为两种：sessionStorage、localStorage
 ```
 
 
@@ -539,14 +547,11 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```js
   在较高版本的浏览器中，js 提供了 sessionStorage 和 globalStorage 。在 HTML5 中提供了 localStorage 来取代 globalStorage 。
 
-
   HTML5 中的 Web Storage 包括了两种存储方式： sessionStorage 和 localStorage 。
-
 
   sessionStorage 用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。
 
   因此 sessionStorage 不是一种持久化的本地存储，仅仅是会话级别的存储。
-
 
   而 localStorage 用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
 
@@ -556,17 +561,17 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > web storage和cookie的区别
 
 ```
-  Web Storage 的概念和 cookie 相似，区别是它是为了更大容量存储设计的。 Cookie 的大小是受限的，并且每次你请求一个新的页面的时候 Cookie 都会被发送过去，这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
+  Web Storage 的概念和 cookie 相似，区别是它是为了更大容量存储设计的。 Cookie 的大小是受限的，
 
+  并且每次你请求一个新的页面的时候 Cookie 都会被发送过去，这样无形中浪费了带宽，另外`cookie`还需要指定作用域，不可以跨域调用。
 
   除此之外，Web Storage 拥有 setItem,getItem,removeItem,clear 等方法，不像 cookie 需要前端开发者自己封装 setCookie，getCookie 。
 
-
   但是 cookie 也是不可以或缺的： cookie 的作用是与服务器进行交互，作为 HTTP 规范的一部分而存在 ，而 Web Storage 仅仅是为了在本地“存储”数据而生
 
+  浏览器的支持除了`IE７`及以下不支持外，其他标准浏览器都完全支持(ie及FF需在web服务器里运行)，值得一提的是IE总是办好事，
 
-  浏览器的支持除了`IE７`及以下不支持外，其他标准浏览器都完全支持(ie及FF需在web服务器里运行)，值得一提的是IE总是办好事，例如IE7、IE6中的`userData`其实就是`javascript`本地存储的解决方案。通过简单的代码封装可以统一到所有的浏览器都支持`web storage`。
-
+  例如IE7、IE6中的`userData`其实就是`javascript`本地存储的解决方案。通过简单的代码封装可以统一到所有的浏览器都支持`web storage`。
 
   localStorage 和 sessionStorage 都具有相同的操作方法，例 setItem、getItem 和 removeItem 等
 
