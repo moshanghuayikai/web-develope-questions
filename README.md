@@ -571,7 +571,6 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 `cookie`虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。
 
-**每个特定的域名下最多生成20个`cookie`**
 
 ```
     1.IE6或更低版本最多20个cookie
