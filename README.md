@@ -56,19 +56,20 @@
 > 介绍一下box-sizing属性？
 
 ```css
-	 box-sizing 属性主要用来控制元素的盒模型的解析模式。默认值是 content-box 。
+	 
+  box-sizing 属性主要用来控制元素的盒模型的解析模式。默认值是 content-box 。
 
         标准浏览器下，按照W3C规范对盒模型解析，一旦修改了元素的边框或内距，就会影响元素的盒子尺寸，
       
         就不得不重新计算元素的盒子尺寸，从而影响整个页面的布局。
 
 	 
-   content-box ：让元素维持W3C的标准盒模型。元素的宽度/高度由 border + padding + content 的宽度/高度决定，
+  content-box ：让元素维持W3C的标准盒模型。元素的宽度/高度由 border + padding + content 的宽度/高度决定，
 
         设置  width/height 属性指的是 content 部分的宽/高
 
 	 
-   border-box ：让元素维持IE传统盒模型（IE6以下版本和IE6~7的怪异模式）。
+  border-box ：让元素维持IE传统盒模型（IE6以下版本和IE6~7的怪异模式）。
 
         设置 width/height 属性指的是 border + padding + content 
 ```
