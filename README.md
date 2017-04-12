@@ -25,6 +25,8 @@
     -webkit-box-orient: vertical; 
     -webkit-line-clamp: 3; 
     overflow: hidden;
+
+    使用了WebKit的CSS扩展属性，该方法适用于WebKit浏览器及移动端；
 ```
 
 
