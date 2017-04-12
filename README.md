@@ -12,6 +12,22 @@
     visibility:hidden  隐藏对应的元素，但是在文档布局中仍保留原来的空间。
 ```
 
+> CSS控制文字，超出部分显示省略号
+
+```css
+    overflow: hidden; 
+    text-overflow:ellipsis; 
+    white-space: nowrap;
+
+    /*上面仅支持单行文本,多行呢？*/
+
+    display: -webkit-box; 
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 3; 
+    overflow: hidden;
+```
+
+
 
 > CSS中` link` 和`@import `的区别是？
 
@@ -588,6 +604,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > cookie 和session 的区别：
 
+```
      1、cookie数据存放在客户的浏览器上，session数据放在服务器上。
 
      2、cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗
@@ -605,7 +622,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
         将登陆信息等重要信息存放为SESSION
 
         其他信息如果需要保留，可以放在COOKIE中
-
+```
 
 
 #### 请你谈谈Cookie的弊端
