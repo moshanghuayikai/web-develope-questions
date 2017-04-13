@@ -361,7 +361,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
         当然，还可以将两个元素设置display: inline-block;或者浮动
 
-    发生塌陷的不只是兄弟元素，父子关系也会发生，当父元素没有设定padding-top或border-top时（等于0），
+        发生塌陷的不只是兄弟元素，父子关系也会发生，当父元素没有设定padding-top或border-top时（等于0），
 
         子元素的margin-top会和父元素的margin-top合并，与兄弟元素一样，margin最终会取值较大的作用于父元素，子元素会紧贴父元素上边界。
 ```
