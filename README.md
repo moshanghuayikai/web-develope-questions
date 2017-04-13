@@ -417,17 +417,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     3.若非第一个元素浮动，则该元素之前的元素也需要浮动，否则会影响页面显示的结构
 
 
-> 解决方法：
-
-  使用`CSS`中的`clear:both`;属性来清除元素的浮动可解决2、3问题，对于问题1，添加如下样式，给父元素添加`clearfix`样式：
-
-```css
-    .clearfix:after{content: ".";display: block;height: 0;clear: both;visibility: hidden;}
-
-    .clearfix{display: inline-block;} /* for IE/Mac */
-```
-
-**清除浮动的几种方法：**
+> 清除浮动的几种方法：
 
 
 ```css
