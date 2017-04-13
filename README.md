@@ -494,7 +494,6 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 #### HTML5 有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
 
 
-
       HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
 
       拖拽释放(Drag and drop) API
@@ -515,8 +514,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
       表单控件，calendar、date、time、email、url、search
 
       新的技术webworker, websocket, Geolocation
-
-
+      
 
 
 > 移除的元素
@@ -547,12 +545,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```
 
 
-> 如何实现浏览器内多个标签页之间的通信?
 
-
-```css
-    调用localstorge、cookies等本地存储方式
-```
 
 > 什么是 FOUC（无样式内容闪烁）？你如何来避免 FOUC？
 
@@ -563,11 +556,11 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
     <style type="text/css" media="all">@import "../fouc.css";</style>
 
-        而引用CSS文件的@import就是造成这个问题的罪魁祸首。IE会先加载整个HTML文档的DOM，然后再去导入外部的CSS文件，
+      引用CSS文件的@import就是造成这个问题的罪魁祸首。IE会先加载整个HTML文档的DOM，然后再去导入外部的CSS文件，
 
-        因此，在页面DOM加载完成到CSS导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。
+      因此，在页面DOM加载完成到CSS导入完成中间会有一段时间页面上的内容是没有样式的，这段时间的长短跟网速，电脑速度都有关系。
 
-        解决方法简单的出奇，只要在<head>之间加入一个<link>或者<script>元素就可以了。
+      解决方法简单的出奇，只要在<head>之间加入一个<link>或者<script>元素就可以了。
 ```
 
 
@@ -624,6 +617,12 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 ```
 
+> 如何实现浏览器内多个标签页之间的通信?
+
+
+```css
+    调用localstorge、cookies等本地存储方式
+```
 
 > web storage和cookie的区别
 
