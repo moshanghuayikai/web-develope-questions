@@ -977,6 +977,96 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 #### JavaScript中快速排序、去重
 
 
+> 快速排序
+```js
+    //排序过程只需要三步：
+
+    //　1.在数据集之中，找一个基准点
+
+　　//  2.建立两个数组，分别存储左边和右边的数组
+
+　　//  3.利用递归进行下次比较
+
+    function quickSort(arr){
+       if(arr.length <= 1) return arr;  //如果数组只有一个数，就直接返回；
+
+       var index = Math.floor(arr.length/2);  //找到中间数的索引值，如果是浮点数，则向下取整
+
+       var key = arr.splice(index,1)[0];  //找到中间数的值
+       
+       var left = [],right = [];
+       
+       arr.forEach(function(v){
+           v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
+       });
+       
+       return quickSort(left).concat([key],quickSort(right)); //递归不断重复比较
+    }
+```
+
+
+
+> 去重、基本数组去重
+
+```js
+    Array.prototype.unique = function(){
+        var result = [];
+        
+        this.forEach(function(v){
+            if(result.indexOf(v) < 0){
+                result.push(v);
+            }
+        });
+
+        return result;
+    }
+```
+
+
+> 去重、利用hash表去重，这是一种空间换时间的方法
+
+```js
+    Array.prototype.unique = function(){
+        var result = [],hash = {};
+        
+        this.forEach(function(v){
+            if(!hash[v]){
+                hash[v] = true;
+                result.push(v);
+            }
+        });
+        
+        return result;
+    }
+```
+
+
+> 上面的方法存在一个bug，对于数组[1,2,’1’,’2’,3]，去重结果为[1,2,3]，原因在于对象对属性索引时会进行强制类型转换，arr[‘1’]和arr[1]得到的都是arr[1]的值，因此需做一些改变：
+
+```js
+    Array.prototype.unique = function(){
+        var result = [],hash = {};
+        
+        this.forEach(function(v){
+            var type = typeof(v);  //获取元素类型
+            
+            hash[v] || (hash[v] = new Array());
+            
+            if(hash[v].indexOf(type) < 0){
+                hash[v].push(type);  //存储类型
+                result.push(v);
+            }
+            
+        });
+        
+        return result;
+    }
+
+```
+
+
+
+>
 
 
 #### 说说严格模式的限制
@@ -1252,8 +1342,6 @@ alert(GetBytes("你好,as"));
 
 
 #### ajax的缺点和在IE下的问题？
-
-详情请见：[JavaScript学习总结（七）Ajax和Http状态字][14]
 
 
 > ajax的缺点
