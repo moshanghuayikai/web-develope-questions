@@ -724,7 +724,7 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
-#### null和undefined的区别？
+#### null和undefined的区别？变量赋值、内存泄露、端事件差异区别
 
 
 > null 是一个表示"无"的对象，转为数值时为0； undefined 是一个表示"无"的原始值，转为数值时为 NaN 。
@@ -904,36 +904,27 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
-依照 `Promise` 的定义，`Promise` 有三种状态：
+> 依照 `Promise` 的定义，`Promise` 有三种状态：
 
-  pending: 初始状态, 非 fulfilled 或 rejected.
-
-  fulfilled: 成功的操作.
-
-  rejected: 失败的操作.
-
-
-
-这三种的状态的变化途径只有两种。
-
-  异步操作从“未完成”到“已完成”
-  
-  异步操作从“未完成”到“失败”。
+    异步操作“未完成”（pending）
+    
+    异步操作“已完成”（resolved，又称fulfilled）
+    
+    异步操作“失败”（rejected）
 
 
-另外， `fulfilled` 与 `rejected` 一起合称 `settled`。
+> 这三种的状态的变化途径只有两种。
+
+    异步操作从“未完成”到“已完成”
+    
+    异步操作从“未完成”到“失败”。
 
 
+> 另外， `fulfilled` 与 `rejected` 一起合称 `settled`。
 
-`Promise` 对象用来进行延迟(deferred) 和异步(asynchronous ) 计算。
+> `Promise` 对象用来进行延迟(deferred) 和异步(asynchronous ) 计算。
 
-
-
-> Promise 的构造函数
-
-
-
-构造一个 `Promise`，最基本的用法如下：
+> Promise 的构造函数，最基本的用法如下：
 
 
 ```js
@@ -952,14 +943,16 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 ```
 
 
-`Promise` 实例拥有 `then` 方法（具有 `then` 方法的对象，通常被称为 `thenable`）。它的使用方法如下：
+> `Promise` 实例拥有 `then` 方法（具有 `then` 方法的对象，通常被称为 `thenable`）。它的使用方法如下：
 
 ```js
-promise.then(onFulfilled, onRejected)
+  promise.then(onFulfilled, onRejected)
+  
+  //接收两个函数作为参数，一个在 `fulfilled` 的时候被调用，一个在 `rejected` 的时候被调用，
+  //接收参数就是 `future，onFulfilled` 对应 `resolve`, `onRejected` 对应 `reject`。
+  //then方法可以链式使用
+
 ```
-
-接收两个函数作为参数，一个在 `fulfilled` 的时候被调用，一个在 `rejected` 的时候被调用，接收参数就是 `future，onFulfilled` 对应 `resolve`, `onRejected` 对应 `reject`。
-
 
 
 
@@ -981,12 +974,18 @@ promise.then(onFulfilled, onRejected)
     }
 ```
 
+#### JavaScript中快速排序、去重
+
+
+
+
 #### 说说严格模式的限制
 
 
 
-严格模式主要有以下限制：
+> 严格模式主要有以下限制：
 
+```
     变量必须声明后再使用
 
     函数的参数不能有同名属性，否则报错
@@ -1016,24 +1015,23 @@ promise.then(onFulfilled, onRejected)
     不能使用fn.caller和fn.arguments获取函数调用的堆栈
 
     增加了保留字（比如protected、static和interface）
+```
 
 
+> 设立"严格模式"的目的，主要有以下几个：
 
-设立"严格模式"的目的，主要有以下几个：
+```
+    1.消除`Javascript`语法的一些不合理、不严谨之处，减少一些怪异行为;
+
+    2.消除代码运行的一些不安全之处，保证代码运行的安全；
+
+    3.提高编译器效率，增加运行速度；
+
+    4.为未来新版本的`Javascript`做好铺垫。
+```
 
 
-- 消除`Javascript`语法的一些不合理、不严谨之处，减少一些怪异行为;
-
-- 消除代码运行的一些不安全之处，保证代码运行的安全；
-
-- 提高编译器效率，增加运行速度；
-
-- 为未来新版本的`Javascript`做好铺垫。
-
-
-
-注：经过测试`IE6,7,8,9`均不支持严格模式。
-
+**注：** 经过测试`IE6,7,8,9`均不支持严格模式。
 
 
 
@@ -1041,33 +1039,30 @@ promise.then(onFulfilled, onRejected)
 
 
 
->1.将时间设为当前时间往前一点。
+> 1.将时间设为当前时间往前一点。
 
 
 ```js
-var date = new Date();
+  var date = new Date();
 
-date.setDate(date.getDate() - 1);//真正的删除
+  date.setDate(date.getDate() - 1);//真正的删除 setDate() 方法用于设置一个月的某一天。
 ```
 
 
-`setDate() `方法用于设置一个月的某一天。
-
->2.expires的设置
+> 2.expires的设置
 
 ```js
-    document.cookie = 'user='+ encodeURIComponent('name')  + ';expires = ' + new Date(0)
+  document.cookie = 'user='+ encodeURIComponent('name')  + ';expires = ' + new Date(0)
 ```
 
 
 #### document.write()的用法
 
+```js
+  document.write() 方法可以用在两个方面：页面载入过程中用实时脚本创建页面内容，以及用延时脚本创建本窗口或新窗口的内容。
 
-
-` document.write()`方法可以用在两个方面：页面载入过程中用实时脚本创建页面内容，以及用延时脚本创建本窗口或新窗口的内容。
-
-`document.write`只能重绘整个页面。`innerHTML`可以重绘页面的一部分
-
+  document.write 只能重绘整个页面。 innerHTML 可以重绘页面的一部分
+```
 
 #### 编写一个方法 求一个字符串的字节长度
 
@@ -1092,51 +1087,6 @@ date.setDate(date.getDate() - 1);//真正的删除
 
 alert(GetBytes("你好,as"));
 ```
-
-
-
-
-#### ajax的缺点和在IE下的问题？
-
-详情请见：[JavaScript学习总结（七）Ajax和Http状态字][14]
-
-
-
->ajax的缺点
-
-
-      1、ajax不支持浏览器back按钮。
-
-      2、安全问题 AJAX暴露了与服务器交互的细节。
-
-      3、对搜索引擎的支持比较弱。
-
-      4、破坏了程序的异常机制。
-
-      5、不容易调试。
-
-
->IE缓存问题
-
-在IE浏览器下，如果请求的方法是`GET`，并且请求的`URL`不变，那么这个请求的结果就会被缓存。解决这个问题的办法可以通过实时改变请求的`URL`，只要URL改变，就不会被缓存，可以通过在URL末尾添加上随机的时间戳参数(`'t'= + new Date().getTime()`)
-
-
-
-或者：
-
-
-```
-open('GET','demo.php?rand=+Math.random()',true);//
-```
-
-
->Ajax请求的页面历史记录状态问题
-
-可以通过锚点来记录状态，`location.hash`。让浏览器记录Ajax请求时页面状态的变化。
-
-
-
-还可以通过`HTML5`的`history.pushState`，来实现浏览器地址栏的无刷新改变
 
 
 
@@ -1295,6 +1245,51 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
  具体请看：[详解js闭包](http://segmentfault.com/a/1190000000652891)
 
+
+
+
+
+
+
+#### ajax的缺点和在IE下的问题？
+
+详情请见：[JavaScript学习总结（七）Ajax和Http状态字][14]
+
+
+> ajax的缺点
+
+    1、ajax不支持浏览器back按钮。
+
+    2、安全问题 AJAX暴露了与服务器交互的细节。
+
+    3、对搜索引擎的支持比较弱。
+
+    4、破坏了程序的异常机制。
+
+    5、不容易调试。
+
+
+> IE缓存问题
+
+在IE浏览器下，如果请求的方法是`GET`，并且请求的`URL`不变，那么这个请求的结果就会被缓存。解决这个问题的办法可以通过实时改变请求的`URL`，只要URL改变，就不会被缓存，可以通过在URL末尾添加上随机的时间戳参数(`'t'= + new Date().getTime()`)
+
+
+
+或者：
+
+
+```
+open('GET','demo.php?rand=+Math.random()',true);//
+```
+
+
+>Ajax请求的页面历史记录状态问题
+
+可以通过锚点来记录状态，`location.hash`。让浏览器记录Ajax请求时页面状态的变化。
+
+
+
+还可以通过`HTML5`的`history.pushState`，来实现浏览器地址栏的无刷新改变
 
 
 #### 创建ajax的过程
