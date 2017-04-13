@@ -485,8 +485,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
           getElementsByTagName()    //通过标签名称
 
-          getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，
-          会得到一个数组，其中包括id等于name值的)
+          getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
 
           getElementById()    //通过元素Id，唯一性
 
