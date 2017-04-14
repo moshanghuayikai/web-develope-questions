@@ -1500,19 +1500,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
-
-#### 如何评价AngularJS和BackboneJS
-
-`backbone`具有依赖性，依赖`underscore.js`。`Backbone + Underscore + jQuery(or Zepto)` 就比一个`AngularJS` 多出了2 次HTTP请求.
-
-
-`Backbone`的`Model`没有与UI视图数据绑定，而是需要在View中自行操作DOM来更新或读取UI数据。`AngularJS`与此相反，Model直接与UI视图绑定，`Model`与UI视图的关系，通过`directive`封装，`AngularJS`内置的通用`directive`，就能实现大部分操作了，也就是说，基本不必关心`Model`与UI视图的关系，直接操作Model就行了，UI视图自动更新。
-
-
-`AngularJS`的`directive`，你输入特定数据，他就能输出相应UI视图。是一个比较完善的前端MVW框架，包含模板，数据双向绑定，路由，模块化，服务，依赖注入等所有功能，模板功能强大丰富，并且是声明式的，自带了丰富的 Angular 指令。
-
-
-
 #### 你觉得jQuery或zepto源码有哪些写的好的地方
 
 (答案仅供参考)
@@ -1556,7 +1543,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 #### ES6的了解
 
-新增模板字符串（为JavaScript提供了简单的字符串插值功能）、箭头函数（操作符左边为输入的参数，而右边则是进行的操作以及返回的值`Inputs=>outputs`。）、`for-of`（用来遍历数据—例如数组中的值。）`arguments`对象可被不定参数和默认参数完美代替。`ES6`将`promise`对象纳入规范，提供了原生的`Promise`对象。增加了`let`和`const`命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。ES6规定，`var`命令和`function`命令声明的全局变量，属于全局对象的属性；`let`命令、`const`命令、`class`命令声明的全局变量，不属于全局对象的属性。。还有就是引入`module`模块的概念
+  新增模板字符串（为JavaScript提供了简单的字符串插值功能）、箭头函数（操作符左边为输入的参数，而右边则是进行的操作以及返回的值`Inputs=>outputs`。）、`for-of`（用来遍历数据—例如数组中的值。）`arguments`对象可被不定参数和默认参数完美代替。`ES6`将`promise`对象纳入规范，提供了原生的`Promise`对象。增加了`let`和`const`命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。ES6规定，`var`命令和`function`命令声明的全局变量，属于全局对象的属性；`let`命令、`const`命令、`class`命令声明的全局变量，不属于全局对象的属性。。还有就是引入`module`模块的概念
 
 
 
