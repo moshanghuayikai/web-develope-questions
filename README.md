@@ -1577,10 +1577,11 @@ JSON的速度要远远快于XML。
 
 > `webpack`的两大特色：
 
+```
     1.code splitting（可以自动完成）
 
     2.loader 可以处理各种类型的静态文件，并且支持串联操作
-
+```
 
 `webpack` 是以` commonJS `的形式来书写脚本滴，但对 `AMD/CMD` 的支持也很全面，方便旧项目进行代码迁移。
 
