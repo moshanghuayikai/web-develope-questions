@@ -560,7 +560,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 #### Web Worker 、Web Socket 、Web Storage
 
-> worker主线程:
+> Web Worker 主线程:
 
 
 ```js
@@ -2157,74 +2157,84 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-代码层面：避免使用css表达式，避免使用高级选择器，通配选择器。
+- 代码层面：避免使用css表达式，避免使用高级选择器，通配选择器。
 
-缓存利用：缓存Ajax，使用CDN，使用外部js和css文件以便缓存，添加Expires头，服务端配置Etag，减少DNS查找等
+- 缓存利用：缓存Ajax，使用CDN，使用外部js和css文件以便缓存，添加Expires头，服务端配置Etag，减少DNS查找等
 
-请求数量：合并样式和脚本，使用css图片精灵，初始首屏之外的图片资源按需加载，静态资源延迟加载。
+- 请求数量：合并样式和脚本，使用css图片精灵，初始首屏之外的图片资源按需加载，静态资源延迟加载。
 
-请求带宽：压缩文件，开启GZIP，
-
-
-
->代码层面的优化
+- 请求带宽：压缩文件，开启GZIP，
 
 
 
-- 用`hash-table`来优化查找
+> 代码层面的优化
 
-- 少用全局变量
+```
 
-- 用`innerHTML`代替`DOM`操作，减少`DOM`操作次数，优化`javascript`性能
+    用 hash-table 来优化查找
 
-- 用`setTimeout`来避免页面失去响应
+    少用全局变量
 
-- 缓存DOM节点查找的结果
+    用 innerHTML 代替 DOM 操作，减少 DOM 操作次数，优化 javascript 性能
 
-- 避免使用CSS Expression
+    用 setTimeout 来避免页面失去响应
 
-- 避免全局查询
+    缓存DOM节点查找的结果
 
-- 避免使用with(with会创建自己的作用域，会增加作用域链长度)
+    避免使用CSS Expression
 
-- 多个变量声明合并
+    避免全局查询
 
-- 避免图片和iFrame等的空Src。空Src会重新加载当前页面，影响速度和效率
-- 尽量避免写在HTML标签中写Style属性
+    避免使用with(with会创建自己的作用域，会增加作用域链长度)
+
+    多个变量声明合并
+
+    避免图片和iFrame等的空Src。空Src会重新加载当前页面，影响速度和效率
+
+    尽量避免写在HTML标签中写Style属性
+```
+
 
 #### 移动端性能优化
 
-- 尽量使用css3动画，开启硬件加速。
-- 适当使用`touch`事件代替`click`事件。
-- 避免使用`css3`渐变阴影效果。
-- 可以用`transform: translateZ(0)`来开启硬件加速。
-- 不滥用Float。Float在渲染时计算量比较大，尽量减少使用
-- 不滥用Web字体。Web字体需要下载，解析，重绘当前页面，尽量减少使用。
-- 合理使用requestAnimationFrame动画代替setTimeout
-- CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）会触发GPU渲染，请合理使用。过渡使用会引发手机过耗电增加
-- PC端的在移动端同样适用
+```
+    尽量使用css3动画，开启硬件加速。
 
->相关阅读：[如何做到一秒渲染一个移动页面](https://github.com/cssmagic/blog/issues/20)
+    适当使用`touch`事件代替`click`事件。
+    
+    避免使用`css3`渐变阴影效果。
+    
+    可以用`transform: translateZ(0)`来开启硬件加速。
+    
+    不滥用Float。Float在渲染时计算量比较大，尽量减少使用
+    
+    不滥用Web字体。Web字体需要下载，解析，重绘当前页面，尽量减少使用。
+    
+    合理使用requestAnimationFrame动画代替setTimeout
+    
+    CSS中的属性（CSS3 transitions、CSS3 3D transforms、Opacity、Canvas、WebGL、Video）会触发GPU渲染，请合理使用。过渡使用会引发手机过耗电增加
+    PC端的在移动端同样适用
+```
+
+
+> 相关阅读：[如何做到一秒渲染一个移动页面](https://github.com/cssmagic/blog/issues/20)
 
 
 
 #### 对前端模块化的认识
 
+```
+    AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。
+
+    CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
+
+    AMD  是提前执行，CMD 是延迟执行。
+
+    AMD 推荐的风格通过返回一个对象做为模块对象， CommonJS 的风格通过对 module.exports 或 exports 的属性赋值来达到暴露模块对象的目的。
+```
 
 
->AMD 是 `RequireJS` 在推广过程中对模块定义的规范化产出。
-
->CMD 是 `SeaJS` 在推广过程中对模块定义的规范化产出。
-
-
-
-`AMD` 是提前执行，`CMD` 是延迟执行。
-
-`AMD`推荐的风格通过返回一个对象做为模块对象，`CommonJS`的风格通过对`module.exports`或`exports`的属性赋值来达到暴露模块对象的目的。
-
-
-
->CMD模块方式
+> CMD模块方式
 
 
 ```js
