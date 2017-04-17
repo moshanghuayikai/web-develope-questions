@@ -1879,6 +1879,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
+
 > 为什么要三次挥手？
 
 ```
