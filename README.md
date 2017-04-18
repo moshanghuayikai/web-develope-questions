@@ -119,6 +119,13 @@
 
 ```
 
+> 谈谈flex语法
+
+```
+
+
+```
+详见：[阮一峰老师的Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
 
 > 介绍一下box-sizing属性？
@@ -1705,6 +1712,113 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
     8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
 ```
+
+#### node.js相关
+
+> 用什么工具保证一致的代码风格？为什么要这样？
+
+> 什么是错误优先的回调函数？
+
+```js
+  错误优先的回调函数(Error-First Callback)用于同时返回错误和数据。
+
+  第一个参数返回错误，并且验证它是否出错；其他参数用于返回数据。
+
+  fs.readFile(filePath, function(err, data)
+  {
+      if (err)
+      {
+          // 处理错误
+          return console.log(err);
+      }
+      console.log(data);
+  });
+
+```
+
+
+> 如何避免回调地狱？
+
+```
+  以下方式可以避免回调地狱:
+
+    模块化: 将回调函数转换为独立的函数
+
+    使用流程控制库，例如aync
+
+    使用Promise
+
+    使用aync/await
+```
+
+
+> 什么是Stub?举例说明
+
+```js
+  Stub用于模拟模块的行为。测试时，Stub可以为函数调用返回模拟的结果。比如说，当我们写文件时，实际上并不需要真正去写。
+  
+  var fs = require('fs');
+  
+  var writeFileStub = sinon.stub(fs, 'writeFile', function(path, data, cb)
+  {
+      return cb(null);
+  });
+  
+  expect(writeFileStub).to.be.called;
+  writeFileStub.restore();
+
+
+```
+
+
+> 什么是测试金字塔？举例说明
+
+```
+  测试金字塔反映了需要写的单元测试、集成测试以及端到端测试的比例:
+
+```
+![unit_tests.png](./images/unit_tests.png)
+
+```
+  测试HTTP接口时应该是这样的:
+
+  很多单元测试，分别测试各个模块(依赖需要stub)
+
+  较少的集成测试，测试各个模块之间的交互(依赖不能stub)
+  
+  少量端到端测试，去调用真正地接口(依赖不能stub)
+```
+
+
+
+> 如何保证依赖的安全性？
+
+```html
+  编写Node.js应用时，很可能依赖成百上千的模块。例如，使用了Express的话，会直接依赖27个模块。
+
+  因此，手动检查所有依赖是不现实的。唯一的办法是对依赖进行自动化的安全检查，有这些工具可供选择:
+
+  npm outdated
+  
+  Trace by RisingStack
+
+  <a href="https://trace.risingstack.com/">RisingStack</a>
+  
+  NSP
+  
+  GreenKeeper
+  
+  Snyk
+
+
+```
+
+
+
+
+
+
+
 
 
 ## 网络
