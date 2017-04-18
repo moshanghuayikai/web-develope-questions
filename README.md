@@ -1717,6 +1717,12 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > 用什么工具保证一致的代码风格？为什么要这样？
 
+```
+  ESLint
+  
+  Standard
+```
+
 > 什么是错误优先的回调函数？
 
 ```js
@@ -1802,8 +1808,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
   
   Trace by RisingStack
 
-  <a href="https://trace.risingstack.com/">RisingStack</a>
-  
   NSP
   
   GreenKeeper
