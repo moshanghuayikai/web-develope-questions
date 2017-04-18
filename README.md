@@ -2,15 +2,14 @@
 
 > 总体来说，前端开发涉及如下技术：
 
-- 基础基础
+- [基础基础](#1)
 
-    - HTTP
+    - [HTML/CSS](#1.1)
 
-    - HTML
 
-    - CSS
+    - [JavaScript](#1.2)
 
-    - JavaScript
+    - [HTTP](#1.3)
 
 - 编程能力
 
@@ -27,9 +26,11 @@
     - 前端工程
     
     - 数据可视化
-    
 
-## HTML/CSS
+
+<h1 id="1">基础基础</h1>
+
+<h2 id="1.1">HTML/CSS</h2>
 
 
 > `display:none`和`visibility:hidden`的区别？
