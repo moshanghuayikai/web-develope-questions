@@ -1,5 +1,33 @@
 # web-questions
 
+> 总体来说，前端开发涉及如下技术：
+
+- 基础基础
+
+    - HTTP
+
+    - HTML
+
+    - CSS
+
+    - JavaScript
+
+- 编程能力
+
+    - 数据结构和算法
+
+    - 正则表达式
+
+- 扩展技术
+    
+    - Node.js
+
+    - 前端框架
+    
+    - 前端工程
+    
+    - 数据可视化
+    
 
 ## HTML/CSS
 
@@ -1715,13 +1743,24 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 #### node.js相关
 
-> 用什么工具保证一致的代码风格？为什么要这样？
+> 什么是代码的静态检查，以及什么工具可以见检查代码的风格？
 
 ```
-  ESLint
-  
-  Standard
+  静态检查指在不运行代码的前提下，仅仅根据代码的静态解析发现错误的做法。也就是说，静态检查时编译时的检查，而不是运行时的检查。
+
+  常见的检查工具如下：
 ```
+
+- [ESLint](http://eslint.org/)
+
+- [JSLint](http://www.jslint.com/)
+
+- [JSHint](http://jshint.com/)
+
+- [JSCS](http://jscs.info/)
+
+
+
 
 > 什么是错误优先的回调函数？
 
