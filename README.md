@@ -33,6 +33,7 @@
 <h1 id="1">基础基础</h1>
 
 
+
 <h2 id="1.1">HTML/CSS</h2>
 
 
@@ -2502,7 +2503,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
     总之，两种存储结构各有长短，选择哪一种由实际问题中的主要因素决定。通常“较稳定”的线性表，即主要操作是查找操作的线性表，
 
     适于选择顺序存储；而频繁做插入删除运算的（即动态性比较强）的线性表适宜选择链式存储。
-    
+
 ```
 
 
@@ -2675,6 +2676,13 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
+
+<h1 id="3">扩展技术</h1>
+
+<h2 id="3.1">Node.js</h2>
+
+
+详见：[如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
 
 
 
