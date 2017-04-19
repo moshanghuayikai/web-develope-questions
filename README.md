@@ -2513,6 +2513,30 @@ open('GET','demo.php?rand=+Math.random()',true);//
 <h2 id="2.2">正则表达式</h2>
 
 
+```
+
+  JavaScript提供了6个方法用于正则表达式，其中两个是正则对戏那个的方法，4个是字符串对象方法。
+
+
+```
+
+> RegExp.prototype.test()
+
+
+> RegExp.prototype.exec()
+
+
+> String.prototype.match()
+
+
+> String.prototype.search()
+
+
+> String.prototype.replace()
+
+
+> String.prototype.split()
+
 
 
 
