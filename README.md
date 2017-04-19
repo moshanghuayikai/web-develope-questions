@@ -1699,7 +1699,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
     JSON的速度要远远快于XML。
 ```
-
+> JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 
 #### 谈谈你对webpack的看法
 
@@ -2537,6 +2537,8 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > String.prototype.split()
 
+
+详见：[RegExp对象](http://javascript.ruanyifeng.com/stdlib/regexp.html)
 
 
 
