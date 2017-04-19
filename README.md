@@ -2708,6 +2708,71 @@ open('GET','demo.php?rand=+Math.random()',true);//
 <h2 id="3.1">Node.js</h2>
 
 
+> 请简要说明module.exports与exports的关系
+
+```js
+  module和exports都是模块文件的上下文，更确切地讲，模块文件的代码真正被执行的是被包装过的，比如：
+
+  (function(exports, require, module, __filename, __dirname){//包装头
+    console.log("hello world!")//原始文件内容
+  })//包装尾
+
+  module和exports都是模块被执行时的参数。其中exports也是module的属性，默认情况下是一个空对对象。
+
+  当require一个模块时，实际上得到的是该模块的exports属性。
+
+  在非repl模式下可以得到验证：
+
+  console.log(module.exports === exports); //true
+
+  console.log(exports); //{}
+```
+
+
+> Node.js在执行require(id)时是怎样找到一个模块的？
+
+```
+  Node.js中的require(id)执行分3种情况：引入内建模块、引入文件模块、引入一个包。
+
+  通过id可以分析得到该模块是一个内建模块、文件模块还是包
+
+  若是内建模块时，直接从内存中加载
+
+  
+  当id是相对路径或绝对路径时，模块被认为是一个文件模块，通过文件查找可以定位到文件的路径。
+
+
+  当id既不是内建模块也不是文件模块时，则被认为是一个包。这个包可能通过npm安装的第三方模块。
+
+  包的加载方式为，从当前路径下寻找node_modeules目录中是否存在该包。如果没有，想上一级目录进行查找，
+
+  知道根目录下的node_modules。这个规则可以通过module.paths得到。
+
+
+  寻找到包后，UI中啊到爆的描述文件pageage.json，该文件的main字段表明了这个包的入口文件，
+
+  此时再按文件的方式找到对应文件即可。
+
+  （目前自动加载扩展名可省略类型.js、.json、.node）
+
+  .node文件在不同的平台下内容不同，在Windows下其实是.dll文件，其他平台下是.so文件
+
+```
+
+> 能否使用require('.json')的方式加载大量的JSON文件？
+
+
+> Node的子进程有什么原理？
+
+
+> Cluster是什么原理？
+
+
+> 编写一个简单的包，要求能够通过npm进行发布，发布成功，能在另一个项目中进行调用。
+
+
+
+
 详见：[如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
 
 
