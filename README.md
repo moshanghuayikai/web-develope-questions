@@ -2805,7 +2805,28 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > 如何实现在父进程退出时子进程跟着退出？
 
-> 
+> 请写一段代码 ，确保多个进程同时写入同一个文件成功(PHP为例)
+
+```
+    function writeData($filepath, $data) 
+    { 
+        $fp = fopen($filepath,'a');  
+
+        do{ 
+            usleep(100); //微秒
+        }while (!flock($fp, LOCK_EX)); //取得独占锁定 
+        
+        $res = fwrite($fp, $data."\n"); 
+
+        flock($fp, LOCK_UN); //释放锁定
+        
+        fclose($fp);  
+        
+        return $res; 
+    } 
+  
+```
+
 
 > 实现一个能够自动重启的HTTP服务集群？
 
