@@ -2805,9 +2805,10 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > 如何实现在父进程退出时子进程跟着退出？
 
-> 请写一段代码 ，确保多个进程同时写入同一个文件成功(PHP为例)
+> 请写一段代码 ，确保多个进程同时写入同一个文件成功
 
 ```
+    PHP为例:
     function writeData($filepath, $data) 
     { 
         $fp = fopen($filepath,'a');  
