@@ -17,7 +17,7 @@
 
     - [正则表达式](#2.2)
 
-- [扩展技术](#3)
+- [扩展技术](#3) 
     
     - [Node.js](#3.1)
 
@@ -233,7 +233,14 @@ Width = width(包含padding-left + padding-right + border-left + border-right)
 Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```
 
+> z-index的使用？
 
+```css
+  z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
+
+  z-index 属性仅在节点的 position 属性为 relative, absolute 或者 fixed 时生效.
+
+```
 
 > CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
 
