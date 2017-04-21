@@ -803,7 +803,20 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
+> 如何保证Session的安全？
 
+```
+  验证用户的使用环境[浏览器和 IP 地址]。 
+      
+      分配给用户 Session ID 时，同时探明用户使用的浏览器和 IP 地址，作为验证依据，使非法用户不能进行 Session ID 欺骗。 
+  
+
+  正确处理 Session 变量。 
+      
+      当用户注销时，立即删除 Session ID 。并设置好 Session 的生存周期，过期就自动删除。 
+
+
+```
 
 
 
@@ -2843,6 +2856,12 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 > 编写一个简单的包，要求能够通过npm进行发布，发布成功，能在另一个项目中进行调用。
+
+> 如何拼接多个Buffer为一个Buffer？
+
+> 如何实现一个Writable、Readable、Duplex流？
+
+
 
 
 
