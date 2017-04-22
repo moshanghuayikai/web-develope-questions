@@ -120,6 +120,26 @@
 
 > 如何将页脚固定在页面底部?
 
+
+> 方法一：
+
+```html
+  <div id="container">
+
+    <div id="header">Header Section</div>
+
+    <div id="page" class="clearfix">
+
+     页面容容部分
+
+    </div>
+
+    <div id="footer">Footer Section</div>
+
+  </div>
+```
+
+
 ```
     方法一：
 
