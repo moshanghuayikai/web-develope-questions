@@ -2865,7 +2865,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-
 详见：[如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
 
 
