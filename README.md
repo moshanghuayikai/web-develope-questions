@@ -1890,7 +1890,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 ```
     ICMP协议： （Internet Control Message Protocol）因特网控制报文协议。
-                它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。
+              它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。
     
     TFTP协议： （Trivial File Transfer Protocol）简单文件传输协议 
                 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。
