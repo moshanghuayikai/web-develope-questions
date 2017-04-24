@@ -141,6 +141,30 @@
 
     <!-- 实现这页脚永远固定在页面的底部，我们只需要四个div，其中div#container是一个容器，在这个容器之中，我们包含了div#header（头部），div#page（页面主体部分，我们可以在这个div中增加更多的div结构，如上面的代码所示），div#footer（页脚部分） -->
 
+  ```
+  ```css
+
+    #container {
+        min-height:100%;
+        height: auto !important;
+        height: 100%; /*IE6不识别min-height*/
+        position: relative;
+    }
+    
+    #page {
+        width: 960px;
+        margin: 0 auto;
+        padding-bottom: 60px;/*等于footer的高度*/
+    }
+
+    #footer {
+        position:absolute;
+        bottom: 0;
+        width: 100%;
+        height: 60px;/*脚部的高度*/
+        background: #6cf;
+        clear:both;
+    }
 
   ```
 
