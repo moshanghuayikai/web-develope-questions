@@ -2917,7 +2917,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > 很多静态文件不断修改，如何保证浏览器总是加载到修改后的版本？
 
-```
+```html
   一种方法是使用HTTP头信息，指定浏览器不得缓存（或者缓存时间较短）
   
   Cache-Control: no-cache, no-store, must-revalidate
@@ -2925,7 +2925,26 @@ open('GET','demo.php?rand=+Math.random()',true);//
   Pragma: no-cache
 
   Expires: 0
+
+  但是，这样浏览器每次加载都需要下载相关文件，会增加带宽消耗，也不利于性能。
+
+
+
+  常见的方法，为每个静态文件的URL附件一个版本号或哈希作为查询字符串。文件每次更新，就更新版本号。
+
+  <link rel="stylesheet" href="a.css?v=1.0.0"/>
   
+  这种方法对于很多静态文件相互依赖的页面会产生问题。因为HTML页面和静态资源文件往往不会同时部署上线。一旦新版的静态资源先上线，
+
+  同时此时又有用户去加载老版的HTML页面，就可能导致问题。
+
+
+
+  因此，更好解决方法是，每当静态资源文件有内容变化，就该用一个全新的文件名。
+
+  <link rel="stylesheet" herf="a.v1.0.0.css"/>
+
+  这样就会使得HTML页面和静态资源的呃版本总是匹配的，再配上灰度发布，就能够实现平滑发布。
 
 ```
 
