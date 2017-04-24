@@ -2833,6 +2833,18 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > 如何拼接多个Buffer为一个Buffer？
 
+```
+  Buffer.concat(list[, totalLength]);
+
+  list <Array> List of Buffer objects to concat
+
+  totalLength <Number> Total length of the Buffers in the list when concatenated
+  
+  Return: <Buffer>
+  
+```
+
+
 > 如何实现一个Writable、Readable、Duplex流？
 
 
