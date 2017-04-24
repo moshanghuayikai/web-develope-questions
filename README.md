@@ -138,6 +138,10 @@
       <div id="footer">Footer Section</div>
 
     </div>
+
+    <!-- 实现这页脚永远固定在页面的底部，我们只需要四个div，其中div#container是一个容器，在这个容器之中，我们包含了div#header（头部），div#page（页面主体部分，我们可以在这个div中增加更多的div结构，如上面的代码所示），div#footer（页脚部分） -->
+
+
   ```
 
 
