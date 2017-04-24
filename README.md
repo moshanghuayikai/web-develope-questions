@@ -1889,13 +1889,13 @@ open('GET','demo.php?rand=+Math.random()',true);//
 > 各种协议
 
 ```
-    ICMP协议： 因特网控制报文协议。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。
+    ICMP协议： （Internet Control Message Protocol）因特网控制报文协议。它是TCP/IP协议族的一个子协议，用于在IP主机、路由器之间传递控制消息。
     
-    TFTP协议： 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。
+    TFTP协议： （Trivial File Transfer Protocol）简单文件传输协议 是TCP/IP协议族中的一个用来在客户机与服务器之间进行简单文件传输的协议，提供不复杂、开销不大的文件传输服务。
     
-    HTTP协议： 超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。
+    HTTP协议： (HyperText Transfer Protocol)超文本传输协议，是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。
     
-    DHCP协议： 动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段。
+    DHCP协议： （Dynamic Host Configuration Protocol）动态主机配置协议，是一种让系统得以连接到网络上，并获取所需要的配置参数手段。
 ```
 
 
