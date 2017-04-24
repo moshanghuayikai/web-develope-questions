@@ -2915,6 +2915,20 @@ open('GET','demo.php?rand=+Math.random()',true);//
   6.部署：将构建好的代码部署到生产环境
 ```
 
+> 很多静态文件不断修改，如何保证浏览器总是加载到修改后的版本？
+
+```
+  一种方法是使用HTTP头信息，指定浏览器不得缓存（或者缓存时间较短）
+  
+  Cache-Control: no-cache, no-store, must-revalidate
+
+  Pragma: no-cache
+
+  Expires: 0
+  
+
+```
+
 
 
 <h2 id="3.4">数据可视化</h2>
