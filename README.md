@@ -1742,48 +1742,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 > JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 
-#### 谈谈你对webpack的看法
-
-```
-  WebPack 是一个模块打包工具，你可以使用 WebPack 管理你的模块依赖，并编绎输出模块们所需的静态文件。
-
-  它能够很好地管理、打包Web开发中所用到的 HTML、Javascript、CSS 以及各种静态文件（图片、字体等），
-
-  让开发过程更加高效。对于不同类型的资源， webpack 有对应的模块加载器。 webpack 模块打包器会分析模块间的依赖关系，
-
-  最后 生成了优化且合并后的静态资源。
-```
-
-> `webpack`的两大特色：
-
-```
-    1.code splitting（可以自动完成）
-
-    2.loader 可以处理各种类型的静态文件，并且支持串联操作
-```
-
-`webpack` 是以` commonJS `的形式来书写脚本滴，但对 `AMD/CMD` 的支持也很全面，方便旧项目进行代码迁移。
-
-> `webpack`具有`requireJs`和`browserify`的功能，但仍有很多自己的新特性：
-
-
-```
-    1. 对 CommonJS 、 AMD 、ES6的语法做了兼容
-
-    2. 对js、css、图片等资源文件都支持打包
-
-    3. 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
-
-    4. 有独立的配置文件webpack.config.js
-
-    5. 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
-
-    6. 支持 SourceUrls 和 SourceMaps，易于调试
-
-    7. 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
-
-    8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
-```
 
 #### node.js相关
 
@@ -2951,6 +2909,49 @@ open('GET','demo.php?rand=+Math.random()',true);//
   少量端到端测试，去调用真正地接口(依赖不能stub)
 ```
 
+
+#### 谈谈你对webpack的看法
+
+```
+  WebPack 是一个模块打包工具，你可以使用 WebPack 管理你的模块依赖，并编绎输出模块们所需的静态文件。
+
+  它能够很好地管理、打包Web开发中所用到的 HTML、Javascript、CSS 以及各种静态文件（图片、字体等），
+
+  让开发过程更加高效。对于不同类型的资源， webpack 有对应的模块加载器。 webpack 模块打包器会分析模块间的依赖关系，
+
+  最后 生成了优化且合并后的静态资源。
+```
+
+> `webpack`的两大特色：
+
+```
+    1.code splitting（可以自动完成）
+
+    2.loader 可以处理各种类型的静态文件，并且支持串联操作
+```
+
+`webpack` 是以` commonJS `的形式来书写脚本滴，但对 `AMD/CMD` 的支持也很全面，方便旧项目进行代码迁移。
+
+> `webpack`具有`requireJs`和`browserify`的功能，但仍有很多自己的新特性：
+
+
+```
+    1. 对 CommonJS 、 AMD 、ES6的语法做了兼容
+
+    2. 对js、css、图片等资源文件都支持打包
+
+    3. 串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
+
+    4. 有独立的配置文件webpack.config.js
+
+    5. 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
+
+    6. 支持 SourceUrls 和 SourceMaps，易于调试
+
+    7. 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
+
+    8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
+```
 
 
 
