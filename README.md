@@ -2910,7 +2910,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
-#### 谈谈你对webpack的看法
+#### 自动化构建工具，谈谈你对webpack的看法
 
 ```
   WebPack 是一个模块打包工具，你可以使用 WebPack 管理你的模块依赖，并编绎输出模块们所需的静态文件。
