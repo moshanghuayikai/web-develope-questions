@@ -2764,6 +2764,17 @@ open('GET','demo.php?rand=+Math.random()',true);//
 > Node的子进程有什么原理？
 
 ```
+  Node的子进程模块为child_process，类似操作系统的API，但又有所不同。
+
+  子进程模块有exec、execFile、fork、spawn4个异步方法和execSync、execFileSync、spawnSync3个同步调用方法。
+
+  child_process模块与操作系统底层API的区别在于它并不是用来spawn和fork当前进程的，
+
+  通过这些API创建出来的子进程与父进程之间没有任何必然的关系。
+
+  当创建出来的子进程也是一个node进程时，可以在两个进程之间通信。Node内建了IPC机制，暴露的API为child.send()和process.on('message')。
+
+  其内部机制在不同的平台下有不同的实现，UNIX下为Domain Socket，Windows为Named Pipe。
     
 ```
 
