@@ -2858,7 +2858,22 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 <h2 id="3.2">前端框架</h2>
 
+```
+  前端框架解决Web应用开发中两个关键问题：
 
+  如何写高可复用，易维护的前端组件
+
+  如何管理前端应用中的数据
+
+  框架： jQuery、Angular、React、VUE、
+```
+> jQuery
+
+> Angular
+
+> React
+
+> VUE
 
 
 <h2 id="3.3">前端工程</h2>
