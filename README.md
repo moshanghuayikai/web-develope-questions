@@ -122,7 +122,7 @@
 > 如何将页脚固定在页面底部?
 
 
-  > 方法一：
+   方法一：
 
   ```html
     <div id="container">
@@ -150,7 +150,7 @@
         height: 100%; /*IE6不识别min-height*/
         position: relative;
     }
-    
+
     #page {
         width: 960px;
         margin: 0 auto;
