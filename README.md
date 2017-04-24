@@ -1975,6 +1975,22 @@ open('GET','demo.php?rand=+Math.random()',true);//
     发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
 ```
 
+> HTTP header中，和缓存相关的字段有：
+
+```
+  Cache-control
+
+  Expires
+
+  Age
+
+  Vary
+  
+  Etag
+
+```
+
+
 
 #### HTTP和HTTPS
 
