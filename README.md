@@ -235,7 +235,7 @@
 
     竖直居中的属性 vertical-align，但这个样式只有在父元素为 td 或 th 时，才会生效 
 
-    // vertical-align 和 display: inline-block 在一起有讲究
+    /* vertical-align 和 display: inline-block 在一起有讲究 */
 
 
   垂直居中：多行的行内元素解决方案
