@@ -181,31 +181,127 @@
   方法四：
 
 
-####  如何实现元素水平居中、垂直居中？
+####  如何实现元素水平居中、垂直居中、水平垂直居中？
 
 > 水平居中
 
 ```css
-  行内元素
+  水平居中：行内元素
 
     如果被设置元素为文本、图片等行内元素时，水平居中是通过给父元素设置 text-align:center 来实现的
+    .parent {
+      text-align:center;
+    }
 
 
-  定宽块状元素
+  水平居中：定宽块状元素
   
-  满足定宽和块状两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。
+    满足定宽和块状两个条件的元素是可以通过设置“左右margin”值为“auto”来实现居中的。
+    .item{
+      margin: 3rem auto;
+    }
 
 
-  不定宽块状元素
+  水平居中：多个块状元素解决方案
+  
+    将元素的display属性设置为inline-block，并且把父元素的text-align属性设置为center即可:
+    .parent {
+      text-align:center;
+    }
+  
 
-  a.改变块级元素的 dispaly 为 inline 类型，然后使用 text-align:center 来实现居中效果
+  水平居中：多个块状元素解决方案 (使用flexbox布局实现)
 
-  b.通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中
+    使用flexbox布局，只需要把待处理的块状元素的父元素添加属性display:flex及justify-content:center即可:
+    .parent {
+      display:flex;
+      justify-content:center;
+    }
+  
 
-  c.如果这个标签是table等表格元素可以使用左右 margin 居中
+  水平居中：不定宽块状元素
 
+    a.改变块级元素的 dispaly 为 inline 类型，然后使用 text-align:center 来实现居中效果
+
+    b.通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中
+
+    c.如果这个标签是table等表格元素可以使用左右 margin 居中
 
 ```
+
+> 垂直居中
+
+```
+  父元素高度确定的单行文本
+
+    垂直居中的方法是通过设置父元素的 height 和 line-height 高度一致来实现的
+
+    竖直居中的属性 vertical-align，但这个样式只有在父元素为 td 或 th 时，才会生效 
+
+    // vertical-align 和 display: inline-block 在一起有讲究
+
+
+  垂直居中：多行的行内元素解决方案
+    组合使用display:table-cell和vertical-align:middle属性来定义需要居中的元素的父容器元素生成效果，如下：
+    .parent {
+      background: #222;
+      width: 300px;
+      height: 300px;
+      
+      /* 以下属性垂直居中 */
+      display: table-cell;
+      vertical-align:middle;
+    }
+
+
+  垂直居中：已知高度的块状元素解决方案
+    .item{
+        top: 50%;
+        margin-top: -50px;  /* margin-top值为自身高度的一半 */
+        position: absolute;
+        padding:0;
+    }
+
+```
+
+
+> 水平垂直居中
+
+```css
+  水平垂直居中：已知高度和宽度的元素解决方案
+    这是一种不常见的居中方法，可自适应,如下：
+    .item{
+        position: absolute;
+        margin:auto;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+    }
+
+
+  水平垂直居中：未知高度和宽度元素解决方案
+    .item{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);  /* 使用css3的transform来实现 */
+    }
+
+
+  水平垂直居中：使用flex布局实现
+    .parent{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+
+        /* 注意这里需要设置高度来查看垂直居中效果 */
+        background: #AAA;
+        height: 300px;
+    }
+
+```
+
 
 ```
     方法一：
