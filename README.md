@@ -492,6 +492,21 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```
 
 
+> padding 对于block、inline 水平元素
+
+```css
+    对于block水平元素
+
+      padding值暴走，一定会影响尺寸
+
+
+    对于inline水平元素
+
+      水平padding影响尺寸，垂直padding不影响尺寸，但是会影响会背景色（占据空间）
+
+```
+
+
 
 > 说说你对语义化的理解？
 
