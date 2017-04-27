@@ -521,6 +521,12 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```
 
 
+> 前端开发规范手册
+
+详见：![前端开发规范手册](http://zhibimo.com/read/Ashu/front-end-style-guide/index.html)
+
+
+
 > Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?
 
 ```html
