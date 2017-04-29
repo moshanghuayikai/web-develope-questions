@@ -3252,6 +3252,8 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 <hr>
+
+
 > 本文旨在加深对Web知识理解，资料来源相关书籍和网络并加以整理。
 
 #### 参考
