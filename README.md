@@ -1,5 +1,7 @@
 # web-questions
 
+
+
 > 总体来说，前端开发涉及如下技术：
 
 - [基础基础](#1)
@@ -3244,6 +3246,15 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
     通过验证码的方法
 ```
+
+
+
+> 本文旨在加深对Web知识理解，资料来源相关书籍和网络并加以整理。
+
+#### 参考
+
+- [Front-end-Interview-questions](https://github.com/hawx1993/Front-end-Interview-questions)
+
 
 
 
