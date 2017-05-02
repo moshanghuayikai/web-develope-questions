@@ -3146,7 +3146,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-
+有点少
 
 
 <h1 id="4">Web安全</h1>
