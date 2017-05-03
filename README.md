@@ -1913,19 +1913,19 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```html
     (1).数据体积方面。
 
-    JSON相对于XML来讲，数据的体积小，传递的速度更快些。
+        JSON相对于XML来讲，数据的体积小，传递的速度更快些。
 
     (2).数据交互方面。
 
-    JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。
+        JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。
 
     (3).数据描述方面。
 
-    JSON对数据的描述性比XML较差。
+        JSON对数据的描述性比XML较差。
 
     (4).传输速度方面。
 
-    JSON的速度要远远快于XML。
+        JSON的速度要远远快于XML。
 ```
 > JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 
