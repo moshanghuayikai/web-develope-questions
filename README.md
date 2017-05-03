@@ -36,6 +36,8 @@
     - [综合](#4.2)
 
 
+
+
 <h1 id="1">基础基础</h1>
 
 
@@ -3033,7 +3035,11 @@ open('GET','demo.php?rand=+Math.random()',true);//
 有点少
 
 
+
+
 <h1 id="4">Web</h1>
+
+
 
 <h2 id="4.1">Web安全</h2>
 
@@ -3131,6 +3137,8 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
     通过验证码的方法
 ```
+
+
 
 
 
