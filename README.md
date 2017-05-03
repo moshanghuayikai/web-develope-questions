@@ -766,6 +766,16 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
           getElementById()    //通过元素Id，唯一性
 
 
+> DOM模型中节点类型有？
+          
+          Document节点（document节点是文档的根节点，每张网页都有自己的document节点）
+
+          Element节点（Element对象对应网页的HTML标签元素）
+
+          Text节点（Text节点代表Element节点和Attribute节点的文本内容）
+
+          DocumentFragment节点（代表一个文档的片段，本身就是一个完整的DOM树形结构）
+
 
 #### HTML5 有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？
 
