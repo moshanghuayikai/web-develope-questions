@@ -523,7 +523,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > padding 对于block、inline 水平元素
 
 ```css
-    对于block水平元素
+    对于block块级元素
 
       padding值暴走，一定会影响尺寸
 
