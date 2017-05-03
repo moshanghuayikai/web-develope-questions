@@ -648,7 +648,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```html
     怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
     怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
-    可以使用 <a href="http://www.w3.org/TR/html5/single-page.html">HTML5</a> 推荐的写法：<doctype html>
+    可以使用 HTML5 推荐的写法：<!DOCTYPE html>
 ```
 
 
