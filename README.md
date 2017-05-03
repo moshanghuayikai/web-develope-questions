@@ -2161,7 +2161,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
     HTTP 协议通常承载于TCP协议之上，在 HTTP 和 TCP 之间添加一个安全协议层（ SSL 或 TSL ），这个时候，就成了我们常说的HTTPS。
 
-    默认HTTP的端口号为80，`HTTPS`的端口号为443。
+    默认HTTP的端口号为80， HTTPS 的端口号为443。
 ```
 
 
