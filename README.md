@@ -895,7 +895,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
   HTML5 中的 Web Storage 包括了两种存储方式： sessionStorage 和 localStorage 。
 
-  
+
 
   sessionStorage 用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。
 
@@ -1802,7 +1802,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 #### 请解释一下 JavaScript 的同源策略。为什么要有同源限制？
 
 ```
-    概念:同源策略是客户端脚本（尤其是`Javascript`）的重要的安全度量标准。它最早出自`Netscape Navigator2.0`，其目的是防止某个文档或脚本从多个不同源装载。
+    概念:同源策略是客户端脚本（尤其是 Javascript ）的重要的安全度量标准。它最早出自 Netscape Navigator2.0 ，其目的是防止某个文档或脚本从多个不同源装载 
 
 
     这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。
