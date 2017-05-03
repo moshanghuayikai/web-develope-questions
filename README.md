@@ -2921,7 +2921,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
   <link rel="stylesheet" herf="a.v1.0.0.css"/>
 
-  这样就会使得HTML页面和静态资源的呃版本总是匹配的，再配上灰度发布，就能够实现平滑发布。
+  这样就会使得HTML页面和静态资源的版本总是匹配的，再配上灰度发布，就能够实现平滑发布。
 
 ```
 
