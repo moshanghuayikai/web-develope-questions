@@ -305,7 +305,34 @@
 > 谈谈flex语法
 
 ```
+  容器属性
 
+    flex-direction
+   
+    flex-wrap
+   
+    flex-flow (flex-direction 和 flex-wrap的简写)
+   
+    justify-content
+   
+    align-items
+   
+    align-content
+
+
+   项目属性
+
+    order
+
+    flex-grow
+
+    flex-shrink
+
+    flex-basis
+
+    flex (flex-grow, flex-shrink 和 flex-basis的简写)
+
+    align-self
 
 ```
 详见：[阮一峰老师的Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
