@@ -659,7 +659,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 - `absolute` :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
 
-- `fixed` （老IE不支持）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
+- `fixed` （老IE不支持 < IE11 ）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
 
 - `relative` 生成相对定位的元素，相对于其在普通流中的位置进行定位。
 
