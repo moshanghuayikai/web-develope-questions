@@ -1843,9 +1843,9 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ``` 
     Commet：基于HTTP长连接的服务器推送技术
       
-    基于`WebSocket 的推送方案
+    基于 WebSocket 的推送方案
       
-    SSE`（Server-Send Event）：服务器推送数据新方式
+    SSE （Server-Send Event）：服务器推送数据新方式
 ```
 
 
