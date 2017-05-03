@@ -549,7 +549,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```
 
 
-> 前端开发规范手册
+> 前端开发规范手册(推荐)
 
 详见：[前端开发规范手册](http://zhibimo.com/read/Ashu/front-end-style-guide/index.html)
 
@@ -648,7 +648,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```html
     怪异模式问题：漏写DTD声明，Firefox仍然会按照标准模式来解析网页，但在IE中会触发
     怪异模式。为避免怪异模式给我们带来不必要的麻烦，最好养成书写DTD声明的好习惯。现在
-    可以使用[html5](http://www.w3.org/TR/html5/single-page.html)推荐的写法：<doctype html>
+    可以使用 <a href="http://www.w3.org/TR/html5/single-page.html">HTML5</a> 推荐的写法：<doctype html>
 ```
 
 
