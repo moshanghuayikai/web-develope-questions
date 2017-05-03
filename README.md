@@ -891,9 +891,11 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > 浏览器本地存储
 
 ```js
-  在较高版本的浏览器中，js 提供了 sessionStorage 和 globalStorage 。在 HTML5 中提供了 localStorage 来取代 globalStorage 。
+  在较高版本的浏览器中，js 提供了 sessionStorage 和 globalStorage 。
 
   HTML5 中的 Web Storage 包括了两种存储方式： sessionStorage 和 localStorage 。
+
+  
 
   sessionStorage 用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。
 
