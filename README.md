@@ -2294,7 +2294,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 ```
 
-详情：[从输入 URL 到浏览器接收的过程中发生了什么事情？](http://segmentfault.com/blog/trigkit4/1190000000697254)
+详情：[从输入 URL 到浏览器接收的过程中发生了什么事情？](http://fex.baidu.com/blog/2014/05/what-happen/)
 
 
 
