@@ -3253,14 +3253,14 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 #### 移动端性能优化
 
-```
+```css
     尽量使用css3动画，开启硬件加速。
 
-    适当使用`touch`事件代替`click`事件。
+    适当使用 touch 事件代替 click 事件。
     
-    避免使用`css3`渐变阴影效果。
+    避免使用 css3 渐变阴影效果。
     
-    可以用`transform: translateZ(0)`来开启硬件加速。
+    可以用 transform: translateZ(0) 来开启硬件加速。
     
     不滥用Float。Float在渲染时计算量比较大，尽量减少使用
     
