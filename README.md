@@ -3102,16 +3102,16 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
     首先代码里对用户输入的地方和变量都需要仔细检查长度和对`”<”,”>”,”;”,”’”`等字符做过滤；
 
-    其次任何内容写到页面之前都必须加以`encode`，避免不小心把`html tag` 弄出来。这一个层面做好，至少可以堵住超过一半的`XSS` 攻击。
+    其次任何内容写到页面之前都必须加以 encode ，避免不小心把 html tag  弄出来。这一个层面做好，至少可以堵住超过一半的 XSS  攻击。
 
-    首先，避免直接在`cookie` 中泄露用户隐私，例如email、密码等等。
+    首先，避免直接在 cookie  中泄露用户隐私，例如email、密码等等。
 
-    其次，通过使`cookie` 和系统`ip` 绑定来降低`cookie` 泄露后的危险。这样攻击者得到的`cookie` 没有实际价值，不可能拿来重放。
+    其次，通过使 cookie  和系统 ip 绑定来降低 cookie  泄露后的危险。这样攻击者得到的 cookie  没有实际价值，不可能拿来重放。
 
-    如果网站不需要再浏览器端对`cookie` 进行操作，可以在`Set-Cookie` 末尾加上`HttpOnly` 来防止`javascript` 代码直接获取`cookie` 。
+    如果网站不需要再浏览器端对 cookie  进行操作，可以在 Set-Cookie  末尾加上 HttpOnly  来防止 javascript  代码直接获取 cookie  。
 
 
-    尽量采用`POST` 而非`GET` 提交表单
+    尽量采用 POST 而非 GET 提交表单
 
 ```
 
