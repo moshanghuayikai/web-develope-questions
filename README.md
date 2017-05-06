@@ -2775,7 +2775,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
         }while (!flock($fp, LOCK_EX)); //取得独占锁定 
         
         $res = fwrite($fp, $data."\n"); 
-
+r
         flock($fp, LOCK_UN); //释放锁定
         
         fclose($fp);  
@@ -3029,10 +3029,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 ```
 
-
-
-
-有点少
 
 
 
