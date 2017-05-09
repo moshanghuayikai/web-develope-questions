@@ -2576,6 +2576,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > Node.js之所以是一个出色的框架，基于下面几个原因：
 
+```
   JavaScript端到端：可以用JavaScript同时编写服务器端和客户端脚本。
 
   事件驱动的可扩展性：Node.js应用时间模型在同一个线程上来处理Web请求。
@@ -2584,6 +2585,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
   快速执行：建立Node.js，并在其中开发时超级容易的。
 
+```
 
 
 > 什么是错误优先的回调函数？
