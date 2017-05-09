@@ -1936,98 +1936,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 > JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 
 
-#### node.js相关
-
-> Node.js之所以是一个出色的框架，基于下面几个原因：
-
-  JavaScript端到端：可以用JavaScript同时编写服务器端和客户端脚本。
-
-  事件驱动的可扩展性：Node.js应用时间模型在同一个线程上来处理Web请求。
-
-  可扩展性：Node.js追随者多、社区活跃、安装新模块简单
-
-  快速执行：建立Node.js，并在其中开发时超级容易的。
-
-
-
-> 什么是错误优先的回调函数？
-
-```js
-  错误优先的回调函数(Error-First Callback)用于同时返回错误和数据。
-
-  第一个参数返回错误，并且验证它是否出错；其他参数用于返回数据。
-
-  fs.readFile(filePath, function(err, data)
-  {
-      if (err)
-      {
-          // 处理错误
-          return console.log(err);
-      }
-      console.log(data);
-  });
-
-```
-
-
-> 如何避免回调地狱？
-
-```
-  以下方式可以避免回调地狱:
-
-    模块化: 将回调函数转换为独立的函数
-
-    使用流程控制库，例如aync
-
-    使用Promise
-
-    使用aync/await
-```
-
-
-> 什么是Stub?举例说明
-
-```js
-  Stub用于模拟模块的行为。测试时，Stub可以为函数调用返回模拟的结果。比如说，当我们写文件时，实际上并不需要真正去写。
-  
-  var fs = require('fs');
-  
-  var writeFileStub = sinon.stub(fs, 'writeFile', function(path, data, cb)
-  {
-      return cb(null);
-  });
-  
-  expect(writeFileStub).to.be.called;
-  writeFileStub.restore();
-
-
-```
-
-
-
-
-> 如何保证依赖的安全性？
-
-```html
-  编写Node.js应用时，很可能依赖成百上千的模块。例如，使用了Express的话，会直接依赖27个模块。
-
-  因此，手动检查所有依赖是不现实的。唯一的办法是对依赖进行自动化的安全检查，有这些工具可供选择:
-
-  npm outdated
-  
-  Trace by RisingStack
-
-  NSP
-  
-  GreenKeeper
-  
-  Snyk
-
-
-```
-
-
-
 <h2 id="1.3">网络</h2>
 
 
@@ -2662,6 +2570,97 @@ open('GET','demo.php?rand=+Math.random()',true);//
 <h1 id="3">扩展技术</h1>
 
 <h2 id="3.1">Node.js</h2>
+
+
+#### node.js相关
+
+> Node.js之所以是一个出色的框架，基于下面几个原因：
+
+  JavaScript端到端：可以用JavaScript同时编写服务器端和客户端脚本。
+
+  事件驱动的可扩展性：Node.js应用时间模型在同一个线程上来处理Web请求。
+
+  可扩展性：Node.js追随者多、社区活跃、安装新模块简单
+
+  快速执行：建立Node.js，并在其中开发时超级容易的。
+
+
+
+> 什么是错误优先的回调函数？
+
+```js
+  错误优先的回调函数(Error-First Callback)用于同时返回错误和数据。
+
+  第一个参数返回错误，并且验证它是否出错；其他参数用于返回数据。
+
+  fs.readFile(filePath, function(err, data)
+  {
+      if (err)
+      {
+          // 处理错误
+          return console.log(err);
+      }
+      console.log(data);
+  });
+
+```
+
+
+> 如何避免回调地狱？
+
+```
+  以下方式可以避免回调地狱:
+
+    模块化: 将回调函数转换为独立的函数
+
+    使用流程控制库，例如aync
+
+    使用Promise
+
+    使用aync/await
+```
+
+
+> 什么是Stub?举例说明
+
+```js
+  Stub用于模拟模块的行为。测试时，Stub可以为函数调用返回模拟的结果。比如说，当我们写文件时，实际上并不需要真正去写。
+  
+  var fs = require('fs');
+  
+  var writeFileStub = sinon.stub(fs, 'writeFile', function(path, data, cb)
+  {
+      return cb(null);
+  });
+  
+  expect(writeFileStub).to.be.called;
+  writeFileStub.restore();
+
+
+```
+
+
+
+
+> 如何保证依赖的安全性？
+
+```html
+  编写Node.js应用时，很可能依赖成百上千的模块。例如，使用了Express的话，会直接依赖27个模块。
+
+  因此，手动检查所有依赖是不现实的。唯一的办法是对依赖进行自动化的安全检查，有这些工具可供选择:
+
+  npm outdated
+  
+  Trace by RisingStack
+
+  NSP
+  
+  GreenKeeper
+  
+  Snyk
+
+
+```
 
 
 > 请简要说明module.exports与exports的关系
