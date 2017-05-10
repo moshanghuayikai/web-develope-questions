@@ -2576,6 +2576,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > Node.js之所以是一个出色的框架，基于下面几个原因：
 
+
 ```
   JavaScript端到端：可以用JavaScript同时编写服务器端和客户端脚本。
 
