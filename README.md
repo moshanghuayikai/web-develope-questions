@@ -315,11 +315,11 @@
 ```
   -webkit  chrome和safari
 
-    -moz  firefox
+     -moz  firefox
 
-    -ms  IE
+      -ms  IE
 
-    -o  opera
+       -o  opera
 ```
 
 
