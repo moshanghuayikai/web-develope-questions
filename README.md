@@ -310,6 +310,18 @@
 
 ```
 
+> 各个的浏览器前缀
+
+```
+  -webkit  chrome和safari
+
+    -moz  firefox
+
+    -ms  IE
+
+    -o  opera
+```
+
 
 
 > 谈谈flex语法
