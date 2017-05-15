@@ -1868,11 +1868,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-#### WEB应用从服务器主动推送Data到客户端有那些方式？
-
-
-
-> Javascript数据推送
+> WEB应用从服务器主动推送Data到客户端有那些方式？ Javascript数据推送
 
 ``` 
     Commet：基于HTTP长连接的服务器推送技术
