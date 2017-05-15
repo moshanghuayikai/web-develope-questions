@@ -1598,7 +1598,8 @@ alert(GetBytes("你好,as"));
 
 ```js
 
-    function createObject(name,age,profession){//集中实例化的函数var obj = new Object();
+    function createObject(name,age,profession){//集中实例化的函数
+        var obj = {} || new Object()
         obj.name = name;
         obj.age = age;
         obj.profession = profession;
