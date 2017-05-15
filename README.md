@@ -1617,6 +1617,19 @@ alert(GetBytes("你好,as"));
 
 > 构造函数模式
 
+```js
+      function Person(name, age, job){
+        this.name = name
+        this.age = age
+        this.job = job
+        this.getName = function(){
+          alert(this.name)
+        }
+      }
+      var obj = new Person('aierui',20,'student')
+```
+
+
 ```
     使用构造函数的方法 ，即解决了重复实例化的问题 ，又解决了对象识别的问题，该模式与工厂模式的不同之处在于：
 
@@ -1625,6 +1638,8 @@ alert(GetBytes("你好,as"));
     2.直接将属性和方法赋值给 this 对象;
 
     3.没有 renturn 语句。
+
+    4.函数名是大写字母P开头，表示构造函数 //借鉴其他OO语言
 ```
 
 
