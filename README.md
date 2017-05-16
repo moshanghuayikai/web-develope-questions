@@ -1957,7 +1957,13 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
         JSON的速度要远远快于XML。
 ```
-> JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
+
+```js
+   JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把
+
+   JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
+```
+
 
 
 <h2 id="1.3">网络</h2>
