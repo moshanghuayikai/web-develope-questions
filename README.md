@@ -511,50 +511,12 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     border-image
 ```
 
-
-> 对BFC规范的理解？
-
-```css
-    BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。
-
-    在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。
-
-    W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
-```
-
-
-
-> 上下margin重合问题
+> CSS中的单位px、em、rem、百分比、pt、
 
 ```css
-    IE和FF都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生塌陷，
 
-        塌陷的最终尺寸是两个值中较大的一个。
-
-    解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
-
-        当然，还可以将两个元素设置display: inline-block;或者浮动
-
-        发生塌陷的不只是兄弟元素，父子关系也会发生，当父元素没有设定padding-top或border-top时（等于0），
-
-        子元素的margin-top会和父元素的margin-top合并，与兄弟元素一样，margin最终会取值较大的作用于父元素，子元素会紧贴父元素上边界。
-```
-
-
-> padding 对于block、inline 水平元素
-
-```css
-    对于block块级元素
-
-      padding值暴走，一定会影响尺寸
-
-
-    对于inline水平元素
-
-      水平padding影响尺寸，垂直padding不影响尺寸，但是会影响会背景色（占据空间）
 
 ```
-
 
 
 > 说说你对语义化的理解？
@@ -729,8 +691,12 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 ```css
     1.额外标签法，<div style="clear:both;"></div>（缺点：不过这个办法会增加额外的标签使HTML结构看起来不够简洁。）
+    
+    2.浮动父元素 过多使用与Web精髓相违背
 
-    2.使用after伪类
+    3.设置overflow为hidden或者auto
+
+    4.使用after伪类
 
     #parent:after{
 
@@ -746,10 +712,82 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
         }
 
+      /* 优化为 ====> */
 
-    3.浮动外部元素
+      .clearfix:after,
+      .clearfix:before{
+        content: " ";
+        display: table;
+      }
 
-    4.设置overflow为hidden或者auto
+      .clearfix:after{
+        clear: both;
+      }
+      /* 伪类before可以解决浏览器顶部空白部分，即上下margin重合问题  */
+
+```
+
+
+
+
+> 对BFC规范的理解？
+
+```css
+    BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。
+
+    在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。
+
+    W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
+```
+
+
+
+> 能够触发BFC的元素有？
+
+```css
+    float: left;
+    overflow: auto;
+    display: table;
+    display: table-cell;
+    display: table-caption;
+    display: inline-block;
+    position: fixed;
+    position: absolute;
+    ……
+```
+
+
+
+> 上下margin重合问题
+
+```css
+    IE和FF都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生塌陷，
+
+        塌陷的最终尺寸是两个值中较大的一个。
+
+    解决方法，养成良好的代码编写习惯，同时采用margin-top或者同时采用margin-bottom。
+
+        当然，还可以将两个元素设置display: inline-block;或者浮动
+
+        发生塌陷的不只是兄弟元素，父子关系也会发生，当父元素没有设定padding-top或border-top时（等于0），
+
+        子元素的margin-top会和父元素的margin-top合并，与兄弟元素一样，margin最终会取值较大的作用于父元素，子元素会紧贴父元素上边界。
+```
+
+
+
+> padding 对于block、inline 水平元素
+
+```css
+    对于block块级元素
+
+      padding值暴走，一定会影响尺寸
+
+
+    对于inline水平元素
+
+      水平padding影响尺寸，垂直padding不影响尺寸，但是会影响会背景色（占据空间）
+
 ```
 
 
