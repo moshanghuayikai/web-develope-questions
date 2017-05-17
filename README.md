@@ -692,7 +692,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```css
     1.额外标签法，<div style="clear:both;"></div>（缺点：不过这个办法会增加额外的标签使HTML结构看起来不够简洁。）
     
-    2.浮动父元素 过多使用与Web精髓相违背
+    2.浮动父元素 /* 过多使用与Web精髓相违背 */
 
     3.设置overflow为hidden或者auto
 
