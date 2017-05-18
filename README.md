@@ -2664,10 +2664,7 @@ Chrome|6|6
 
 
 ```
-
   JavaScript提供了6个方法用于正则表达式，其中两个是正则对戏那个的方法，4个是字符串对象方法。
-
-
 ```
 
 > RegExp.prototype.test()
