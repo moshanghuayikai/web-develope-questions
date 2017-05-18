@@ -2733,6 +2733,14 @@ Chrome|6|6
 
 
 
+> 如何实现一个Writable、Readable、Duplex流？
+
+```
+
+```
+
+
+
 > 什么是错误优先的回调函数？
 
 ```js
@@ -2993,12 +3001,6 @@ Chrome|6|6
   
 ```
 
-
-> 如何实现一个Writable、Readable、Duplex流？
-
-```
-
-```
 
 
 详见：[如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
