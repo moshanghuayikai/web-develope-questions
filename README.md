@@ -742,7 +742,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
 
-> 能够触发BFC的元素有？
+> 能够触发BFC的元素有？ 一般可以通过触发元素的 BFC 达到清除浮动的目的
 
 ```css
     float: left;
@@ -1997,7 +1997,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 ```js
-   JSON对象有两个方法：stringify()和parse()。这两个方法分别用于把
+   JSON对象有两个方法：stringify() 和 parse()。这两个方法分别用于把
 
    JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 ```
