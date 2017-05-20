@@ -3084,9 +3084,6 @@ Chrome|6|6
   工程实践
     计算机编程：JavaScript编程基础、Web技能Canvas、SVG、WebGL
 
-    百度的echarts
-
-
 ```
 
 > 相对来说使用Canvas实现是好的，
