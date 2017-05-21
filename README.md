@@ -514,12 +514,32 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     border-image
 ```
 
-> CSS中的单位px、em、rem、百分比、pt、
+
+
+> CSS中的单位px、em、rem、百分比、pt、in、cn、mm、
 
 ```css
+    绝对长度单位：px、in(英寸)、cm、mm
 
+      in：1in == 96px
 
+    相对字体长度：em、rem、pt
+
+      em：逐级向上相乘font-size的值，直到根(html)元素
+
+      rem：只是相对根(html)元素
+
+      pt：1pt == 1/72in == 
+
+    百分比：
+
+    可视区百分比长度单位：vw、vh
+
+      vw：1vw等于可视区宽度的百分之一
+
+      vh：1vw等于可视区高度的百分之一
 ```
+
 
 
 > 说说你对语义化的理解？
