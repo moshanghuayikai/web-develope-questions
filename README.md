@@ -531,7 +531,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
       pt：1pt == 1/72in == 
 
-    百分比：
+    百分比：基于具有相同属性的父元素的长度值
 
     可视区百分比长度单位：vw、vh
 
