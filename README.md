@@ -660,7 +660,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     可以使用 HTML5 推荐的写法：<!DOCTYPE html>
 ```
 
-> 兼容性问题无非就是不同浏览器内核/版本在实现标准时出现的差异，然后通过 新旧标准语法 / 私有属性 / polyfill / shim / hack 等方式去解决。针对楼主说的问题，首先得定义低版本的手机是指哪些？然后再看具体使用的布局方式。比如现在最常见的 flex 布局，如果需要兼容 iOS7.0 及 Android4.0 以上，那么就是处理 flex 新旧标准的语法以及不同浏览器内核的私有属性，再加上部分 Android 定制内核的手机可能需要 case by case 处理。
+> 兼容性问题无非就是不同浏览器内核/版本在实现标准时出现的差异，然后通过 新旧标准语法 / 私有属性 / polyfill / shim / hack 等方式去解决。如，如何兼容低版本手机，首先得定义低版本的手机是指哪些？然后再看具体使用的布局方式。比如现在最常见的 flex 布局，如果需要兼容 iOS7.0 及 Android4.0 以上，那么就是处理 flex 新旧标准的语法以及不同浏览器内核的私有属性，再加上部分 Android 定制内核的手机可能需要 case by case 处理。
 
 
 
