@@ -3528,7 +3528,7 @@ Chrome|6|6
 
 #### 通用组件类
 
-> 如： Dialog（弹出层） / Suggestion（自动完成） / Slider（图片轮播） 等组件
+> 如： Dialog（弹出层）/ Suggestion（自动完成）/ Slider（图片轮播） 等组件
 
 ```
 
@@ -3549,7 +3549,7 @@ Chrome|6|6
 
 ```
 
- 
+
 
 
 > 文稿的自动保存技术
