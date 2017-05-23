@@ -2137,17 +2137,24 @@ open('GET','demo.php?rand=+Math.random()',true);//
 #### GET和POST的区别，何时使用POST？
 
 ```
+    1.POST是向服务器传递数据；GET是从服务器上获取数据。
 
-    GET：一般用于信息获取，使用URL传递参数，对所发送信息的数量也有限制，一般在2000个字符
+    2.POST是通过HTTP POST机制将表单内各个字段及其内容放置在html header内一起传送到action属性所指的url地址。
 
-    POST：一般用于修改服务器上的资源，对所发送的信息没有限制。
+      用户看不到这个过程；GET是把参数数据队列加到提交表单action属性所指的url中，值和表单内各个字段一一对应，在url中可以看到。
+    
+    3.对于GET方式，服务器端用Request.QueryString获取变量的值；对于POST方式，服务器端用Request.Form获取提交数据。
+    
+    4.POST传送的数据量较大，一般默认为不受限制。但理论上，IIS4中最大量为80KB，IIS5中为100KB；GET传递的数据量较小，不能大于2KB。
+    
+    5.POST安全性较高；GET安全性非常低，但是执行效率却比POST方法好。
+    
+    6.在做数据添加、修改或删除时，建议用POST方式；而在做数据查询时，建议用GET方式。
+    
+    7.对于机密信息的数据，建议采用POST数据提交方式。
 
 
-    GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值，
-
-    也就是说Get是通过地址栏来传值，而Post是通过提交表单来传值。
-
-
+    
 
     然而，在以下情况中，请使用 POST 请求：
 
@@ -2156,7 +2163,10 @@ open('GET','demo.php?rand=+Math.random()',true);//
     向服务器发送大量数据（POST 没有数据量限制）
 
     发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
+
 ```
+
+
 
 > HTTP header中，和缓存相关的字段有：
 
@@ -3595,7 +3605,9 @@ Chrome|6|6
 - [Front-end-Interview-questions](https://github.com/hawx1993/Front-end-Interview-questions)
 
 
-
+http://help.nefu.edu.cn/
+http://gqtzx.nefu.edu.cn/
+http://su.nefu.edu.cn/
 
 
 #### dynamic
