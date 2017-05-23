@@ -846,11 +846,17 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 查找
 
-          getElementsByTagName()    //通过标签名称
+          document.querySelector()，document.querySelectorAll() //返回匹配该选择器的元素节点 空则返回null 但是，它们不支持CSS伪元素的选择器
 
-          getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)
+          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的HTMLCollection对象
 
-          getElementById()    //通过元素Id，唯一性
+          document.getElementsByClassName()   //返回值是一个类似数组的HTMLCollection对象
+
+          document.getElementsByName()   //返回一个类似数组的的对象（NodeList对象的实例）
+
+          getElementById()    //返回匹配指定id属性的元素节点，空则返回null 
+
+          document.elementFromPoint()    //方法返回位于页面指定位置最上层的Element子节点
 
 
 > DOM模型中节点类型有？
@@ -1986,22 +1992,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
-#### ES6的了解
-
-```
-    新增模板字符串（为JavaScript提供了简单的字符串插值功能）、箭头函数（操作符左边为输入的参数，而右边则
-
-    是进行的操作以及返回的值 Inputs=>outputs 。）、 for-of （用来遍历数据—例如数组中的值。）
-
-    arguments 对象可被不定参数和默认参数完美代替。 ES6 将 promise 对象纳入规范，提供了原生的 Promise 对象。
-
-    增加了 let 和 const 命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。
-
-    ES6规定， var 命令和 function 命令声明的全局变量，属于全局对象的属性； let 命令、 const 命令、 class 命令声明的
-
-    全局变量，不属于全局对象的属性。。还有就是引入`module`模块的概念
-```
-
 
 
 #### `XML`和`JSON`的区别？
@@ -3032,6 +3022,29 @@ Chrome|6|6
 <h2 id="3.2">ES6</h2>
 
 
+#### ES6的了解
+
+```
+    新增模板字符串（为JavaScript提供了简单的字符串插值功能）
+
+    箭头函数（操作符左边为输入的参数，而右边则是进行的操作以及返回的值 Inputs=>outputs ） 
+
+    for-of （用来遍历数据—例如数组中的值。）
+
+    arguments 对象可被不定参数和默认参数完美代替。 
+
+    ES6 将 Promise 对象纳入规范，提供了原生的 Promise 对象。
+
+    增加了 let 和 const 命令，用来声明变量。增加了块级作用域。let命令实际上就增加了块级作用域。
+
+    ES6规定， var 命令和 function 命令声明的全局变量，属于全局对象的属性； 
+
+    let 命令、 const 命令、 class 命令声明的全局变量，不属于全局对象的属性
+
+    还有就是引入 module 模块的概念
+```
+
+
 
 <h2 id="3.3">前端框架</h2>
 
@@ -3500,14 +3513,18 @@ Chrome|6|6
 #### 对前端模块化的认识
 
 ```
-    AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。
+    AMD (Asynchronous Module Definition) 即异步模块加载机制 
+      是 RequireJS 在推广过程中对模块定义的规范化产出。
 
-    CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
+    CMD (Common Module Definition) 
+      是 SeaJS 在推广过程中对模块定义的规范化产出。
 
     AMD  是提前执行，CMD 是延迟执行。
 
     AMD 推荐的风格通过返回一个对象做为模块对象， CommonJS 的风格通过对 module.exports 或 exports 的属性赋值来达到暴露模块对象的目的。
 ```
+
+推荐: [AMD规范与CMD规范介绍](http://blog.chinaunix.net/uid-26672038-id-4112229.html)
 
 
 > CMD模块方式
