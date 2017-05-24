@@ -1519,6 +1519,8 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
     不能对只读属性赋值，否则报错
 
+    对一个只设置了赋值器（getter）的属性赋值，会报错
+
     不能使用前缀0表示八进制数，否则报错
 
     不能删除不可删除的属性，否则报错
@@ -1541,6 +1543,7 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
     增加了保留字（比如protected、static和interface）
 ```
+详情：[《JavaScript 标准参考教程（alpha）》--严格模式](http://javascript.ruanyifeng.com/advanced/strict.html)
 
 
 > 设立"严格模式"的目的，主要有以下几个：
