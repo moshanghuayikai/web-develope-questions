@@ -2424,6 +2424,7 @@ Chrome|6|6
   Etag 主要为了解决  Last-Modified  无法解决的一些问题。
 ```
 
+传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
 
 #### 如何解决跨域问题
