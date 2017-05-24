@@ -33,6 +33,10 @@
 
 - MySql InnoDB 和 MyISAM 的区别？
 
+- varchar、char 的区别？
+
+- float、double、decimal 的区别？
+
 - InnoDB 的特性？
 
 - 聚集索引的有哪些，好处是？
