@@ -3610,10 +3610,6 @@ Chrome|6|6
 - [Front-end-Interview-questions](https://github.com/hawx1993/Front-end-Interview-questions)
 
 
-http://help.nefu.edu.cn/
-http://gqtzx.nefu.edu.cn/
-http://su.nefu.edu.cn/
-
 
 #### dynamic
 
