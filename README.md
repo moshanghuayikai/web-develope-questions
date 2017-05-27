@@ -3559,6 +3559,7 @@ Chrome|6|6
 ```
 
 
+
 <h1 id="5">案例</h>
 
 #### 通用组件
@@ -3617,6 +3618,23 @@ Chrome|6|6
 ```
 
 
+
+
+
+<h1 id="6">乱七八糟</h>
+
+
+### 数据存储
+
+> NoSQL (Not Only SQL) 包括
+
+```
+  HBase    列结构
+  Redis    键/值结构
+  Virtusos 图状结构
+  MongoDB  文档模型
+
+```
 
 
 
