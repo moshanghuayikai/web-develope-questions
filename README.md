@@ -3661,7 +3661,9 @@ Chrome|6|6
 
 2017-05-29 发现线上脚本出现问题 errmsg: Failure when receiving data from the peer, errno:56 待解决
 
-2017-05-30 准备明天的考试
+2017-05-30 准备明天的考试 昨天的错误 原因可能是跑脚本的服务器断网了，不可以访问 接受不到数据
+
+
 
 
 
