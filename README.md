@@ -3659,6 +3659,9 @@ Chrome|6|6
 
 2017-05-28 重构了小程序后台登录接口、获取用户基本信息接口，接口的异常处理等
 
+2017-05-29 发现线上脚本出现问题 errmsg: Failure when receiving data from the peer, errno:56 待解决
+
+2017-05-30 准备明天的考试
 
 
 
