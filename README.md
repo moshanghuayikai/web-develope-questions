@@ -3064,6 +3064,7 @@ Chrome|6|6
     还有就是引入 module 模块的概念
 ```
 
+详见：[ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 
 
 <h2 id="3.3">前端框架</h2>
