@@ -3401,6 +3401,12 @@ Chrome|6|6
     8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
 ```
 
+> webpack 有两个 entry 怎么做？
+
+```
+
+```
+
 
 
 
