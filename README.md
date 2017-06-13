@@ -2036,6 +2036,12 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
+> jQuery 和 zepto 异同？哪种更加适合？
+
+```
+
+```
+
 
 <h2 id="1.3">网络</h2>
 
