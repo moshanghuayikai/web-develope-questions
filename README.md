@@ -980,6 +980,14 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
   Web Storage又分为两种：sessionStorage、localStorage
 ```
 
+> sessionStorage、localStorage API
+
+```
+  sessionStorage | localStorage.setItem(key, value)
+  sessionStorage | localStorage.getItem(key)
+  sessionStorage | localStorage.removeItem(key)
+
+```
 
 > 浏览器本地存储
 
@@ -1118,6 +1126,20 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 ```
+
+> 浏览器会话机制是？
+
+```
+    当浏览器向服务器发送URL请求，服务器会生成一个会话ID，并将浏览器端的一些信息保存在服务器端，
+
+    然后将会话ID送到浏览器端保存到cookie里，当浏览器再次向服务器发送请求时会将cookie里的会话ID
+
+    一并发送给服务器，服务器会将接收到的会话ID和服务器里的ID比较，如果相同服务器就认定是一次会话，
+
+    就可以找到本次会话中保存的信息。
+```
+
+
 
 
 
@@ -1965,9 +1987,6 @@ alert(GetBytes("你好,as"));
 
 <h3 id="event">事件</h3>
 
-> 编写一个通用的事件监听函数
-
-
 
 [事件=>见](https://github.com/Aierui/jstraining/tree/master/node)
 
@@ -2182,7 +2201,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
     xmlHttp.onreadystatechange = function(){
 
         if(xmlHttp.readyState === 4 & xmlHttp.status === 200){
-
+            //doing something
         }
 
     }
@@ -2787,18 +2806,6 @@ Chrome|6|6
   也能兼容到几乎所有浏览器，这真是极好的一种跨域方法。
 ```
 
-
-> 浏览器会话机制是？
-
-```
-    当浏览器向服务器发送URL请求，服务器会生成一个会话ID，并将浏览器端的一些信息保存在服务器端，
-
-    然后将会话ID送到浏览器端保存到cookie里，当浏览器再次向服务器发送请求时会将cookie里的会话ID
-
-    一并发送给服务器，服务器会将接收到的会话ID和服务器里的ID比较，如果相同服务器就认定是一次会话，
-
-    就可以找到本次会话中保存的信息。
-```
 
 
 
