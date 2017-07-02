@@ -1137,35 +1137,97 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 - [事件](#event)
 
-<h4 id="variable-and-type">变量类型</h4>
+- [必会的小算法](#javascript-algorithm)
 
-
-<h4 id="prototype-and-prototype-chain">原型和原型链</h4>
-
-
-<h4 id="scope-and-closure">作用域和闭包</h4>
-
-
-<h4 id="async-and-single-thread">异步和单线程</h4>
-
-
-<h4 id="dom-and-bom-operation">异步和单线程</h4>
-
-
-
-<h4 id="event">事件</h4>
+- [AJAX](#ajax)
 
 
 
 
 
 
+<h3 id="variable-and-type">变量类型</h3>
 
 
-#### null和undefined的区别？变量赋值、内存泄露、端事件差异区别
+#### 数据类型有哪些、值类型、引用类型、typeof、instanceof、 数据类型转换、Object.prototype.toString
 
 
-> null 是一个表示"无"的对象，转为数值时为0； undefined 是一个表示"无"的原始值，转为数值时为 NaN 。
+> 数据类型有哪些？
+
+```
+  数值（number）
+
+  字符串（string）
+
+  布尔值（boolean）
+
+  undefined
+
+  null
+
+  对象（object）
+
+  Symbol (ES6新增)
+
+```
+
+
+> 值类型
+
+```
+  值类型：number、string、boolean、undefined、null
+
+```
+
+
+> typeof
+
+```
+    typeof：number、string、boolean、undefined、function、object( {}、[]、null )
+```
+
+
+> 引用类型、instanceof、Object.prototype.toString
+
+```
+  引用类型：Array 、Object 、Function 、Date 、 RegExp 、 基本包装类型 (Boolean、Number、String)
+```
+
+
+> 数据类型转换
+
+```
+  强制转换
+
+    主要指使用Number、String和Boolean三个构造函数，手动将各种类型的值，转换成数字、字符串或者布尔值
+
+  自动转换
+
+    不同类型的数据互相运算  如：字符串拼接
+
+    对非布尔值类型的数据求布尔值  如：if语句
+
+    对非数值类型的数据使用一元运算符  如：逻辑运算
+
+```
+
+
+> Object.prototype.toString
+
+```js
+    console.log(Object.prototype.toString.call(123)) //[object Number]
+    console.log(Object.prototype.toString.call('123')) //[object String]
+    console.log(Object.prototype.toString.call(undefined)) //[object Undefined]
+    console.log(Object.prototype.toString.call(true)) //[object Boolean]
+    console.log(Object.prototype.toString.call({})) //[object Object]
+    console.log(Object.prototype.toString.call([])) //[object Array]
+    console.log(Object.prototype.toString.call(function(){})) //[object Function]
+```
+
+
+> null和undefined的区别？
+    
+    null 是一个表示"无"的对象，转为数值时为0； undefined 是一个表示"无"的原始值，转为数值时为 NaN 。
 
     当声明的变量还未被初始化时，变量的默认值为 undefined 。
 
@@ -1193,95 +1255,8 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
+#### 变量赋值、内存泄露、端事件差异区别
 
-> new操作符具体干了什么呢?
-
-```js
-   1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
-
-   2、属性和方法被加入到 this 引用的对象中。
-
-   3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
-
-
-    var obj  = {};
-
-    obj.__proto__ = Base.prototype;
-
-    Base.call(obj);
-```
-
-
-> js延迟加载的方式有哪些？
-
-    defer和async、动态创建DOM方式（创建script，插入到DOM中，加载完毕后callBack）、按需异步载入js
-
-
-
-> `call()` 和 `apply()` 的区别和作用？
-
-```js
-  作用：动态改变某个类的某个方法的运行环境（执行上下文）。
-
-  apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。例如：
-
-  function.apply(this,[1,2,3])
-
-  call()的第一个参数是上下文，后续是实例传入的参数序列，例如：
-
-  function.call(this,1,2,3);
-
-```
-
-
-> Scope作用范围
-
-```js
-    (function() {
-       var a = b = 5;
-    })();
-
-    console.log(b);//5
-
-    这里有两个变量声明，但 a 使用关键字var声明的。代表它是一个函数的局部变量。
-
-    与此相反，b 变成了全局变量。
-
-    这个问题的另一个诀窍是，它没有使用严格模式 ('use strict';) 。如果启用了严格模式，
-
-    代码就会引发ReferenceError的错误：B没有定义（b is not defined）。
-
-    请记住，严格模式，则需要明确指定，才能实现全局变量声明。比如，你应该写：
-
-
-    (function() {
-       'use strict';
-       var a = window.b = 5;
-    })();
-
-    console.log(b);//
-```
-
-> 声明提升（Hoisting）
-
-```js
-    function test() {
-       console.log(a);
-       console.log(foo());
-       var a = 1;
-       function foo() {
-          return 2;
-       }
-    }
-
-    test();
-
-    //结果是 undefined 和 2
-
-    //原因是，变量和函数的声明都被提前了（移到了函数的顶部），但变量不分配任何值。
-
-    //因此，在打印变量的时候，它在函数中存在（它被声明了），但它仍然是 undefined
-```
 
 > 哪些操作会造成内存泄漏？
 
@@ -1353,23 +1328,289 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 ```
 
 
-#### 列举IE 与其他浏览器不一样的特性？
 
-- IE支持`currentStyle`，FIrefox使用`getComputStyle`
+<h3 id="prototype-and-prototype-chain">原型和原型链</h3>
 
-- IE  使用`innerText`，Firefox使用`textContent`
 
-- 滤镜方面：IE:`filter:alpha(opacity= num)`；Firefox：`-moz-opacity:num`
+> new 操作符具体干了什么呢?
 
-- 事件方面：IE：`attachEvent`：火狐是`addEventListener`
+```js
+   1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。
 
-- 鼠标位置：IE是`event.clientX`；火狐是`event.pageX`
+   2、属性和方法被加入到 this 引用的对象中。
 
-- IE使用`event.srcElement`；Firefox使用`event.target`
+   3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。
 
-- IE中消除list的原点仅需margin:0即可达到最终效果；FIrefox需要设置`margin:0;padding:0以及list-style:none`
 
-- CSS圆角：ie7以下不支持圆角
+    var obj  = {};
+
+    obj.__proto__ = Base.prototype;
+
+    Base.call(obj);
+```
+
+
+
+#### javascript对象的几种创建方式、继承
+
+
+> javascript对象的几种创建方式
+
+```
+    1.工厂模式
+
+    2.构造函数模式
+
+    3.原型模式
+
+    4.混合构造函数和原型模式
+
+    5.动态原型模式
+
+    6.寄生构造函数模式
+
+    7.稳妥构造函数模式
+```
+
+
+> javascript继承的6种方法
+
+```
+    1.原型链继承
+
+    2.借用构造函数继承
+
+    3.组合继承(原型+借用构造)
+
+    4.原型式继承
+
+    5.寄生式继承
+
+    6.寄生组合式继承
+```
+
+
+详情：[ECMAScript面向对象的程序设计](https://github.com/Aierui/jstraining/blob/master/node/Object-Oriented.md)
+
+
+
+#### 用过哪些设计模式？
+
+
+
+> 工厂模式：
+
+    主要好处就是可以消除对象间的耦合，通过使用工程方法而不是new关键字。将所有实例化的代码集中在一个位置防止代码重复。
+
+        工厂模式解决了重复实例化的问题 ，但还有一个问题,那就是识别问题，因为根本无法 搞清楚他们到底是哪个对象的实例。
+
+```js
+
+    function createObject(name,age,profession){//集中实例化的函数
+        var obj = {} || new Object()
+        obj.name = name;
+        obj.age = age;
+        obj.profession = profession;
+        obj.move = function () {
+            return this.name + ' at ' + this.age + ' engaged in ' + this.profession;
+        };
+        return obj;
+    }
+    var test1 = createObject('trigkit4',22,'programmer');//第一个实例
+
+    var test2 = createObject('mike',25,'engineer');//第二个实例
+```
+
+
+
+> 构造函数模式
+
+```js
+      function Person(name, age, job){
+        this.name = name
+        this.age = age
+        this.job = job
+        this.getName = function(){
+          alert(this.name)
+        }
+      }
+      var obj = new Person('aierui',20,'student')
+```
+
+
+```
+    使用构造函数的方法 ，即解决了重复实例化的问题 ，又解决了对象识别的问题，该模式与工厂模式的不同之处在于：
+
+    1.构造函数方法没有显示的创建对象 (new Object());
+
+    2.直接将属性和方法赋值给 this 对象;
+
+    3.没有 renturn 语句。
+
+    4.函数名是大写字母P开头，表示构造函数 //借鉴其他OO语言
+```
+
+
+
+
+#### js继承方式及其优缺点
+
+
+
+> 原型链继承的缺点
+
+```
+    一是字面量重写原型会中断关系，使用引用类型的原型，并且子类型还无法给超类型传递参数。
+```
+
+
+> 借用构造函数（类式继承）
+
+```
+    借用构造函数虽然解决了刚才两种问题，但没有原型，则复用无从谈起。所以我们需要原型链+借用构造函数的模式，这种模式称为组合继承
+```
+
+
+> 组合式继承
+
+```
+    组合式继承是比较常用的一种继承方法，其背后的思路是 使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又保证每个实例都有它自己的属性。
+```
+
+
+具体请看：[JavaScript继承方式详解](http://segmentfault.com/a/1190000002440502)
+
+
+
+
+
+
+
+<h3 id="scope-and-closure">作用域和闭包</h3>
+
+
+
+
+> Scope作用范围
+
+```js
+    (function() {
+       var a = b = 5;
+    })();
+
+    console.log(b);//5
+
+    这里有两个变量声明，但 a 使用关键字var声明的。代表它是一个函数的局部变量。
+
+    与此相反，b 变成了全局变量。
+
+    这个问题的另一个诀窍是，它没有使用严格模式 ('use strict';) 。如果启用了严格模式，
+
+    代码就会引发ReferenceError的错误：B没有定义（b is not defined）。
+
+    请记住，严格模式，则需要明确指定，才能实现全局变量声明。比如，你应该写：
+
+
+    (function() {
+       'use strict';
+       var a = window.b = 5;
+    })();
+
+    console.log(b);//
+```
+
+> 声明提升（Hoisting）
+
+```js
+    function test() {
+       console.log(a);
+       console.log(foo());
+       var a = 1;
+       function foo() {
+          return 2;
+       }
+    }
+
+    test();
+
+    //结果是 undefined 和 2
+
+    //原因是，变量和函数的声明都被提前了（移到了函数的顶部），但变量不分配任何值。
+
+    //因此，在打印变量的时候，它在函数中存在（它被声明了），但它仍然是 undefined
+```
+
+
+> `call()` 和 `apply()` 的区别和作用？ bind ？
+
+```js
+  作用：动态改变某个类的某个方法的运行环境（执行上下文）。
+
+  apply()函数有两个参数：第一个参数是上下文，第二个参数是参数组成的数组。如果上下文是null，则使用全局对象代替。例如：
+
+  function.apply(this,[1,2,3])
+
+  call()的第一个参数是上下文，后续是实例传入的参数序列，例如：
+
+  function.call(this,1,2,3);
+
+```
+
+
+
+#### 说说你对作用域链的理解
+
+```js
+    javascript 语言特性中，有很多方面和我们接触的其他编程语言不太一样，比如说，
+
+    javascript语言实现继承机制的核心就是 原型，而不是Java语言那样的 类式 继承。
+
+    Javascript 解析引擎在读取一个Object的属性的值时，会沿着 原型链 向上寻找，
+
+    如果最终没有找到，则该属性值为 undefined ； 
+
+    如果最终找到该属性的值，则返回结果。
+
+    与这个过程不同的是，当javascript解析引擎执行“给一个Object的某个属性赋值”的时候，如果当前Object存在该属性，
+
+
+    则改写该属性的值，如果当前的Object本身并不存在该属性，则赋值该属性的值 。
+
+    作用域链的作用是保证执行环境里有权访问的变量和函数是有序的，作用域链的变量只能向上访问，
+
+    变量访问到 window 对象即被终止，作用域链向下访问变量是不被允许的。
+```
+
+
+#### 说说你对闭包的理解
+
+```  
+   使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，
+
+   会增大内存使用量，使用不当很容易造成内存泄露。在js中，函数即闭包，只有函数才会产生作用域的概念
+```
+
+
+> 闭包有三个特性：
+
+```
+    1.函数嵌套函数
+
+    2.函数内部可以引用外部的参数和变量
+
+    3.参数和变量不会被垃圾回收机制回收
+```
+
+
+具体请看：[详解js闭包](http://segmentfault.com/a/1190000000652891)
+
+
+
+
+
+<h3 id="async-and-single-thread">异步和单线程</h3>
+
+
 
 
 
@@ -1426,6 +1667,53 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
   //then方法可以链式使用
 
 ```
+
+
+
+
+
+<h3 id="dom-and-bom-operation">DOM、BOM 操作</h3>
+
+
+
+#### 列举IE 与其他浏览器不一样的特性？
+
+- IE支持`currentStyle`，FIrefox使用`getComputStyle`
+
+- IE  使用`innerText`，Firefox使用`textContent`
+
+- 滤镜方面：IE:`filter:alpha(opacity= num)`；Firefox：`-moz-opacity:num`
+
+- 事件方面：IE：`attachEvent`：火狐是`addEventListener`
+
+- 鼠标位置：IE是`event.clientX`；火狐是`event.pageX`
+
+- IE使用`event.srcElement`；Firefox使用`event.target`
+
+- IE中消除list的原点仅需margin:0即可达到最终效果；FIrefox需要设置`margin:0;padding:0以及list-style:none`
+
+- CSS圆角：ie7以下不支持圆角
+
+
+
+
+
+
+
+> js延迟加载的方式有哪些？
+
+    defer和async、动态创建DOM方式（创建script，插入到DOM中，加载完毕后callBack）、按需异步载入js
+
+
+
+
+
+
+<h3 id="event">事件</h3>
+
+
+
+<h3 id="javascript-algorithm">必会的小算法</h3>
 
 
 
@@ -1668,185 +1956,7 @@ alert(GetBytes("你好,as"));
 
 
 
-#### javascript对象的几种创建方式、继承
-
-
-> javascript对象的几种创建方式
-
-```
-    1.工厂模式
-
-    2.构造函数模式
-
-    3.原型模式
-
-    4.混合构造函数和原型模式
-
-    5.动态原型模式
-
-    6.寄生构造函数模式
-
-    7.稳妥构造函数模式
-```
-
-
-> javascript继承的6种方法
-
-```
-    1.原型链继承
-
-    2.借用构造函数继承
-
-    3.组合继承(原型+借用构造)
-
-    4.原型式继承
-
-    5.寄生式继承
-
-    6.寄生组合式继承
-```
-
-
-详情：[ECMAScript面向对象的程序设计](https://github.com/Aierui/jstraining/blob/master/node/Object-Oriented.md)
-
-
-
-#### 用过哪些设计模式？
-
-
-
-> 工厂模式：
-
-    主要好处就是可以消除对象间的耦合，通过使用工程方法而不是new关键字。将所有实例化的代码集中在一个位置防止代码重复。
-
-        工厂模式解决了重复实例化的问题 ，但还有一个问题,那就是识别问题，因为根本无法 搞清楚他们到底是哪个对象的实例。
-
-```js
-
-    function createObject(name,age,profession){//集中实例化的函数
-        var obj = {} || new Object()
-        obj.name = name;
-        obj.age = age;
-        obj.profession = profession;
-        obj.move = function () {
-            return this.name + ' at ' + this.age + ' engaged in ' + this.profession;
-        };
-        return obj;
-    }
-    var test1 = createObject('trigkit4',22,'programmer');//第一个实例
-
-    var test2 = createObject('mike',25,'engineer');//第二个实例
-```
-
-
-
-> 构造函数模式
-
-```js
-      function Person(name, age, job){
-        this.name = name
-        this.age = age
-        this.job = job
-        this.getName = function(){
-          alert(this.name)
-        }
-      }
-      var obj = new Person('aierui',20,'student')
-```
-
-
-```
-    使用构造函数的方法 ，即解决了重复实例化的问题 ，又解决了对象识别的问题，该模式与工厂模式的不同之处在于：
-
-    1.构造函数方法没有显示的创建对象 (new Object());
-
-    2.直接将属性和方法赋值给 this 对象;
-
-    3.没有 renturn 语句。
-
-    4.函数名是大写字母P开头，表示构造函数 //借鉴其他OO语言
-```
-
-
-
-
-#### js继承方式及其优缺点
-
-
-
-> 原型链继承的缺点
-
-```
-    一是字面量重写原型会中断关系，使用引用类型的原型，并且子类型还无法给超类型传递参数。
-```
-
-
-> 借用构造函数（类式继承）
-
-```
-    借用构造函数虽然解决了刚才两种问题，但没有原型，则复用无从谈起。所以我们需要原型链+借用构造函数的模式，这种模式称为组合继承
-```
-
-
-> 组合式继承
-
-```
-    组合式继承是比较常用的一种继承方法，其背后的思路是 使用原型链实现对原型属性和方法的继承，而通过借用构造函数来实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又保证每个实例都有它自己的属性。
-```
-
-
-具体请看：[JavaScript继承方式详解](http://segmentfault.com/a/1190000002440502)
-
-
-
-
-#### 说说你对作用域链的理解
-
-```js
-    javascript 语言特性中，有很多方面和我们接触的其他编程语言不太一样，比如说，
-
-    javascript语言实现继承机制的核心就是 原型，而不是Java语言那样的 类式 继承。
-
-    Javascript 解析引擎在读取一个Object的属性的值时，会沿着 原型链 向上寻找，
-
-    如果最终没有找到，则该属性值为 undefined ； 
-
-    如果最终找到该属性的值，则返回结果。
-
-    与这个过程不同的是，当javascript解析引擎执行“给一个Object的某个属性赋值”的时候，如果当前Object存在该属性，
-
-
-    则改写该属性的值，如果当前的Object本身并不存在该属性，则赋值该属性的值 。
-
-    作用域链的作用是保证执行环境里有权访问的变量和函数是有序的，作用域链的变量只能向上访问，
-
-    变量访问到 window 对象即被终止，作用域链向下访问变量是不被允许的。
-```
-
-
-#### 说说你对闭包的理解
-
-```  
-   使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存，
-
-   会增大内存使用量，使用不当很容易造成内存泄露。在js中，函数即闭包，只有函数才会产生作用域的概念
-```
-
-
-> 闭包有三个特性：
-
-```
-    1.函数嵌套函数
-
-    2.函数内部可以引用外部的参数和变量
-
-    3.参数和变量不会被垃圾回收机制回收
-```
-
-
-具体请看：[详解js闭包](http://segmentfault.com/a/1190000000652891)
-
-
+<h3 id="ajax">AJAX</h3>
 
 
 #### ajax的缺点和在IE下的问题？阐述创建ajax的过程
