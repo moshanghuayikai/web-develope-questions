@@ -1124,6 +1124,44 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 <h2 id="1.2">JavaScript</h2>
 
 
+
+- [变量类型](#variable-and-type)
+
+- [原型和原型链](#prototype-and-prototype-chain)
+
+- [作用域和闭包](#scope-and-closure)
+
+- [异步和单线程](#async-and-single-thread)
+
+- [DOM、BOM 操作](#dom-and-bom-operation)
+
+- [事件](#event)
+
+<h4 id="variable-and-type">变量类型</h4>
+
+
+<h4 id="prototype-and-prototype-chain">原型和原型链</h4>
+
+
+<h4 id="scope-and-closure">作用域和闭包</h4>
+
+
+<h4 id="async-and-single-thread">异步和单线程</h4>
+
+
+<h4 id="dom-and-bom-operation">异步和单线程</h4>
+
+
+
+<h4 id="event">事件</h4>
+
+
+
+
+
+
+
+
 #### null和undefined的区别？变量赋值、内存泄露、端事件差异区别
 
 
@@ -3714,10 +3752,13 @@ Chrome|6|6
 
 ### PHP 应用性能提升
 
+![应用性能提升](http://blog.shijinrong.cn/a/17062406/)
+
 
 
 ### MySql 数据库性能提升
 
+![数据库性能提升](http://blog.shijinrong.cn/a/17062408/)
 
 
 
