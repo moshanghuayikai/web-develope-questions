@@ -848,9 +848,9 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
           document.querySelector()，document.querySelectorAll() //返回匹配该选择器的元素节点 空则返回null 但是，它们不支持CSS伪元素的选择器
 
-          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的HTMLCollection对象
+          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的HTMLCollection对象 集合
 
-          document.getElementsByClassName()   //返回值是一个类似数组的HTMLCollection对象
+          document.getElementsByClassName()   //返回值是一个类似数组的HTMLCollection对象 集合
 
           document.getElementsByName()   //返回一个类似数组的的对象（NodeList对象的实例）
 
@@ -1133,13 +1133,13 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 - [异步和单线程](#async-and-single-thread)
 
-- [DOM、BOM 操作](#dom-and-bom-operation)
+- [DOM、BOM 等操作](#dom-and-bom-operation)
 
 - [事件](#event)
 
 - [必会的小算法](#javascript-algorithm)
 
-- [AJAX](#ajax)
+- [AJAX](#ajax-and-json)
 
 
 
@@ -1154,7 +1154,7 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 > 数据类型有哪些？
 
-```
+```js
   数值（number）
 
   字符串（string）
@@ -1174,29 +1174,28 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 > 值类型
 
-```
-  值类型：number、string、boolean、undefined、null
-
+```js
+  值类型：number、string、boolean、undefined、null(特殊 被认为是空的对象引用)
 ```
 
 
 > typeof
 
-```
-    typeof：number、string、boolean、undefined、function、object( {}、[]、null )
+```js
+  typeof：number、string、boolean、undefined、function、object( {}、[]、null )
 ```
 
 
 > 引用类型、instanceof、Object.prototype.toString
 
-```
+```js
   引用类型：Array 、Object 、Function 、Date 、 RegExp 、 基本包装类型 (Boolean、Number、String)
 ```
 
 
 > 数据类型转换
 
-```
+```js
   强制转换
 
     主要指使用Number、String和Boolean三个构造函数，手动将各种类型的值，转换成数字、字符串或者布尔值
@@ -1208,7 +1207,6 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
     对非布尔值类型的数据求布尔值  如：if语句
 
     对非数值类型的数据使用一元运算符  如：逻辑运算
-
 ```
 
 
@@ -1330,6 +1328,21 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 <h3 id="prototype-and-prototype-chain">原型和原型链</h3>
+
+> 原型规则
+
+```
+  所有引用类型都具有对象特性，即可扩展属性
+
+  所有引用类型都有一个 __proto__ 属性，属性值是一个普通的对象
+
+  所有的引用类型，__proto__ 属性值指向它的构造函数  prototype  属性值
+
+  所有 函数 都有一个 prototype 属性，属性值也是一个普通的对象
+
+  当试图得到一个对象的某个属性时，如果这个对象本身没有则会去它的 prototype 中寻找
+```
+
 
 
 > new 操作符具体干了什么呢?
@@ -1489,6 +1502,21 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 <h3 id="scope-and-closure">作用域和闭包</h3>
 
 
+> 函数声明 和 函数表达式 的区别？
+
+```
+  在一段js代码真正一句一句运行之前，浏览器已经做了一些“准备工作”，
+
+  比如如下几种数据类型分别是
+
+    变量、函数表达式——变量声明，默认赋值为undefined；
+
+    this——赋值；
+    
+    函数声明——赋值
+
+  三种数据的准备情况我们称之为“执行上下文”或者“执行上下文环境”
+```
 
 
 > Scope作用范围
@@ -1540,6 +1568,12 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
     //因此，在打印变量的时候，它在函数中存在（它被声明了），但它仍然是 undefined
 ```
 
+> this ？ 
+
+```
+  this 要在执行时才能确认值、定义时无法确认。
+```
+
 
 > `call()` 和 `apply()` 的区别和作用？ bind ？
 
@@ -1554,6 +1588,12 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
   function.call(this,1,2,3);
 
+  var fn = function(name, age){
+    alert(name)
+    console.log(this)
+  }.bind({x:100})
+
+  fn('aierui', 20)
 ```
 
 
@@ -1610,6 +1650,56 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 <h3 id="async-and-single-thread">异步和单线程</h3>
 
+
+
+> 同步和异步的区别是什么？ 分别举一个例子
+
+
+
+```
+  同步是指：发送方发出数据后，等接收方发回响应以后才发下一个数据包的通讯方式。 (阻塞代码继续执行)
+  异步是指：发送方发出数据后，不等接收方发回响应，接着发送下个数据包的通讯方式。 （不会阻塞）
+  
+  何时需要异步
+
+    在可能需要等待
+     
+    定时任务 setTimeout、setinterval
+    
+    网络请求 ajax请求、动态加载 img、等等
+     
+    事件绑定 
+
+  何时需要同步
+```
+
+> setTimeout、setinterval
+
+
+> 单线程
+
+```
+  一次只能执行一个程序叫做单线程
+  一次能执行多个程序叫多线程
+  （正常恋爱与脚踏n条船）
+```
+
+
+
+
+#### 异步加载和延迟加载
+
+```
+    1.异步加载的方案： 动态插入script标签
+
+    2.通过ajax去获取js代码，然后通过eval执行
+
+    3.script标签上添加defer或者async属性
+
+    4.创建并插入iframe，让它异步执行js
+
+    5.延迟加载：有些 js 代码并不是页面初始化的时候就立刻需要的，而稍后的某些情况才需要的。
+```
 
 
 
@@ -1672,7 +1762,7 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
-<h3 id="dom-and-bom-operation">DOM、BOM 操作</h3>
+<h3 id="dom-and-bom-operation">DOM、BOM 等操作</h3>
 
 
 
@@ -1707,127 +1797,40 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 
 
+#### 请解释一下 JavaScript 的同源策略。为什么要有同源限制？
 
-
-<h3 id="event">事件</h3>
-
-
-
-<h3 id="javascript-algorithm">必会的小算法</h3>
-
-
-
-#### 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
-
-
-```js
-    Object.prototype.clone = function(){
-
-            var o = this.constructor === Array ? [] : {};
-
-            for(var e in this){
-
-                    o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
-
-            }
-
-            return o;
-    }
 ```
+    概念:同源策略是客户端脚本（尤其是 Javascript ）的重要的安全度量标准。它最早出自 Netscape Navigator2.0 ，其目的是防止某个文档或脚本从多个不同源装载 
 
-#### JavaScript中快速排序、去重
 
+    这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。
 
-> 快速排序
-```js
-    //排序过程只需要三步：
-
-    //　1.在数据集之中，找一个基准点
-
-　　//  2.建立两个数组，分别存储左边和右边的数组
-
-　　//  3.利用递归进行下次比较
-
-    function quickSort(arr){
-       if(arr.length <= 1) return arr;  //如果数组只有一个数，就直接返回；
-
-       var index = Math.floor(arr.length/2);  //找到中间数的索引值，如果是浮点数，则向下取整
-
-       var key = arr.splice(index,1)[0];  //找到中间数的值
-       
-       var left = [],right = [];
-       
-       arr.forEach(function(v){
-           v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
-       });
-       
-       return quickSort(left).concat([key],quickSort(right)); //递归不断重复比较
-    }
+    指一段脚本只能读取来自同一来源的窗口和文档的属性。
 ```
 
 
+> 为什么要有同源限制？
 
-> 去重、基本数组去重
+```
+   我们举例说明：比如一个黑客程序，他利用 Iframe 把真正的银行登录页面嵌到他的页面上，
 
-```js
-    Array.prototype.unique = function(){
-        var result = [];
-        
-        this.forEach(function(v){
-            if(result.indexOf(v) < 0){
-                result.push(v);
-            }
-        });
+   当你使用真实的用户名，密码登录时，他的页面就可以通过 Javascript 
 
-        return result;
-    }
+   读取到你的表单中 input 中的内容，这样用户名，密码就轻松到手了。
 ```
 
 
-> 去重、利用hash表去重，这是一种空间换时间的方法
+> 缺点：
 
-```js
-    Array.prototype.unique = function(){
-        var result = [],hash = {};
-        
-        this.forEach(function(v){
-            if(!hash[v]){
-                hash[v] = true;
-                result.push(v);
-            }
-        });
-        
-        return result;
-    }
+```
+    现在网站的 JS  都会进行压缩，一些文件用了严格模式，而另一些没有。
+
+    这时这些本来是严格模式的文件，被 merge 后，这个串就到了文件的中间，
+
+    不仅没有指示严格模式，反而在压缩后浪费了字节。
 ```
 
 
-> 上面的方法存在一个bug，对于数组[1,2,’1’,’2’,3]，去重结果为[1,2,3]，原因在于对象对属性索引时会进行强制类型转换，arr[‘1’]和arr[1]得到的都是arr[1]的值，因此需做一些改变：
-
-```js
-    Array.prototype.unique = function(){
-        var result = [],hash = {};
-        
-        this.forEach(function(v){
-            var type = typeof(v);  //获取元素类型
-            
-            hash[v] || (hash[v] = new Array());
-            
-            if(hash[v].indexOf(type) < 0){
-                hash[v].push(type);  //存储类型
-                result.push(v);
-            }
-
-        });
-        
-        return result;
-    }
-
-```
-
-
-
->
 
 
 #### 说说严格模式的限制
@@ -1956,7 +1959,156 @@ alert(GetBytes("你好,as"));
 
 
 
-<h3 id="ajax">AJAX</h3>
+
+
+
+
+<h3 id="event">事件</h3>
+
+> 编写一个通用的事件监听函数
+
+
+
+[事件=>见](https://github.com/Aierui/jstraining/tree/master/node)
+
+
+
+<h3 id="javascript-algorithm">必会的小算法</h3>
+
+
+
+#### 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
+
+
+```js
+    Object.prototype.clone = function(){
+
+            var o = this.constructor === Array ? [] : {};
+
+            for(var e in this){
+
+                    o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
+
+            }
+
+            return o;
+    }
+```
+
+> 实现一个forEach函数，即可遍历数组，也可以遍历对象
+
+```js
+  function forEach(obj, fn){
+    var key;
+    if (obj instanceof Array) {
+      obj.forEach(function(item, index){
+        fn(index, item)
+      })
+    }else{
+      for(key in obj){
+        if (obj.hasOwnProperty(key)) {
+          fn(key, obj[key])
+        }
+      }
+    }
+  }
+```
+
+
+
+#### JavaScript中快速排序、去重
+
+
+> 快速排序
+```js
+    //排序过程只需要三步：
+
+    //　1.在数据集之中，找一个基准点
+
+　　//  2.建立两个数组，分别存储左边和右边的数组
+
+　　//  3.利用递归进行下次比较
+
+    function quickSort(arr){
+       if(arr.length <= 1) return arr;  //如果数组只有一个数，就直接返回；
+
+       var index = Math.floor(arr.length/2);  //找到中间数的索引值，如果是浮点数，则向下取整
+
+       var key = arr.splice(index,1)[0];  //找到中间数的值
+       
+       var left = [],right = [];
+       
+       arr.forEach(function(v){
+           v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
+       });
+       
+       return quickSort(left).concat([key],quickSort(right)); //递归不断重复比较
+    }
+```
+
+
+
+> 去重、基本数组去重
+
+```js
+    Array.prototype.unique = function(){
+        var result = [];
+        
+        this.forEach(function(v){
+            if(result.indexOf(v) < 0){
+                result.push(v);
+            }
+        });
+
+        return result;
+    }
+```
+
+
+> 去重、利用hash表去重，这是一种空间换时间的方法
+
+```js
+    Array.prototype.unique = function(){
+        var result = [],hash = {};
+        
+        this.forEach(function(v){
+            if(!hash[v]){
+                hash[v] = true;
+                result.push(v);
+            }
+        });
+        
+        return result;
+    }
+```
+
+
+> 上面的方法存在一个bug，对于数组[1,2,’1’,’2’,3]，去重结果为[1,2,3]，原因在于对象对属性索引时会进行强制类型转换，arr[‘1’]和arr[1]得到的都是arr[1]的值，因此需做一些改变：
+
+```js
+    Array.prototype.unique = function(){
+        var result = [],hash = {};
+        
+        this.forEach(function(v){
+            var type = typeof(v);  //获取元素类型
+            
+            hash[v] || (hash[v] = new Array());
+            
+            if(hash[v].indexOf(type) < 0){
+                hash[v].push(type);  //存储类型
+                result.push(v);
+            }
+
+        });
+        
+        return result;
+    }
+
+```
+
+
+
+<h3 id="ajax-and-json">AJAX和JSON</h3>
 
 
 #### ajax的缺点和在IE下的问题？阐述创建ajax的过程
@@ -2039,21 +2191,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-#### 异步加载和延迟加载
-
-```
-    1.异步加载的方案： 动态插入script标签
-
-    2.通过ajax去获取js代码，然后通过eval执行
-
-    3.script标签上添加defer或者async属性
-
-    4.创建并插入iframe，让它异步执行js
-
-    5.延迟加载：有些 js 代码并不是页面初始化的时候就立刻需要的，而稍后的某些情况才需要的。
-```
-
-
 
 
 > `Flash`、`Ajax`各自的优缺点，在使用中如何取舍？
@@ -2068,42 +2205,35 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-#### 请解释一下 JavaScript 的同源策略。为什么要有同源限制？
+#### `XML`和`JSON`的区别？
 
-```
-    概念:同源策略是客户端脚本（尤其是 Javascript ）的重要的安全度量标准。它最早出自 Netscape Navigator2.0 ，其目的是防止某个文档或脚本从多个不同源装载 
+```html
+    (1).数据体积方面。
 
+        JSON相对于XML来讲，数据的体积小，传递的速度更快些。
 
-    这里的同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。
+    (2).数据交互方面。
 
-    指一段脚本只能读取来自同一来源的窗口和文档的属性。
-```
+        JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。
 
+    (3).数据描述方面。
 
-> 为什么要有同源限制？
+        JSON对数据的描述性比XML较差。
 
-```
-   我们举例说明：比如一个黑客程序，他利用 Iframe 把真正的银行登录页面嵌到他的页面上，
+    (4).传输速度方面。
 
-   当你使用真实的用户名，密码登录时，他的页面就可以通过 Javascript 
-
-   读取到你的表单中 input 中的内容，这样用户名，密码就轻松到手了。
+        JSON的速度要远远快于XML。
 ```
 
+```js
+   JSON对象有两个方法：stringify() 和 parse()。这两个方法分别用于把
 
-> 缺点：
-
-```
-    现在网站的 JS  都会进行压缩，一些文件用了严格模式，而另一些没有。
-
-    这时这些本来是严格模式的文件，被 merge 后，这个串就到了文件的中间，
-
-    不仅没有指示严格模式，反而在压缩后浪费了字节。
+   JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
 ```
 
 
 
-> WEB应用从服务器主动推送Data到客户端有那些方式？ Javascript数据推送
+> WEB 应用从服务器主动推送Data到客户端有那些方式？ Javascript数据推送
 
 ``` 
     Commet：基于HTTP长连接的服务器推送技术
@@ -2155,33 +2285,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
-
-
-#### `XML`和`JSON`的区别？
-
-```html
-    (1).数据体积方面。
-
-        JSON相对于XML来讲，数据的体积小，传递的速度更快些。
-
-    (2).数据交互方面。
-
-        JSON与JavaScript的交互更加方便，更容易解析处理，更好的数据交互。
-
-    (3).数据描述方面。
-
-        JSON对数据的描述性比XML较差。
-
-    (4).传输速度方面。
-
-        JSON的速度要远远快于XML。
-```
-
-```js
-   JSON对象有两个方法：stringify() 和 parse()。这两个方法分别用于把
-
-   JavaScript对象系列化为JSON字符串和把JSON字符串解析为原生的JavaScript值。
-```
 
 
 > jQuery 和 zepto 异同？哪种更加适合？
