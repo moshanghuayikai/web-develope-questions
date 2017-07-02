@@ -1980,6 +1980,22 @@ alert(GetBytes("你好,as"));
 ```
 
 
+> IE缓存问题
+
+```
+    在IE浏览器下，如果请求的方法是 GET ，并且请求的 URL 不变，那么这个请求的结果就会被缓存。
+
+    解决这个问题的办法可以通过实时改变请求的 URL ，只要 URL 改变，就不会被缓存，可以通过在 URL
+
+    末尾添加上随机的时间戳参数('t'= + new Date().getTime())
+```
+
+
+或者：
+
+```
+open('GET','demo.php?rand=+Math.random()',true);//
+```
 
 
 
@@ -2147,23 +2163,6 @@ alert(GetBytes("你好,as"));
     4、破坏了程序的异常机制。
 
     5、不容易调试。
-```
-
-> IE缓存问题
-
-```
-    在IE浏览器下，如果请求的方法是 GET ，并且请求的 URL 不变，那么这个请求的结果就会被缓存。
-
-    解决这个问题的办法可以通过实时改变请求的 URL ，只要 URL 改变，就不会被缓存，可以通过在 URL
-
-    末尾添加上随机的时间戳参数('t'= + new Date().getTime())
-```
-
-
-或者：
-
-```
-open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
@@ -3974,13 +3973,13 @@ Chrome|6|6
 
 ### PHP 应用性能提升
 
-![应用性能提升](http://blog.shijinrong.cn/a/17062406/)
+[应用性能提升](http://blog.shijinrong.cn/a/17062406/)
 
 
 
 ### MySql 数据库性能提升
 
-![数据库性能提升](http://blog.shijinrong.cn/a/17062408/)
+[数据库性能提升](http://blog.shijinrong.cn/a/17062408/)
 
 
 
