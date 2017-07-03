@@ -385,7 +385,7 @@
 ```
 	
 
-> CSS3中新增了一种盒模型计算方式：`box-sizing`。盒模型默认的值是`content-box`, 新增的值是`padding-box`和`border-box`，几种盒模型计算元素宽高的区别如下：
+> CSS3中新增了一种盒模型计算方式：`padding-box`。盒模型默认的值是`content-box`, 还有常用的 `border-box`，几种盒模型计算元素宽高的区别如下：
 
 #### `content-box（默认）`
 
