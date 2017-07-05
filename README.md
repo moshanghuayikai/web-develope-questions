@@ -133,6 +133,26 @@
 ```
 
 
+> 行内元素和块级元素的区别和他们的特点是什么？总结如下：
+
+```
+  块级元素会独占一行,默认情况下,其宽度自动填满其父元素宽度.
+
+  行内元素不会独占一行,相邻的行内元素会排列在同一行里,直到一行排不下,才会换行,其宽度随元素的内容而变化.　另外
+
+  块级元素可以设置width,height属性.行内元素设置width,height属性无效，它的长度高度主要根据内容决定.
+  
+  块级元素即使设置了宽度,仍然是独占一行.
+  
+  块级元素可以设置margin和padding属性.
+
+  行内元素的margin和padding属性,水平方向的padding-left,padding-right,margin-left,margin-right都产生边距效果,但竖直方向的padding-top,padding-bottom,margin-top,margin-bottom却不 会产生边距效果.
+  
+  块级元素对应于display:block
+  
+  行内元素对应于display:inline
+```
+
 #### 如何将页脚固定在页面底部?
 
 
@@ -482,7 +502,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
   表格元素可继承：border-collapse
 ```
-> 以上供参考
+> 以上供参考 🤔
 
 > **优先级为:**
 
@@ -879,9 +899,9 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > DOM模型中节点类型有？
           
-          Document节点（document节点是文档的根节点，每张网页都有自己的document节点）
+          Document节点（document节点是文档的根节点，每张网页都有自己的document节点，window.document属性就指向这个节点。只要浏览器开始载入HTML文档，这个节点对象就存在了，可以直接调用）
 
-          Element节点（Element对象对应网页的HTML标签元素）
+          Element节点（Element对象对应网页的HTML标签元素，每一个HTML标签元素，在DOM树上都会转化成一个Element节点对象）
 
           Text节点（Text节点代表Element节点和Attribute节点的文本内容）
 
