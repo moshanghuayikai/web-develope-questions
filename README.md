@@ -149,7 +149,7 @@
   行内元素的margin和padding属性,水平方向的padding-left,padding-right,margin-left,margin-right都产生边距效果,但竖直方向的padding-top,padding-bottom,margin-top,margin-bottom却不 会产生边距效果.
   
   块级元素对应于display:block
-  
+
   行内元素对应于display:inline
 ```
 
@@ -2658,11 +2658,13 @@ Chrome|6|6
 
   请求返回后，便进入了我们关注的前端模块
 
-  简单来说，浏览器会解析 HTML 生成 DOM Tree ，其次会根据CSS生成CSS Rule Tree，而 javascript 又可以根据 DOM API 操作 DOM 
+  简单来说，浏览器会解析 HTML 生成 DOM Tree ，其次会根据CSS生成CSS Rule Tree (构造 Rendering Tree)，而 javascript 又可以根据 DOM API 操作 DOM 
 
 ```
 
 详情：[从输入 URL 到浏览器接收的过程中发生了什么事情？](http://fex.baidu.com/blog/2014/05/what-happen/)
+
+分析：[浏览器的渲染原理简介](http://liuwanlin.info/liu-lan-qi-de-xuan-ran-yuan-li-jian-jie/)
 
 
 
@@ -3166,15 +3168,17 @@ Chrome|6|6
 > 请简要说明module.exports与exports的关系
 
 ```js
-  module和exports都是模块文件的上下文，更确切地讲，模块文件的代码真正被执行的是被包装过的，比如：
+  module 和 exports 都是模块文件的上下文，更确切地讲，模块文件的代码真正被执行的是被包装过的，比如：
+  
+  一旦 require 函数准备完毕，整个所要加载的脚本内容，就被放到一个新的函数之中，这样可以避免污染全局环境。该函数的参数包括 require、module、exports，以及其他一些参数。
 
   (function(exports, require, module, __filename, __dirname){//包装头
     console.log("hello world!")//原始文件内容
   })//包装尾
 
-  module和exports都是模块被执行时的参数。其中exports也是module的属性，默认情况下是一个空对对象。
+  module 和 exports 都是模块被执行时的参数。其中 exports 也是 module 的属性，默认情况下是一个空对对象。
 
-  当require一个模块时，实际上得到的是该模块的exports属性。
+  当 require 一个模块时，实际上得到的是该模块的exports属性。
 
   在非repl模式下可以得到验证：
 
@@ -3184,7 +3188,7 @@ Chrome|6|6
 ```
 
 
-> Node.js在执行require(id)时是怎样找到一个模块的？
+> Node.js在执行 require(id) 时是怎样找到一个模块的？（ require 加载规则 ）
 
 ```
   Node.js中的require(id)执行分3种情况：引入内建模块、引入文件模块、引入一个包。
@@ -3201,14 +3205,14 @@ Chrome|6|6
 
   包的加载方式为，从当前路径下寻找node_modeules目录中是否存在该包。如果没有，想上一级目录进行查找，
 
-  知道根目录下的node_modules。这个规则可以通过module.paths得到。
+  知道根目录下的 node_modules。这个规则可以通过 module.paths 得到。
 
 
-  寻找到包后，UI中啊到爆的描述文件pageage.json，该文件的main字段表明了这个包的入口文件，
+  寻找到包后，寻找包的描述文件 pageage.json ，该文件的 main 字段表明了这个包的入口文件，
 
   此时再按文件的方式找到对应文件即可。
 
-  （目前自动加载扩展名可省略类型.js、.json、.node）
+  （目前自动加载扩展名可省略类型 .js、.json、.node ）
 
   .node文件在不同的平台下内容不同，在Windows下其实是.dll文件，其他平台下是.so文件
 
@@ -3219,11 +3223,11 @@ Chrome|6|6
 > 能否使用require('.json')的方式加载大量的JSON文件？
 
 ```
-  Node.js中推崇非阻塞I/O,但是require一个模块时确实同步调用的，这会带来性能上的开销，但并不是每次require都很耗时
+  Node.js 中推崇非阻塞 I/O ,但是 require 一个模块时确实同步调用的，这会带来性能上的开销，但并不是每次 require 都很耗时
 
-  因为在require成功之后会缓存起来，再次加载时直接从缓存读取，并没有额外开销。
+  因为在 require 成功之后会缓存起来，再次加载时直接从缓存读取，并没有额外开销。
 
-  当通过.json的方式加载文件时固然方便，但大量使用时会导致这些数据被缓存，大量数据驻留在内存中，导致GC频繁和内存泄露。
+  当通过 .json 的方式加载文件时固然方便，但大量使用时会导致这些数据被缓存，大量数据驻留在内存中，导致GC频繁和内存泄露。
 
 ```
 
@@ -3231,16 +3235,16 @@ Chrome|6|6
 > Node.js中的异步I/O是如何进行的？
 
 ```
-  Node.js的异步I/O通过时间循环的方式实现。其中异步I/O又分磁盘I/O和网络I/O。
+  Node.js 的异步 I/O 通过时间循环的方式实现。其中异步 I/O 又分 磁盘I/O 和 网络I/O。
 
-  在磁盘I/O的调用中，当发起异步调用后，会将异步操作送进libuv提供的队列中，然后返回。
+  在磁盘I/O 的调用中，当发起异步调用后，会将异步操作送进 libuv 提供的队列中，然后返回。
 
-  在磁盘I/O执行完成之后，会形成一个事件，事件循环的过程总发现该事件后，会将其消费。
+  在磁盘I/O 执行完成之后，会形成一个事件，事件循环的过程总发现该事件后，会将其消费。
 
   消费过程就是将得到的数据和传入的回调函数执行。
 
   
-  网络I/O与磁盘I/O的差异在于他不需要线程池来进行处理，而是在每次事件循环的过程中通过
+  网络I/O 与 磁盘I/O 的差异在于他不需要线程池来进行处理，而是在每次事件循环的过程中通过
 
   IOCP/epoll/kqueue/event ports来获取网络的I/O的事件队列。
 
@@ -3391,12 +3395,65 @@ Chrome|6|6
 
       CommonJS 模块是运行时加载，ES6 模块是编译时输出接口
 
+      CommonJS 一旦输出一个值，模块内部的变化就影响不到这个值
+
 
   第二个差异
       CommonJS 加载的是一个对象（即module.exports属性），该对象只有在脚本运行完才会生成
 
       ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成
 ```
+
+
+> CommonJS模块的特点如下
+
+```
+  所有代码都运行在模块作用域，不会污染全局作用域。
+
+  模块可以多次加载，但是只会在第一次加载时运行一次，然后运行结果就被缓存了，以后再加载，就直接读取缓存结果。要想让模块再次运行，必须清除缓存。
+  
+  模块加载的顺序，按照其在代码中出现的顺序。
+```
+
+
+
+> AMD 和 CommonJS 的使用场景
+
+```
+  需要异步加载js，使用AMD
+
+  使用了npm之后建议使用CommonJS
+```
+
+
+> 对前端模块化的认识
+
+```
+    AMD (Asynchronous Module Definition) 即异步模块加载机制 
+      是 RequireJS 在推广过程中对模块定义的规范化产出。
+
+    CMD (Common Module Definition) 
+      是 SeaJS 在推广过程中对模块定义的规范化产出。
+
+    AMD  是提前执行，CMD 是延迟执行。
+
+    AMD 推荐的风格通过返回一个对象做为模块对象， CommonJS 的风格通过对 module.exports 或 exports 的属性赋值来达到暴露模块对象的目的。
+```
+
+推荐: [AMD规范与CMD规范介绍](http://blog.chinaunix.net/uid-26672038-id-4112229.html)
+
+
+> CMD模块方式
+
+
+```js
+    define(function(require, exports, module) {
+
+      // 模块代码
+
+    });
+```
+
 
 
 <h2 id="3.3">前端框架</h2>
@@ -3594,7 +3651,7 @@ Chrome|6|6
 
 > 相关阅读：[如何做到一秒渲染一个移动页面](https://github.com/cssmagic/blog/issues/20)
 
-
+> 相关阅读：[对Tower网站浅显的性能分析](https://github.com/ccforward/cc/blob/master/Tower_Performance/README.md)
 
 
 
@@ -3733,11 +3790,7 @@ Chrome|6|6
     8.webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
 ```
 
-> CommonJS 和 ES6 的模块有什么不同 ？
 
-```
-
-```
 
 
 > ES6 特性？
@@ -3759,6 +3812,12 @@ Chrome|6|6
 ```
 
 ```
+
+官方文档 [http://webpack.github.io/docs/](http://webpack.github.io/docs/)
+
+案例 [webpack-demos](https://github.com/ruanyf/webpack-demos)
+
+[入门Webpack，看这篇就够了](http://www.jianshu.com/p/42e11515c10f)
 
 
 > webpack 与 grunt 的区别？
@@ -3893,35 +3952,6 @@ Chrome|6|6
     为展示数据提供支持（数据接口）
 
 
-
-
-#### 对前端模块化的认识
-
-```
-    AMD (Asynchronous Module Definition) 即异步模块加载机制 
-      是 RequireJS 在推广过程中对模块定义的规范化产出。
-
-    CMD (Common Module Definition) 
-      是 SeaJS 在推广过程中对模块定义的规范化产出。
-
-    AMD  是提前执行，CMD 是延迟执行。
-
-    AMD 推荐的风格通过返回一个对象做为模块对象， CommonJS 的风格通过对 module.exports 或 exports 的属性赋值来达到暴露模块对象的目的。
-```
-
-推荐: [AMD规范与CMD规范介绍](http://blog.chinaunix.net/uid-26672038-id-4112229.html)
-
-
-> CMD模块方式
-
-
-```js
-    define(function(require, exports, module) {
-
-      // 模块代码
-
-    });
-```
 
 
 
