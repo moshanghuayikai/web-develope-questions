@@ -4072,6 +4072,12 @@ Chrome|6|6
 [数据库性能提升](http://blog.shijinrong.cn/a/17062408/)
 
 
+### vue.js
+
+> 
+
+- [饿了么的PWA升级实践](http://geek.csdn.net/news/detail/210535)
+
 
 
 <hr>
@@ -4106,6 +4112,15 @@ Chrome|6|6
 
 > T
 
->N
+> N
 
+> 饿了么
+
+> 美团
+
+> 京东
+
+> 华为 
+
+> VIVO
 
