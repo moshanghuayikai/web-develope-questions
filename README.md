@@ -3834,11 +3834,10 @@ Chrome|6|6
 
 ```
 
-官方文档 [http://webpack.github.io/docs/](http://webpack.github.io/docs/)
+英文官方文档 [http://webpack.github.io/docs](http://webpack.github.io/docs)
+中文官方文档 [https://doc.webpack-china.org](https://doc.webpack-china.org)
 
 案例 [webpack-demos](https://github.com/ruanyf/webpack-demos)
-
-[入门Webpack，看这篇就够了](http://www.jianshu.com/p/42e11515c10f)
 
 
 > webpack 与 grunt 的区别？
