@@ -154,6 +154,14 @@
   行内元素对应于display:inline
 ```
 
+
+> 超链接访问过后hover样式就不出现了，被点击访问过的超链接样式不再具有hover和active了，解决方法是改变CSS属性的排列顺序？
+
+```
+  a:link {} a:visited {} a:hover {} a:active {}
+```
+
+
 #### 如何将页脚固定在页面底部?
 
 
