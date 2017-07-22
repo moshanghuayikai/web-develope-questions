@@ -1596,6 +1596,7 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 ```
 [立即执行函数: (function ( ){...})( ) 与 (function ( ){...}( )) 有什么区别?](https://segmentfault.com/q/1010000000442042)
 
+
 > Scope作用范围
 
 ```js
@@ -1862,6 +1863,10 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 - CSS圆角：ie7以下不支持圆角
 
+
+> IE FF 兼容性
+
+[IE和FF的差异](http://www.cnblogs.com/gowhy/archive/2011/05/23/2054295.html)
 
 
 
