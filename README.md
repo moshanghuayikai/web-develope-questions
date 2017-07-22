@@ -556,7 +556,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```css
     CSS3实现圆角（border-radius），阴影（box-shadow），
 
-    对文字加特效（text-shadow、），线性渐变（gradient），旋转（transform）
+    对文字加特效（text-shadow(css2)），线性渐变（gradient），旋转（transform）
 
     transform:rotate(9deg) scale(0.85,0.90) translate(0px,-30px) skew(-9deg,0deg);//旋转,缩放,定位,倾斜
 
