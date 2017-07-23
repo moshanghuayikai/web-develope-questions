@@ -2516,6 +2516,23 @@ open('GET','demo.php?rand=+Math.random()',true);//
     7.对于机密信息的数、发送包含未知字符的用户输入时，建议采用POST数据提交方式。
 ```
 
+> 请求方法有哪些
+
+```
+  GET
+
+  POST
+
+  DELETE
+
+  PUT
+
+  HEAD
+
+  TRACE
+
+  OPTIONS
+```
 
 
 > HTTP header中，和缓存相关的字段有：
