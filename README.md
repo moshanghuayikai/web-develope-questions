@@ -1785,6 +1785,15 @@ IE 提供了一种存储可以持久化用户数据，叫做`userdata`，从`IE5
 
 #### 说说你对Promise的理解
 
+> Promises的写法
+
+```
+// 
+(new Promise(step1))
+  .then(step2)
+  .then(step3)
+  .then(step4);
+```
 
 
 > 依照 `Promise` 的定义，`Promise` 有三种状态：
