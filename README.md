@@ -2819,6 +2819,11 @@ Chrome|6|6
   Etag 主要为了解决  Last-Modified  无法解决的一些问题。
 ```
 
+
+> 说了这么多，还不如来一张流程图
+
+![304-flow](./images/304-flow.png)
+
 传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
 
