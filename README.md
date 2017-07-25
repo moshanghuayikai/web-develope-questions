@@ -860,6 +860,9 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 当margin-top、padding-top的值是百分比时，分别是如何计算的？
 
+```
+  相对最近父级块级元素的width，相对最近父级块级元素的width
+```
 
 
 
