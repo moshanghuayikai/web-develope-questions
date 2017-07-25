@@ -4172,12 +4172,6 @@ Chrome|6|6
 
 #### dynamic
 
-2017-05-19 ElemeFE sofish 说简历筛选没过😫
-
-2017-05-21 投了些Web简历
-
-2017-07-02 调整 js 部分
-
 
 
 
@@ -4185,3 +4179,6 @@ Chrome|6|6
 
 传送门 [2018 IT名企校招指南](https://www.nowcoder.com/activity/campus2018)
 
+
+
+不能停留、不能思考、不能留恋
