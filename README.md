@@ -364,6 +364,19 @@
 ```
 
 
+> 浏览器的内核分别
+
+```
+    IE: trident 内核
+
+    Firefox ： gecko 内核
+    
+    Safari:webkit 内核
+    
+    Opera: 以前是 presto 内核， Opera 现已改用 Google Chrome 的 Blink 内核
+    
+    Chrome:Blink( 基于 webkit ， Google 与 Opera Software 共同开发 )
+```
 
 > 谈谈flex语法
 
