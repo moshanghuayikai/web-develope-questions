@@ -4388,6 +4388,7 @@ Chrome|6|6
 
 传送门 [2018 IT名企校招指南](https://www.nowcoder.com/activity/campus2018)
 
+没准备好没准备好
 
 
 不能停留、不能思考、不能留恋
