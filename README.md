@@ -586,7 +586,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```css
 	!important >  id > class > tag 
 
-	important 比 内联优先级高,但内联比 id 要高
+  !important > 行内样式 > ID选择器 > 类选择器 = 伪类 > 标签 > 通配符 > 继承 > 浏览器默认属性
 
 ```
 
