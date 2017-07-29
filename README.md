@@ -584,10 +584,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 > **优先级为:**
 
 ```css
-	!important >  id > class > tag 
-
   !important > 行内样式 > ID选择器 > 类选择器 = 伪类 > 标签 > 通配符 > 继承 > 浏览器默认属性
-
 ```
 
 
