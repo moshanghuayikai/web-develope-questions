@@ -2801,6 +2801,8 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 传送门：[HTTP/2 新特性浅析](https://segmentfault.com/a/1190000002765886)
 
+
+
 #### 说说TCP传输的三次握手四次挥手策略
 
 ```
@@ -4399,7 +4401,6 @@ Chrome|6|6
 
 传送门 [2018 IT名企校招指南](https://www.nowcoder.com/activity/campus2018)
 
-没准备好没准备好
 
 
 不能停留、不能思考、不能留恋
