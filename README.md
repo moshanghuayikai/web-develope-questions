@@ -3460,8 +3460,6 @@ Chrome|6|6
   GreenKeeper
   
   Snyk
-
-
 ```
 
 
