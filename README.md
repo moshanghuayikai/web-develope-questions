@@ -3485,6 +3485,33 @@ Chrome|6|6
   console.log(exports); //{}
 ```
 
+> es6 的export、import
+```
+  export {name1,name2, …,nameN};
+  export {variable1asname1,variable2asname2, …,nameN};
+  export letname1,name2, …,nameN; // also var
+  export letname1= …,name2= …, …,nameN; // also var, const
+
+  export expression;
+  export default expression;
+  export default function (…) { … } // also class, function*
+  export default function name1(…) { … } // also class, function*
+  export {name1as default, … };
+
+  export * from …;
+  export {name1,name2, …,nameN} from …;
+  export {import1asname1,import2asname2, …,nameN} from …;
+
+  import defaultMember from "module-name";
+  import * as name from "module-name";
+  import { member } from "module-name";
+  import { member as alias } from "module-name";
+  import { member1 , member2 } from "module-name";
+  import { member1 , member2 as alias2 , [...] } from "module-name";
+  import defaultMember, { member [ , [...] ] } from "module-name";
+  import defaultMember, * as name from "module-name";
+  import "module-name";
+```
 
 > Node.js在执行 require(id) 时是怎样找到一个模块的？（ require 加载规则 ）
 
