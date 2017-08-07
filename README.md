@@ -138,14 +138,13 @@
 > 说说你对页面中使用定位(position)的理解？
 
 ```
-使用css布局position非常重要，语法如下：
-position：static | relative | absolute | fixed | center | page | sticky
-默认值：static，center、page、sticky是CSS3中新增加的值。
+  position：static | relative | absolute | fixed | center | page | sticky
+  默认值：static，center、page、sticky是CSS3中新增加的值。
 (1)、static 
 可以认为静态的，默认元素都是静态的定位，对象遵循常规流。此时4个定位偏移属性不会被应用，也就是使用left，right，bottom，top将不会生效。
 
 (2)、relative 
-相对定位，对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left这4个定位偏移属性进行偏移时不会影响常规流中的任何元素。
+相对定位，对象遵循常规流，并且参照自身在常规流中的位置通过top，right，bottom，left这4个定位偏移属性进行偏移时不会影响常规流中的其他元素。
 
 (3)、absolute 
 a、绝对定位，对象脱离常规流，此时偏移属性参照的是离自身最近的定位祖先元素，如果没有定位的祖先元素，则一直回溯到body元素。盒子的偏移位置不影响常规流中的任何元素，其margin不与其他任何margin折叠。
@@ -164,20 +163,8 @@ b、元素定位参考的是离自身最近的定位祖先元素，要满足两�
 对象在常态时遵循常规流。它就像是relative和fixed的合体，当在屏幕中时按常规流排版，当卷动到屏幕外时则表现如fixed。该属性的表现是现实中你见到的吸附效果。（CSS3）
 ```
 
+传送门：[例题](https://www.nowcoder.com/profile/2851715/myFollowings/detail/3233480)
 
-
-#### position的值， relative和absolute分别是相对于谁进行定位的？
-
-
-- `absolute` :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
-
-- `fixed` （老IE不支持 < IE11 ）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
-
-- `relative` 生成相对定位的元素，相对于其在普通流中的位置进行定位。
-
-- `static`  默认值。没有定位，元素出现在正常的流中
-
-- `sticky` 生成粘性定位的元素，容器的位置根据正常文档流计算得出
 
 
 > 行内元素和块级元素的区别和他们的特点是什么？总结如下：
@@ -4361,6 +4348,9 @@ Chrome|6|6
 ```
 
 
+> 何为单页应用 ？
+
+传送门 [单页应用开发权威指南](http://island205.github.io/Single-Page-App-Break/%E7%AC%AC01%E7%AB%A0%20%E4%BD%95%E4%B8%BA%E5%8D%95%E9%A1%B5%E5%BA%94%E7%94%A8.html)
 
 
 <h1 id="6">开放性问题</h1>
