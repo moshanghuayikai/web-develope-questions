@@ -767,7 +767,9 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 
 
+> 兼容性方面问题更多见 👇
 
+[兼容性问题与浏览器的内核及渲染模式](http://www.w3help.org/zh-cn/kb/001/)
 
 
 #### 浮动元素引起的问题和解决办法？
