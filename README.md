@@ -521,8 +521,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```css
   z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
 
-  z-index 属性仅在节点的 position 属性为 relative, absolute 或者 fixed 时生效.
-
+  z-index 属性仅在节点的 position 属性为 relative, absolute 或者 fixed 时生效.(父元素不可以是 relative)
 ```
 
 > CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
@@ -4394,6 +4393,13 @@ Chrome|6|6
 
 - [饿了么的PWA升级实践](http://geek.csdn.net/news/detail/210535)
 
+### 实战问题
+
+- [解决页面使用overflow: scroll在iOS上滑动卡顿的问题](http://www.jianshu.com/p/1f4693d0ad2d)
+
+- [Fetch](https://github.github.io/fetch/)
+
+- []()
 
 
 <hr>
