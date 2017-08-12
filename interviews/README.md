@@ -4,7 +4,7 @@
 
 - [ElemeFE](./ElemeFE.md)
 
-- [百度PHP研发实习、校招](./baidu_php_dev_practice.md)
+- [百度PHP研发实习、运维岗](./baidu_php_dev_practice.md)
 
 - [滴滴出行PHP研发实习](./didichuxing.md)
 
