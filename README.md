@@ -521,7 +521,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 ```css
   z-index 属性设置元素的堆叠顺序。拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
 
-  z-index 属性仅在节点的 position 属性为 relative, absolute 或者 fixed 时生效.(父元素不可以是 relative)
+  z-index 属性仅在节点的 position 属性为 relative, absolute 或者 fixed 时生效 (父元素不可以是 relative)
 ```
 
 > CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？ CSS3新增伪类有那些？
@@ -571,6 +571,8 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 ```css
   !important > 行内样式 > ID选择器 > 类选择器 = 伪类 > 标签 > 通配符 > 继承 > 浏览器默认属性
+
+   类选择器 = 伪类 ⚠️
 ```
 
 
@@ -961,7 +963,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
           document.getElementsByName()   //返回一个类似数组的的对象（NodeList对象的实例）
 
-          getElementById()    //返回匹配指定id属性的元素节点，空则返回null 
+          document.getElementById()    //返回匹配指定id属性的元素节点，空则返回null 
 
           document.elementFromPoint()    //方法返回位于页面指定位置最上层的Element子节点
 
@@ -1129,8 +1131,23 @@ JS引擎则：解析和执行 javascript 来实现网页的动态效果。
   sessionStorage | localStorage.setItem(key, value)
   sessionStorage | localStorage.getItem(key)
   sessionStorage | localStorage.removeItem(key)
-
+  sessionStorage | localStorage.clear(key)
+  sessionStorage | localStorage.length(key)  
 ```
+
+> 实现 getAll 方法，获取本地存储
+
+```js
+localStorage.getAll = function() {
+    var obj = [];
+    for(var i = 0;i < localStorage.length;i++) {
+        obj.push(localStorage.key(i));
+    }
+    return obj;
+}
+```
+
+
 
 > 浏览器本地存储
 
@@ -2794,6 +2811,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 #### 说说TCP传输的三次握手四次挥手策略
 
+> 连接一个TCP需要三次握手
 ```
     为了准确无误地把数据送达目标处， TCP 协议采用了三次握手策略。用TCP协议把数据包送出去后， TCP 不会对传送
 
@@ -2808,7 +2826,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-> 断开一个TCP连接则需要“四次握手”：
+> 断开一个TCP连接则需要四次挥手：
 
 ```
     第一次挥手：主动关闭方发送一个 FIN ，用来关闭主动方到被动关闭方的数据传送，也就是主动关闭方告诉被动关闭方：
@@ -2855,7 +2873,9 @@ open('GET','demo.php?rand=+Math.random()',true);//
 　　使用TCP的协议：FTP（文件传输协议）、Telnet（远程登录协议）、SMTP（简单邮件传输协议）、POP3（和SMTP相对，用于接收邮件）、HTTP协议等。
 ```
 
+> TCP 状态转换图
 
+![TCP 状态转换图](./TCP_translate_status.jpg)
 
 #### TCP和UDP的区别
 
@@ -3303,13 +3323,16 @@ Chrome|6|6
 
 
 ```
-  JavaScript提供了6个方法用于正则表达式，其中2个是正则对象的属性和方法，4个是字符串对象方法。
+  JavaScript提供了6个方法用于正则表达式，其中3个是正则对象的属性和方法，4个是字符串对象方法。
 ```
 
-> RegExp.prototype.test()
+> RegExp.prototype.test() //检测一个字符串是否匹配某个正则表达式，如果匹配成功，返回 true ，否则返回 false
 
 
-> RegExp.prototype.exec()
+> RegExp.prototype.exec() //检索字符串中与正则表达式匹配的值
+
+
+> RegExp.prototype.compile() //在脚本执行过程中编译正则表达式，也可以改变已有表达式
 
 
 > String.prototype.match()
@@ -3478,8 +3501,8 @@ Chrome|6|6
 ```
   export {name1,name2, …,nameN};
   export {variable1asname1,variable2asname2, …,nameN};
-  export letname1,name2, …,nameN; // also var
-  export letname1= …,name2= …, …,nameN; // also var, const
+  export let name1,name2, …,nameN; // also var
+  export let name1= …,name2= …, …,nameN; // also var, const
 
   export expression;
   export default expression;
@@ -4413,6 +4436,8 @@ Chrome|6|6
 - 《JavaScript高级程序设计》
 
 - [Front-end-Interview-questions](https://github.com/hawx1993/Front-end-Interview-questions)
+
+- [笔试面试知识整理](https://hit-alibaba.github.io/interview/)
 
 
 
