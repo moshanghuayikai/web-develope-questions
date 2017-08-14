@@ -2432,6 +2432,11 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 ```
 
+> 50道经典面试题
+
+
+
+> splice、concat 有什么异同？
 
 
 <h3 id="ajax-and-json">AJAX和JSON</h3>
