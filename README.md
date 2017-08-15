@@ -2848,6 +2848,22 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 
+> TCP 状态标识
+
+```
+  SYN (Synchronize Sequence Numbers) 表示建立连接
+
+  FIN (Finish) 表示关闭连接
+
+  ACK (Acknowledgement Number) 表示响应
+
+  PSH (Push) 表示有 DATA数据传输
+
+  RST (Reset) 表示连接重置
+
+  URG (Urgent) 紧急
+```
+
 
 > 为什么要三次🤝？
 
