@@ -2880,7 +2880,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 > TCP 状态转换图
 
-![TCP 状态转换图](./TCP_translate_status.jpg)
+![TCP 状态转换图](./images/TCP_translate_status.jpg)
 
 #### TCP和UDP的区别
 
