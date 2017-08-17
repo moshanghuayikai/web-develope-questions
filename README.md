@@ -3350,7 +3350,7 @@ Chrome|6|6
 > RegExp.prototype.test() //检测一个字符串是否匹配某个正则表达式，如果匹配成功，返回 true ，否则返回 false
 
 
-> RegExp.prototype.exec() //检索字符串中与正则表达式匹配的值
+> RegExp.prototype.exec() //检索字符串中与正则表达式匹配的值，没有匹配结果返回 null 否则返回一个数组，数组的第一个元素是与正则表达式相匹配的字符串,余下的所有元素包含的是匹配的各个分组。
 
 
 > RegExp.prototype.compile() //在脚本执行过程中编译正则表达式，也可以改变已有表达式
