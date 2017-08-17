@@ -192,7 +192,7 @@ linux中的文件属性过分四段，如  -rwzrwz---
 文件类型部分
 -为：表示文件
 d为：表示文件夹
-l为：表示<a>链接文件，可以理解为 windows中的快捷方式（link file）
+l为：表示链接文件，可以理解为 windows中的快捷方式（link file）
 
 b为：表示里面可以供存储周边设备
 c为：表示里面为一次性读取装置
@@ -231,6 +231,9 @@ command > file 2>&1，是由两部分组成。首先command>file表示将标准�
 command 2> file 1> file，也可看成是由两部分组成。首先command 2> file，表示将标准错误输出（stderr）重定向到文件file中；1> file，表示将标准输出（stdout）重定向到文件file中。 最终的file中不会包含标准错误输出（stderr）的信息，因为会被之后的标准输出（stdout）覆盖。
 
 
+
+
+管道符 | 
 
 
 
