@@ -2436,7 +2436,7 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-> slice、concat 有什么异同？
+> slice、concat、join、toString 有什么异同？
 
 
 <h3 id="ajax-and-json">AJAX和JSON</h3>
