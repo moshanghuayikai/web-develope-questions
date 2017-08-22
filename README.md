@@ -955,18 +955,27 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
 > 查找
 
-          document.querySelector()，document.querySelectorAll() //返回匹配该选择器的元素节点 空则返回null 但是，它们不支持CSS伪元素的选择器
+          document.querySelector() //匹配该选择器的元素节点(若匹配多个则返回第一个) 空则返回null 但是，它们不支持CSS伪元素的选择器
 
-          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的HTMLCollection对象 集合
+          document.querySelectorAll() //返回 NodeList 对象，包含所有匹配给定选择器的节点 
 
-          document.getElementsByClassName()   //返回值是一个类似数组的HTMLCollection对象 集合
+          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的 HTMLCollection 对象 集合
 
-          document.getElementsByName()   //返回一个类似数组的的对象（NodeList对象的实例）
+          document.getElementsByClassName()   //返回值是一个类似数组的 HTMLCollection 对象 集合
+
+          document.getElementsByName()   //返回一个类似数组的 NodeList 对象的实例 仅限使用于拥有name属性的HTML元素
 
           document.getElementById()    //返回匹配指定id属性的元素节点，空则返回null 
 
-          document.elementFromPoint()    //方法返回位于页面指定位置最上层的Element子节点
+          document.elementFromPoint(横坐标 , 纵坐标)    //方法返回位于页面指定位置最上层的Element子节点
 
+
+> DOM提供两种集合对象：NodeList对象、HTMLCollection对象
+```
+  typeof NodeList // "function"
+
+  typeof HTMLCollection // "function"
+```
 
 > DOM模型中节点类型有？
           
