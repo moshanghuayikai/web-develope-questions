@@ -2453,7 +2453,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 #### ajax的缺点和在IE下的问题？阐述创建ajax的过程
 
-
 > ajax的缺点
 
 ```
@@ -3809,7 +3808,12 @@ Chrome|6|6
     AMD  是提前执行，CMD 是延迟执行。
 
     AMD 推荐的风格通过返回一个对象做为模块对象， CommonJS 的风格通过对 module.exports 或 exports 的属性赋值来达到暴露模块对象的目的。
+
+    Common.js 多采用服务端开发
+
 ```
+
+
 
 推荐: [AMD规范与CMD规范介绍](http://blog.chinaunix.net/uid-26672038-id-4112229.html)
 
@@ -3824,7 +3828,6 @@ Chrome|6|6
 
     });
 ```
-
 
 
 <h2 id="3.3">前端框架</h2>
