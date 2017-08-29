@@ -4394,7 +4394,7 @@ Chrome|6|6
 
 ```
 
-
+> 拖拽发生过程：dragstart->drag->dragenter->dragover->dragleave/drop->dragend
 
 > 文稿的自动保存技术
 
