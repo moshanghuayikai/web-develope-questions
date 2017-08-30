@@ -2312,24 +2312,6 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
-#### 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
-
-
-```js
-    Object.prototype.clone = function(){
-
-            var o = this.constructor === Array ? [] : {};
-
-            for(var e in this){
-
-                    o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
-
-            }
-
-            return o;
-    }
-```
-
 > 实现一个forEach函数，即可遍历数组，也可以遍历对象
 
 ```js
@@ -2614,6 +2596,33 @@ open('GET','demo.php?rand=+Math.random()',true);//
 ```
 
 ```
+
+
+> kebab-case、camelCase 两种命名的区别？
+
+```js
+camelCase: 骆驼式写法
+kebab-case: 短横线命名
+
+
+  var camelize = function(str){
+    return str.replace(/-+(.)?/g, function(match, ch){
+      console.log(match, ch)
+      return ch ? ch.toUpperCase() : '';
+    })
+  } 
+```
+
+> 实现一个bind
+
+```js
+
+
+```
+
+
+> [编程类详细见](main.js) 
+
 
 
 <h2 id="1.3">网络</h2>
@@ -3351,6 +3360,9 @@ Chrome|6|6
 
 > 不稳定排序有希尔排序、简单选择排序、快速排序、堆排序；
 > 稳定排序有直接插入排序、折半插入排序、冒泡排序、归并排序、基数排序
+
+详细见 [=>](http://blog.csdn.net/xiexievv/article/details/45795719)
+
 
 <h2 id="2.2">正则表达式</h2>
 
