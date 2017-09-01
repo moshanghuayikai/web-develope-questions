@@ -995,7 +995,7 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
 
       拖拽释放(Drag and drop) API
 
-      语义化更好的内容标签（header,nav,footer,aside,article,section）
+      语义化更好的内容标签（header, hgroup, nav, section, article, aside, footer, figure, menu, main,） //目前所有主流浏览器都不支持 <menu> 标签
 
       音频、视频API(audio,video)
 
@@ -2160,21 +2160,23 @@ label 标签的 for 对应一个 id 用于二者的关联
 > 严格模式主要有以下限制：
 
 ```
+    不能对只读属性赋值，否则报错
+
+    对一个只设置了赋值器（getter）的属性赋值，会报错
+
+    禁止扩展的对象不可扩展
+
     变量必须声明后再使用
 
     函数的参数不能有同名属性，否则报错
 
     不能使用with语句
 
-    不能对只读属性赋值，否则报错
-
-    对一个只设置了赋值器（getter）的属性赋值，会报错
-
     不能使用前缀0表示八进制数，否则报错
 
     不能删除不可删除的属性，否则报错
 
-    不能删除变量delete prop，会报错，只能删除属性delete global[prop]
+    不能删除变量delete prop，会报错，只有将描述对象configurable属性设置为true，才能被delete命令删除
 
     eval不会在它的外层作用域引入变量
 
@@ -2190,7 +2192,7 @@ label 标签的 for 对应一个 id 用于二者的关联
 
     不能使用fn.caller和fn.arguments获取函数调用的堆栈
 
-    增加了保留字（比如protected、static和interface）
+   严格模式新增了一些保留字：implements, interface, let, package, private, protected, public, static, yield
 ```
 详情：[《JavaScript 标准参考教程（alpha）》--严格模式](http://javascript.ruanyifeng.com/advanced/strict.html)
 
@@ -2297,6 +2299,26 @@ open('GET','demo.php?rand=+Math.random()',true);//
 
 
 
+> Infinity
+```
+无法使用 for/in 循环来枚举 Infinity 属性，也不能用 delete 运算符来删除它。
+Infinity 不是常量，可以把它设置为其他值。
+```
+
+
+> js内存泄漏常见的四种情况
+
+```
+  1、意外的全局变量
+  2、被遗忘的定时器或者回调
+  3、没有清理的DOM元素引用
+  4、闭包
+```
+> [详情见](https://segmentfault.com/a/1190000004896090)
+
+
+> new Number(1) 结果不是 number 类型 但是 NaN、Infinity 是 number 类型
+
 
 
 <h3 id="event">事件</h3>
@@ -2305,6 +2327,22 @@ open('GET','demo.php?rand=+Math.random()',true);//
 [事件=>见](https://github.com/Aierui/jstraining/tree/master/node)
 
 [案例](#5)
+
+
+> Event Loop 原理
+
+```
+  主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）
+```
+
+![](./images/event-loop.png)
+
+> 上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。
+
+
+*图/文* 来自阮一峰
+
+[详情=>](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 
 
 

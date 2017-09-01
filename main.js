@@ -4,6 +4,22 @@
 * @Email aieruishi@gmail.com
 */
 
+// Closures
+// https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
+
+function init(){
+	let name = 'aierui';
+	// name 是一个被init创建的局部变量
+	function displayName(){// displayName() 是一个内部函数,
+		alert(name) //  一个闭包使用在父函数中声明的变量
+	}
+	displayName();
+}
+
+init();
+
+
+
 //去重、排序、常用库函数实现其原理
 
 // 采用 indexOf
@@ -152,31 +168,89 @@ Function.prototype.bind = function(that)
 }
 
 
-/*============ 排序算法 ==============*／
+
+// 手写数组扁平化（[1,2,3,[1,2,3],[2,[3,4],3]]>[1,2,3,1,2,3,2,3,4,3]）算法；
+
+
+function flatten (arr){
+	return arr.toString().split(',');
+}
+
+
+
+// 随机数
+
+function randMember(length)
+{
+	if (length == undefined) {
+		length = 10
+	}
+
+	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  var str = "";
+  for (var i = 0; i < length; i++) {
+      str += chars.substr(Math.ceil(Math.random() * chars.length), 1);
+  }
+  return str;
+}
+
+
+
+//
+
+function randomArray(length){
+	var i,index,temp,arr=[length];
+	length = typeof(length) === 'undefined' ? 9 : length;
+
+	for(i = 1; i <= length; i ++){
+		arr[i - 1] = i;
+	}
+
+	for(i = 1; i <= length; i++){
+		index = parseInt(Math.random() * (length - 1)) + 1;
+
+		if(index != i){
+			temp = arr[i];
+			arr[i] = arr[index];
+			arr[index] = temp;
+		}
+	}
+}
+
+
+
+
+/*============ 排序算法 ==============
+*／
 
 // 冒泡排序(Bubble Sort)
 
 
+*/
 
 
+// 快速排序
+		//排序过程只需要三步：
+		//　1.在数据集之中，找一个基准点
+　　 //  2.建立两个数组，分别存储左边和右边的数组
+　　 //  3.利用递归进行下次比较
 
 
+function quickSort(arr){
+		if(arr.length <= 1) return arr;  //如果数组只有一个数，就直接返回；
 
+		var index = Math.floor(arr.length/2);  //找到中间数的索引值，如果是浮点数，则向下取整
 
+		var key = arr.splice(index,1)[0];  //找到中间数的值
 
+		var left = [],right = [];
 
+		arr.forEach(function(v){
+		v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
+		});
 
-
-
-
-
-
-
-
-
-
-
-
+		return quickSort(left).concat([key],quickSort(right)); //递归不断重复比较
+}
 
 
 
