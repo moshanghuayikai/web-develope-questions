@@ -224,9 +224,43 @@ function randomArray(length){
 *／
 
 // 冒泡排序(Bubble Sort)
-
-
 */
+
+function bubbleSort(arr){
+	var len = arr.length,i,j,stop;
+	for(i= 0; i<len - 1; i++){
+		for(j = 0,stop = len -1 -i; j < stop; j++){
+			if(arr[j] > arr[ j +1]){
+				var temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j+1] = temp;
+			}
+		}
+	}
+	return arr;
+}
+
+//可以改写，将交换拆出来，写成一个函数
+
+function swap(arr, n, m){
+	var t = arr[n];
+	arr[n] = arr[m];
+	arr[m] = t;
+}
+
+function bubbleSort2(arr){
+	var len = arr.length,i,j,stop;
+
+	for(i = 0; i< len -1; i++){
+		for(j = 0, stop= len - 1 -i; j < stop; j ++){
+			if(arr[j] > arr[j+1]){
+				swap(arr, j, j+1)
+			}
+		}
+	}
+
+	return  arr;
+}
 
 
 // 快速排序
@@ -253,6 +287,163 @@ function quickSort(arr){
 }
 
 
+// 选择排序 空间复杂度为O(1)
+
+function selectionSort(arr){
+	var len = arr.length, min;
+	
+	for(i = 0; i < len; i ++){
+		min = i;//假设当前位为最小;
+		// 检查数组其余部分是否更小
+		for(j = i + 1; j < len; j ++){
+			if(arr[j] < arr[min]){
+				min = j;
+			}
+		}
+		// 如果当前位置不是最小值，将其换为最小值
+		if(min != i){
+			swap(arr, i, min)
+		}
+	}
+
+	return arr;
+}
+
+
+
+// 合并排序
+
+// 合并两个数组
+function merge(left, right){
+	var result = [], il=0, ir=0;
+
+	while(il <left.length && ir < right.length){
+		if(left[il] < right[ir]){
+			result.push(left[il++])
+		}else{
+			result.push(right[ir++])
+		}	
+	}
+
+	return result.concat(left.slice(il).concat(right.slice(ir)));
+}
+
+
+function mergeSort(arr){
+	if(arr.length < 2){
+		return arr;
+	}
+
+	var mid = Math.floor(arr.length / 2),	
+			left = arr.slice(0, mid), 
+			right = arr.slice(mid), 
+			params = merge(mergeSort(left), mergeSort(right));
+
+	params.unshift(0, arr.length);
+	arr.splice.apply(arr, params);
+	
+	return arr;
+}
+
+
+
+// 插入排序
+function insertSort(arr){
+
+	var len = arr.length,
+		val,// 当前比较的值
+		i,// 未排序部分的当前位置
+		j;// 已排序部分的当前位置
+
+	for(i = 0; i < len; i ++){
+		val = arr[i];
+		//当已排序部分的当前元素大于value， 就将当前元素向后移一位，再将前一位与value比较
+		for(j = i -1; j > -1 && arr[j] > val; j --){
+			arr[j+1] = arr[j]
+		}
+		arr[j + 1] = val;
+	}
+	return arr;
+}
+
+
+
+
+// 出现次数超过一半的数字
+
+function findExceedNum(arr){
+	var rtn = [], mid = Math.ceil(arr.length/2), hash = {}
+	arr.forEach(function(item, index){
+		if(!hash[item]){
+			hash[item]  = true;
+			rtn[item] = 1
+		}else{
+			rtn[item] ++ 
+		}
+	})
+
+	rtn.forEach(function(v,index){// forEach 可以自动过滤掉数组key为undefined
+
+		if(v >= mid ){
+			console.log(index)
+		}
+	})
+}
+
+
+function find_exceed_num(arr){
+	var result = [], mid = Math.ceil(arr.length / 2),hash = {}, rtn = [];
+
+	arr.forEach(function(item, index){
+		if(!hash[item]){
+				hash[item] = true;
+				rtn[item] = 1;
+		}else{
+			rtn[item] ++
+			if(rtn[item] >= mid && result.indexOf(item) < 0){
+				result.push(item);
+			}
+		}
+	})
+	return result;//返回一个出现次数超过一半的数组，
+}
+
+
+// 最大连续子数组和
+
+
+
+
+
+// 有序数组的查找
+
+function containe(arr, val){
+	var i = arr.length;
+	while (i -- ) {
+		if(arr[i] == val){
+			return true;
+		}
+	}
+	return false;
+}
+
+function find_number(arr, val){
+	if(typeof val != 'number') return false;
+	arr.sort();
+	var l = 0,r = arr.length;
+	while(l <= r){
+		var mid = Math.floor( (l + r) / 2 );
+		if(arr[mid] > val){
+			r = mid - 1;
+		}else if(arr[mid] < val){
+			l = mid + 1;
+		}else{
+			return arr[mid];
+		}
+
+	}
+	return false;
+}
 
 
 
