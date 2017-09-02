@@ -2348,6 +2348,9 @@ Infinity 不是常量，可以把它设置为其他值。
 [详情=>](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
 
 
+> preventDefault()、stopPropagation()、cancelBubble() 🏀
+
+
 
 <h3 id="javascript-algorithm">必会的小算法</h3>
 
