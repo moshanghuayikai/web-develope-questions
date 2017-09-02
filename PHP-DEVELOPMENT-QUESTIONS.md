@@ -345,5 +345,7 @@ require和include都可以引入并运行指定的文件
 工厂方法模式里具有不同的工厂子类
 
 
+> [数据库范式那些事](http://www.cnblogs.com/CareySon/archive/2010/02/16/1668803.html)
+
 
 

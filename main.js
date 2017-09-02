@@ -447,5 +447,11 @@ function find_number(arr, val){
 
 
 
+// 字符串全排列
+
+
+
+
+
 
 

@@ -2479,6 +2479,21 @@ Infinity 不是常量，可以把它设置为其他值。
 
 #### ajax的缺点和在IE下的问题？阐述创建ajax的过程
 
+
+> Ajax 原理 具体来说，AJAX包括以下几个步骤。
+
+```
+  1、创建AJAX对象
+
+  2、发出HTTP请求
+
+  3、接收服务器传回的数据
+
+  4、更新网页数据
+```
+![](https://sfault-image.b0.upaiyun.com/185/751/185751056-542272ebe29a8_articlex)
+
+
 > ajax的缺点
 
 ```
@@ -2590,6 +2605,10 @@ Infinity 不是常量，可以把它设置为其他值。
       
     SSE （Server-Send Event）：服务器推送数据新方式
 ```
+
+[话题](https://www.zhihu.com/question/24938934/answer/29567191)
+
+
 
 
 #### 你觉得jQuery或zepto源码有哪些写的好的地方
