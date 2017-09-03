@@ -2352,6 +2352,11 @@ Infinity 不是常量，可以把它设置为其他值。
 
 
 
+> js中__proto__和prototype的区别和关系？
+
+
+[话题](https://www.zhihu.com/question/34183746)
+
 <h3 id="javascript-algorithm">必会的小算法</h3>
 
 

@@ -19,6 +19,20 @@ function init(){
 init();
 
 
+// 事件代理
+function event(element, type, handler){
+	if (element.addEventListener) { // DOM2
+      element.addEventListener(type, handler, false);//监听函数只在冒泡阶段被触发
+  } else if (element.attachEvent) { // IE
+      element.attachEvent('on' + type, handler);
+  } else { // DOM0
+      element['on' + type] = handler;
+  }
+}
+
+
+
+
 
 //去重、排序、常用库函数实现其原理
 
@@ -411,6 +425,52 @@ function find_exceed_num(arr){
 
 // 最大连续子数组和
 
+function getTempValue(temp, currentValue) {
+    if (temp.sum >= 0) {
+        return {
+            num: temp.num + 1,
+            sum: temp.sum + currentValue
+        };
+    } else {
+        return {
+            num: 1,
+            sum: currentValue
+        }
+    }
+}
+
+function getSubMaxSum(line) {
+    if (line.length === 0) return;
+    var temps = []; 
+
+    var temp = {
+        num: 1,
+        sum: line[0]
+    };
+    temps.push(temp);
+
+    for (var i = 1, len = line.length; i < len; i++) {
+       
+        var temp = getTempValue(temps[i-1], line[i]);
+        temps.push(temp);
+    }
+
+    var maxValue,
+        indexArr = []; 
+    maxValue = temps[0].sum;
+    indexArr.push(0);
+    for (var i = 1, len = temps.length; i < len; i++) {
+        var ref = temps[i];
+        if (ref.sum === maxValue) {
+            indexArr.push(i);
+        } else if (ref.sum > maxValue) {
+            maxValue = ref.sum;
+            indexArr.length = 0; //重置数组
+            indexArr.push(i);
+        }
+    }
+    return maxValue
+}
 
 
 
@@ -448,6 +508,87 @@ function find_number(arr, val){
 
 
 // 字符串全排列
+
+
+
+// 重建二叉树
+
+function TreeNode(x) {
+    this.val = x;
+    this.left = null;
+    this.right = null;
+}
+ 
+function reConstructBinaryTree(pre, vin)
+{
+    if(vin.length === 0)
+        return null;
+     
+    var root = 0, i, j;
+    var left_pre = [], right_pre = [], left_in = [], right_in = [];
+     
+    var head = new TreeNode(pre[0]);
+    for(i = 0; i < vin.length; i++){
+        if(vin[i] === pre[0]){
+            root = i;
+            break;
+        }
+    }
+    for(j = 0; j < root; j++){
+        left_pre.push(pre[j+1]);
+        left_in.push(vin[j]);
+    }
+    for(j = root + 1; j < vin.length; j++){
+        right_pre.push(pre[j]);
+        right_in.push(vin[j]);
+    }
+     
+    head.left = reConstructBinaryTree(left_pre, left_in);
+    head.right = reConstructBinaryTree(right_pre, right_in);
+     
+    return head;
+     
+}
+
+
+// 旋转数列
+function minNumberInRotateArray(rotateArray)
+{
+    // write code here
+	if(rotateArray.length === 0) {
+        return 0;
+    }
+    rotateArray.sort(function(a,b) {
+        return a-b;
+    });
+    return rotateArray[0];
+}
+
+// 斐波那契数列
+function Fibonacci(n)
+{
+    // write code here
+ 
+    if (n == 0) {
+        return 0;
+    } else if (n == 1) {
+        return 1;
+    }
+    var fibona = [0, 1];
+     
+    for (var i = 2; i <= n; i++) {
+        fibona.push(fibona[i - 1] + fibona[i - 2]);
+    }
+    return fibona.pop();
+}
+
+
+function swap_v2(first, second, third){
+	third = first + second;
+	first = second;
+	second = third;
+}
+
 
 
 
