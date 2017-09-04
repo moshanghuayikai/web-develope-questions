@@ -590,6 +590,36 @@ function swap_v2(first, second, third){
 }
 
 
+// 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示
+//Javascript 描述
+function NumberOf1(n)
+{
+    var num=0;
+    while(n){
+        num++;
+        n=(n-1)&n;
+    }
+    return num;
+}
+
+// 判断一个数是否是2的方幂 
+// n > 0 && (n & (n -1) == 0)   采用位操作符号却是就变的简单多啦
+
+
+
+//
+function m(n,k){
+    let bin = typeof(n) == 'number' ? (n).toString(k) : n.toString(k);
+    //console.log(bin);
+    let base7 = ['f','c','e','2','0','1','7'];
+    var rtn = '';
+    bin.split('').forEach(function(v){// split 功能很强大  分割一个字符串为数组很方方便
+    		// str.split([separator[, limit]])  separator 可以是一个字符串或正则表达式 如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返
+        rtn += base7[v]
+    })
+    return rtn;
+}
+// m(2017, 7) //17cc
 
 
 
