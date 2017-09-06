@@ -594,6 +594,26 @@ Height = height(包含padding-top + padding-bottom + border-top + border-bottom)
     :checked        单选框或复选框被选中。
 ```
 
+> 伪类选择器还有哪些？
+
+```
+first-child()
+last-child()
+link
+visited
+hover
+active
+focus
+after
+before
+first-letter
+first-line
+lang(language)
+
+太多了🏋️
+```
+
+> [CSS 参考--选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#选择器)
 
 
 > CSS3有哪些新特性？
@@ -2983,6 +3003,11 @@ kebab-case: 短横线命名
 
 ![TCP 状态转换图](./images/TCP_translate_status.jpg)
 
+
+> [TCP连接建立的三次握手与连接断开四次挥手](http://www.nginx.cn/4696.html)
+
+
+
 #### TCP和UDP的区别
 
 ```
@@ -3175,7 +3200,7 @@ Chrome|6|6
 传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
 
-#### 如何解决跨域问题
+#### 如何解决跨域问题🤸‍♀️
 
 > JSONP： 这个很重要
 
@@ -3191,7 +3216,7 @@ Chrome|6|6
   为了实现跨域请求，可以通过 script 标签实现跨域请求，然后在服务端输出JSON数据并执行回调函数，从而解决了跨域的数据请求。
 
 
-  优点是兼容性好，简单易用，支持浏览器与服务器双向通信。缺点是只支持GET请求。
+  优点是兼容性好，简单易用，支持浏览器与服务器双向通信。缺点是只支持 GET 请求。⚠️
 
   JSONP：json+padding（内填充），顾名思义，就是把JSON填充到一个盒子里
 ```
@@ -3207,15 +3232,16 @@ Chrome|6|6
         document.getElementsByTagName('head')[0].appendChild(oScript);
     }
 
-    createJs('jsonp.js');
-
-    box({
-       'name': 'test'
-    });
-
-    function box(json){
-        alert(json.name);
+    function jsonpCallback(result){
+      console.log(result)
     }
+
+    createJs('http://api.test.com/v2/get?callback=jsonpCallback');// 需要跨域的接口地址 拼接callback 参数
+
+    // 服务端 ⚠️ (PHP为例)
+    // $callback = $_GET['callback'];  获取其参数的值
+    // 将callback和返回值拼接在一起 也就是相当于调用定义的 回调函数 
+    // echo $callback . '(' . json_encode($data) .')'; // 切记 用 echo 不要用return 不然页面获取不到值
 </script>
 ```
 
@@ -3223,10 +3249,34 @@ Chrome|6|6
 > CORS
 
 ```
+  CORS是一个W3C标准，全称是“跨域资源共享”（Cross-origin resource sharing）。
+
+  CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。
+
+  浏览器将CORS请求分成两类：简单请求（simple request）和非简单请求（not-so-simple request）。
+
+  
+  对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个 Origin 字段。（说明本次请求来自哪个源（协议 + 域名 + 端口）服务器根据这个值，决定是否同意这次请求。）
+
   服务器端对于 CORS 的支持，主要就是通过设置 Access-Control-Allow-Origin 来进行的。
 
   如果浏览器检测到相应的设置，就可以允许 Ajax 进行跨域的访问。
+
+
+  非简单请求
+
+  先预先请求一次设置 Request Method:OPTIONS 方法 判断是否允许
+
+  在真正请求一次获取数据 Request Method:PUT (代码实际写的)
+
+  与JSONP的比较
+
+  CORS与JSONP的使用目的相同，但是比JSONP更强大。
+  JSONP只支持GET请求，CORS支持所有类型的HTTP请求。
+  JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。
 ```
+
+> [CORS通信](http://javascript.ruanyifeng.com/bom/cors.html)
 
 
 > 通过修改document.domain来跨子域
@@ -3237,6 +3287,8 @@ Chrome|6|6
   而且所用的协议，端口都要一致，否则无法利用 document.domain 进行跨域
 
   主域相同的使用 document.domain 
+
+  利用一个隐藏的iframe引入所跨另一子域的页面作为代理，通过Javascript来控制iframe引入的另一子域的XMLHTTPRequest来进行数据获取
 ```
 
 

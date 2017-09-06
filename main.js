@@ -1,33 +1,33 @@
 /**
-* 编程类操作
-* @author aierui
-* @Email aieruishi@gmail.com
-*/
+ * 编程类操作
+ * @author aierui
+ * @Email aieruishi@gmail.com
+ */
 
 // Closures
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Closures
 
-function init(){
-	let name = 'aierui';
-	// name 是一个被init创建的局部变量
-	function displayName(){// displayName() 是一个内部函数,
-		alert(name) //  一个闭包使用在父函数中声明的变量
-	}
-	displayName();
+function init() {
+    let name = 'aierui';
+    // name 是一个被init创建的局部变量
+    function displayName() { // displayName() 是一个内部函数,
+        alert(name) //  一个闭包使用在父函数中声明的变量
+    }
+    displayName();
 }
 
 init();
 
 
 // 事件代理
-function event(element, type, handler){
-	if (element.addEventListener) { // DOM2
-      element.addEventListener(type, handler, false);//监听函数只在冒泡阶段被触发
-  } else if (element.attachEvent) { // IE
-      element.attachEvent('on' + type, handler);
-  } else { // DOM0
-      element['on' + type] = handler;
-  }
+function event(element, type, handler) {
+    if (element.addEventListener) { // DOM2
+        element.addEventListener(type, handler, false); //监听函数只在冒泡阶段被触发
+    } else if (element.attachEvent) { // IE
+        element.attachEvent('on' + type, handler);
+    } else { // DOM0
+        element['on' + type] = handler;
+    }
 }
 
 
@@ -37,118 +37,120 @@ function event(element, type, handler){
 //去重、排序、常用库函数实现其原理
 
 // 采用 indexOf
-Array.prototype.unique = function(){
-	var result = [];
+Array.prototype.unique = function() {
+    var result = [];
 
-	this.forEach(function(v){
-		if(result.indexOf(v) <0 ){
-			result.push(v)	
-		}
-	})
+    this.forEach(function(v) {
+        if (result.indexOf(v) < 0) {
+            result.push(v)
+        }
+    })
 
-	return result;
+    return result;
 }
 
 
 
 // 去重、利用hash表去重，这是一种空间换时间的方法
 
-Array.prototype.unique = function(){
-	var result= [],hash = {};
+Array.prototype.unique = function() {
+    var result = [],
+        hash = {};
 
-	this.forEach(function(val,index){
-		if(!hash[v]){
-			hash[v] = true
-			result.push(v)
-		}
-	})
+    this.forEach(function(val, index) {
+        if (!hash[v]) {
+            hash[v] = true
+            result.push(v)
+        }
+    })
 
-	return result;
+    return result;
 }
 
 
 // 上面的方法存在一个bug，对于数组[1,2,’1’,’2’,3]，去重结果为[1,2,3]，原因在于对象对属性索引时会进行强制类型转换，arr[‘1’]和arr[1]得到的都是arr[1]的值，因此需做一些改变：
 
-Array.prototype.unique = function(){
-    var result = [],hash = {};
-    
-    this.forEach(function(v){
-        var type = typeof(v);  //获取元素类型
-        
+Array.prototype.unique = function() {
+    var result = [],
+        hash = {};
+
+    this.forEach(function(v) {
+        var type = typeof(v); //获取元素类型
+
         hash[v] || (hash[v] = new Array());
-        
-        if(hash[v].indexOf(type) < 0){
-            hash[v].push(type);  //存储类型
+
+        if (hash[v].indexOf(type) < 0) {
+            hash[v].push(type); //存储类型
             result.push(v);
         }
 
     });
-    
+
     return result;
 }
 
 
 
 // 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
-function clone(obj){
-	var o;
-	
-	switch(typeof obj) {
-		case 'undefined':
-			break;
-		case 'string':
-			o = obj + ''
-			break;
-		case 'number':
-			o = obj - 0
-			break;
-		case 'boolean':
-			o = obj
-			break;
-		case 'object':
-			if(obj === null){
-				o = null
-			}else{
-				if(Object.prototype.toString.call(obj).slice(8, -1) == 'Array'){
-						o = [];
-						for (var i = 0; i < obj.length; i++) {
-							o.push(clone(obj[i]))
-						}
-				}else{
-					o = {}
-					for (key in obj) {
-						if (obj.hasOwnProperty(key)) {
-							o[key] = clone(obj[key])
-						}
-					}
+function clone(obj) {
+    var o;
 
-				}
-			}
-			break;
-		default:
-			o = obj
-	}
+    switch (typeof obj) {
+        case 'undefined':
+            break;
+        case 'string':
+            o = obj + ''
+            break;
+        case 'number':
+            o = obj - 0
+            break;
+        case 'boolean':
+            o = obj
+            break;
+        case 'object':
+            if (obj === null) {
+                o = null
+            } else {
+                if (Object.prototype.toString.call(obj).slice(8, -1) == 'Array') {
+                    o = [];
+                    for (var i = 0; i < obj.length; i++) {
+                        o.push(clone(obj[i]))
+                    }
+                } else {
+                    o = {}
+                    for (key in obj) {
+                        if (obj.hasOwnProperty(key)) {
+                            o[key] = clone(obj[key])
+                        }
+                    }
 
-	return o;
+                }
+            }
+            break;
+        default:
+            o = obj
+    }
+
+    return o;
 }
 
 
 
 
 //  实现一个forEach函数，即可遍历数组，也可以遍历对象
-function forEach(obj, fn){
-	var key;
-	if (obj instanceof Array) {
-	  obj.forEach(function(item, index){
-	    fn(index, item)
-	  })
-	}else{
-	  for(key in obj){
-	    if (obj.hasOwnProperty(key)) { // 注意这里的 hasOwnProperty 是自己的属性还是圆型链上的
-	      fn(key, obj[key])
-	    }
-	  }
-	}
+function forEach(obj, fn) {
+    var key;
+    if (obj instanceof Array) {
+        obj.forEach(function(item, index) {
+            fn(index, item)
+        })
+    } else {
+        for (key in obj) {
+            if (obj.hasOwnProperty(key)) { // 注意这里的 hasOwnProperty 是自己的属性还是圆型链上的
+                fn(key, obj[key])
+            }
+        }
+    }
 }
 
 
@@ -157,28 +159,27 @@ function forEach(obj, fn){
 // bind() 方法创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。
 // bind() 作用有两个，1、绑定this， 2、柯里化
 
-Function.prototype.bind = function(that)
-{
-	if(typeof this !== 'function'){
-		throw new TypeError()
-	}
+Function.prototype.bind = function(that) {
+    if (typeof this !== 'function') {
+        throw new TypeError()
+    }
 
-	var args = Array.prototype.slice.call(arguments, 1),
-		_bind = this,
-		f = function () {},
-		bounding = function () {
-			//采用 apply(this, []) 方式调用 
-			return _bind.apply(
-					this instanceof f ? this : that,// 这里这个 this 即是 调用方的 function 
-					args.concat(Array.prototype.slice.call(arguments))
-				);
-		}
+    var args = Array.prototype.slice.call(arguments, 1),
+        _bind = this,
+        f = function() {},
+        bounding = function() {
+            //采用 apply(this, []) 方式调用 
+            return _bind.apply(
+                this instanceof f ? this : that, // 这里这个 this 即是 调用方的 function 
+                args.concat(Array.prototype.slice.call(arguments))
+            );
+        }
 
-	// 设置原型链
-	f.prototype = this.prototype;
-	bounding.prototype = new f();
+    // 设置原型链
+    f.prototype = this.prototype;
+    bounding.prototype = new f();
 
-	return bounding;
+    return bounding;
 }
 
 
@@ -186,49 +187,48 @@ Function.prototype.bind = function(that)
 // 手写数组扁平化（[1,2,3,[1,2,3],[2,[3,4],3]]>[1,2,3,1,2,3,2,3,4,3]）算法；
 
 
-function flatten (arr){
-	return arr.toString().split(',');
+function flatten(arr) {
+    return arr.toString().split(',');
 }
 
 
 
 // 随机数
 
-function randMember(length)
-{
-	if (length == undefined) {
-		length = 10
-	}
+function randMember(length) {
+    if (length == undefined) {
+        length = 10
+    }
 
-	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  var str = "";
-  for (var i = 0; i < length; i++) {
-      str += chars.substr(Math.ceil(Math.random() * chars.length), 1);
-  }
-  return str;
+    var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    var str = "";
+    for (var i = 0; i < length; i++) {
+        str += chars.substr(Math.ceil(Math.random() * chars.length), 1);
+    }
+    return str;
 }
 
 
 
 //
 
-function randomArray(length){
-	var i,index,temp,arr=[length];
-	length = typeof(length) === 'undefined' ? 9 : length;
+function randomArray(length) {
+    var i, index, temp, arr = [length];
+    length = typeof(length) === 'undefined' ? 9 : length;
 
-	for(i = 1; i <= length; i ++){
-		arr[i - 1] = i;
-	}
+    for (i = 1; i <= length; i++) {
+        arr[i - 1] = i;
+    }
 
-	for(i = 1; i <= length; i++){
-		index = parseInt(Math.random() * (length - 1)) + 1;
+    for (i = 1; i <= length; i++) {
+        index = parseInt(Math.random() * (length - 1)) + 1;
 
-		if(index != i){
-			temp = arr[i];
-			arr[i] = arr[index];
-			arr[index] = temp;
-		}
-	}
+        if (index != i) {
+            temp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = temp;
+        }
+    }
 }
 
 
@@ -240,87 +240,91 @@ function randomArray(length){
 // 冒泡排序(Bubble Sort)
 */
 
-function bubbleSort(arr){
-	var len = arr.length,i,j,stop;
-	for(i= 0; i<len - 1; i++){
-		for(j = 0,stop = len -1 -i; j < stop; j++){
-			if(arr[j] > arr[ j +1]){
-				var temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j+1] = temp;
-			}
-		}
-	}
-	return arr;
+function bubbleSort(arr) {
+    var len = arr.length,
+        i, j, stop;
+    for (i = 0; i < len - 1; i++) {
+        for (j = 0, stop = len - 1 - i; j < stop; j++) {
+            if (arr[j] > arr[j + 1]) {
+                var temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
 }
 
 //可以改写，将交换拆出来，写成一个函数
 
-function swap(arr, n, m){
-	var t = arr[n];
-	arr[n] = arr[m];
-	arr[m] = t;
+function swap(arr, n, m) {
+    var t = arr[n];
+    arr[n] = arr[m];
+    arr[m] = t;
 }
 
-function bubbleSort2(arr){
-	var len = arr.length,i,j,stop;
+function bubbleSort2(arr) {
+    var len = arr.length,
+        i, j, stop;
 
-	for(i = 0; i< len -1; i++){
-		for(j = 0, stop= len - 1 -i; j < stop; j ++){
-			if(arr[j] > arr[j+1]){
-				swap(arr, j, j+1)
-			}
-		}
-	}
+    for (i = 0; i < len - 1; i++) {
+        for (j = 0, stop = len - 1 - i; j < stop; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(arr, j, j + 1)
+            }
+        }
+    }
 
-	return  arr;
+    return arr;
 }
 
 
 // 快速排序
-		//排序过程只需要三步：
-		//　1.在数据集之中，找一个基准点
+//排序过程只需要三步：
+//　1.在数据集之中，找一个基准点
 　　 //  2.建立两个数组，分别存储左边和右边的数组
 　　 //  3.利用递归进行下次比较
 
 
-function quickSort(arr){
-		if(arr.length <= 1) return arr;  //如果数组只有一个数，就直接返回；
+function quickSort(arr) {
+    if (arr.length <= 1) return arr; //如果数组只有一个数，就直接返回；
 
-		var index = Math.floor(arr.length/2);  //找到中间数的索引值，如果是浮点数，则向下取整
+    var index = Math.floor(arr.length / 2); //找到中间数的索引值，如果是浮点数，则向下取整
 
-		var key = arr.splice(index,1)[0];  //找到中间数的值
+    var key = arr.splice(index, 1)[0]; //找到中间数的值
 
-		var left = [],right = [];
+    var left = [],
+        right = [];
 
-		arr.forEach(function(v){
-		v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
-		});
+    arr.forEach(function(v) {
+        v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
+    });
 
-		return quickSort(left).concat([key],quickSort(right)); //递归不断重复比较
+    return quickSort(left).concat([key], quickSort(right)); //递归不断重复比较
 }
 
 
 // 选择排序 空间复杂度为O(1)
 
-function selectionSort(arr){
-	var len = arr.length, min;
-	
-	for(i = 0; i < len; i ++){
-		min = i;//假设当前位为最小;
-		// 检查数组其余部分是否更小
-		for(j = i + 1; j < len; j ++){
-			if(arr[j] < arr[min]){
-				min = j;
-			}
-		}
-		// 如果当前位置不是最小值，将其换为最小值
-		if(min != i){
-			swap(arr, i, min)
-		}
-	}
+function selectionSort(arr) {
+    var len = arr.length,
+        min;
 
-	return arr;
+    for (i = 0; i < len; i++) {
+        min = i; //假设当前位为最小;
+        // 检查数组其余部分是否更小
+        for (j = i + 1; j < len; j++) {
+            if (arr[j] < arr[min]) {
+                min = j;
+            }
+        }
+        // 如果当前位置不是最小值，将其换为最小值
+        if (min != i) {
+            swap(arr, i, min)
+        }
+    }
+
+    return arr;
 }
 
 
@@ -328,56 +332,58 @@ function selectionSort(arr){
 // 合并排序
 
 // 合并两个数组
-function merge(left, right){
-	var result = [], il=0, ir=0;
+function merge(left, right) {
+    var result = [],
+        il = 0,
+        ir = 0;
 
-	while(il <left.length && ir < right.length){
-		if(left[il] < right[ir]){
-			result.push(left[il++])
-		}else{
-			result.push(right[ir++])
-		}	
-	}
+    while (il < left.length && ir < right.length) {
+        if (left[il] < right[ir]) {
+            result.push(left[il++])
+        } else {
+            result.push(right[ir++])
+        }
+    }
 
-	return result.concat(left.slice(il).concat(right.slice(ir)));
+    return result.concat(left.slice(il).concat(right.slice(ir)));
 }
 
 
-function mergeSort(arr){
-	if(arr.length < 2){
-		return arr;
-	}
+function mergeSort(arr) {
+    if (arr.length < 2) {
+        return arr;
+    }
 
-	var mid = Math.floor(arr.length / 2),	
-			left = arr.slice(0, mid), 
-			right = arr.slice(mid), 
-			params = merge(mergeSort(left), mergeSort(right));
+    var mid = Math.floor(arr.length / 2),
+        left = arr.slice(0, mid),
+        right = arr.slice(mid),
+        params = merge(mergeSort(left), mergeSort(right));
 
-	params.unshift(0, arr.length);
-	arr.splice.apply(arr, params);
-	
-	return arr;
+    params.unshift(0, arr.length);
+    arr.splice.apply(arr, params);
+
+    return arr;
 }
 
 
 
 // 插入排序
-function insertSort(arr){
+function insertSort(arr) {
 
-	var len = arr.length,
-		val,// 当前比较的值
-		i,// 未排序部分的当前位置
-		j;// 已排序部分的当前位置
+    var len = arr.length,
+        val, // 当前比较的值
+        i, // 未排序部分的当前位置
+        j; // 已排序部分的当前位置
 
-	for(i = 0; i < len; i ++){
-		val = arr[i];
-		//当已排序部分的当前元素大于value， 就将当前元素向后移一位，再将前一位与value比较
-		for(j = i -1; j > -1 && arr[j] > val; j --){
-			arr[j+1] = arr[j]
-		}
-		arr[j + 1] = val;
-	}
-	return arr;
+    for (i = 0; i < len; i++) {
+        val = arr[i];
+        //当已排序部分的当前元素大于value， 就将当前元素向后移一位，再将前一位与value比较
+        for (j = i - 1; j > -1 && arr[j] > val; j--) {
+            arr[j + 1] = arr[j]
+        }
+        arr[j + 1] = val;
+    }
+    return arr;
 }
 
 
@@ -385,41 +391,46 @@ function insertSort(arr){
 
 // 出现次数超过一半的数字
 
-function findExceedNum(arr){
-	var rtn = [], mid = Math.ceil(arr.length/2), hash = {}
-	arr.forEach(function(item, index){
-		if(!hash[item]){
-			hash[item]  = true;
-			rtn[item] = 1
-		}else{
-			rtn[item] ++ 
-		}
-	})
+function findExceedNum(arr) {
+    var rtn = [],
+        mid = Math.ceil(arr.length / 2),
+        hash = {}
+    arr.forEach(function(item, index) {
+        if (!hash[item]) {
+            hash[item] = true;
+            rtn[item] = 1
+        } else {
+            rtn[item]++
+        }
+    })
 
-	rtn.forEach(function(v,index){// forEach 可以自动过滤掉数组key为undefined
+    rtn.forEach(function(v, index) { // forEach 可以自动过滤掉数组key为undefined
 
-		if(v >= mid ){
-			console.log(index)
-		}
-	})
+        if (v >= mid) {
+            console.log(index)
+        }
+    })
 }
 
 
-function find_exceed_num(arr){
-	var result = [], mid = Math.ceil(arr.length / 2),hash = {}, rtn = [];
+function find_exceed_num(arr) {
+    var result = [],
+        mid = Math.ceil(arr.length / 2),
+        hash = {},
+        rtn = [];
 
-	arr.forEach(function(item, index){
-		if(!hash[item]){
-				hash[item] = true;
-				rtn[item] = 1;
-		}else{
-			rtn[item] ++
-			if(rtn[item] >= mid && result.indexOf(item) < 0){
-				result.push(item);
-			}
-		}
-	})
-	return result;//返回一个出现次数超过一半的数组，
+    arr.forEach(function(item, index) {
+        if (!hash[item]) {
+            hash[item] = true;
+            rtn[item] = 1;
+        } else {
+            rtn[item]++
+                if (rtn[item] >= mid && result.indexOf(item) < 0) {
+                    result.push(item);
+                }
+        }
+    })
+    return result; //返回一个出现次数超过一半的数组，
 }
 
 
@@ -441,7 +452,7 @@ function getTempValue(temp, currentValue) {
 
 function getSubMaxSum(line) {
     if (line.length === 0) return;
-    var temps = []; 
+    var temps = [];
 
     var temp = {
         num: 1,
@@ -450,13 +461,13 @@ function getSubMaxSum(line) {
     temps.push(temp);
 
     for (var i = 1, len = line.length; i < len; i++) {
-       
-        var temp = getTempValue(temps[i-1], line[i]);
+
+        var temp = getTempValue(temps[i - 1], line[i]);
         temps.push(temp);
     }
 
     var maxValue,
-        indexArr = []; 
+        indexArr = [];
     maxValue = temps[0].sum;
     indexArr.push(0);
     for (var i = 1, len = temps.length; i < len; i++) {
@@ -477,32 +488,33 @@ function getSubMaxSum(line) {
 
 // 有序数组的查找
 
-function containe(arr, val){
-	var i = arr.length;
-	while (i -- ) {
-		if(arr[i] == val){
-			return true;
-		}
-	}
-	return false;
+function containe(arr, val) {
+    var i = arr.length;
+    while (i--) {
+        if (arr[i] == val) {
+            return true;
+        }
+    }
+    return false;
 }
 
-function find_number(arr, val){
-	if(typeof val != 'number') return false;
-	arr.sort();
-	var l = 0,r = arr.length;
-	while(l <= r){
-		var mid = Math.floor( (l + r) / 2 );
-		if(arr[mid] > val){
-			r = mid - 1;
-		}else if(arr[mid] < val){
-			l = mid + 1;
-		}else{
-			return arr[mid];
-		}
+function find_number(arr, val) {
+    if (typeof val != 'number') return false;
+    arr.sort();
+    var l = 0,
+        r = arr.length;
+    while (l <= r) {
+        var mid = Math.floor((l + r) / 2);
+        if (arr[mid] > val) {
+            r = mid - 1;
+        } else if (arr[mid] < val) {
+            l = mid + 1;
+        } else {
+            return arr[mid];
+        }
 
-	}
-	return false;
+    }
+    return false;
 }
 
 
@@ -513,69 +525,53 @@ function find_number(arr, val){
 
 // 重建二叉树
 
-function TreeNode(x) {
-    this.val = x;
-    this.left = null;
-    this.right = null;
-}
- 
-function reConstructBinaryTree(pre, vin)
-{
-    if(vin.length === 0)
-        return null;
-     
-    var root = 0, i, j;
-    var left_pre = [], right_pre = [], left_in = [], right_in = [];
-     
-    var head = new TreeNode(pre[0]);
-    for(i = 0; i < vin.length; i++){
-        if(vin[i] === pre[0]){
-            root = i;
-            break;
-        }
-    }
-    for(j = 0; j < root; j++){
-        left_pre.push(pre[j+1]);
-        left_in.push(vin[j]);
-    }
-    for(j = root + 1; j < vin.length; j++){
-        right_pre.push(pre[j]);
-        right_in.push(vin[j]);
-    }
-     
-    head.left = reConstructBinaryTree(left_pre, left_in);
-    head.right = reConstructBinaryTree(right_pre, right_in);
-     
-    return head;
-     
+function TreeNode(x) {    
+    this.val = x;    
+    this.left = null;    
+    this.right = null;
+} 
+function reConstructBinaryTree(pre, vin) {    
+    if (vin.length === 0)         return null;         
+    var root = 0,
+        i, j;    
+    var left_pre = [],
+        right_pre = [],
+        left_in = [],
+        right_in = [];         
+    var head = new TreeNode(pre[0]);    
+    for (i = 0; i < vin.length; i++) {         if (vin[i] === pre[0]) {             root = i;             break;         }     }    
+    for (j = 0; j < root; j++) {         left_pre.push(pre[j + 1]);        
+        left_in.push(vin[j]);     }    
+    for (j = root + 1; j < vin.length; j++) {         right_pre.push(pre[j]);        
+        right_in.push(vin[j]);     }          head.left = reConstructBinaryTree(left_pre, left_in);    
+    head.right = reConstructBinaryTree(right_pre, right_in);         
+    return head;     
 }
 
 
 // 旋转数列
-function minNumberInRotateArray(rotateArray)
-{
+function minNumberInRotateArray(rotateArray) {
     // write code here
-	if(rotateArray.length === 0) {
+    if (rotateArray.length === 0) {
         return 0;
     }
-    rotateArray.sort(function(a,b) {
-        return a-b;
+    rotateArray.sort(function(a, b) {
+        return a - b;
     });
     return rotateArray[0];
 }
 
 // 斐波那契数列
-function Fibonacci(n)
-{
+function Fibonacci(n) {
     // write code here
- 
+
     if (n == 0) {
         return 0;
     } else if (n == 1) {
         return 1;
     }
     var fibona = [0, 1];
-     
+
     for (var i = 2; i <= n; i++) {
         fibona.push(fibona[i - 1] + fibona[i - 2]);
     }
@@ -583,23 +579,20 @@ function Fibonacci(n)
 }
 
 
-function swap_v2(first, second, third){
-	third = first + second;
-	first = second;
-	second = third;
+function swap_v2(first, second, third) {
+    third = first + second;
+    first = second;
+    second = third;
 }
 
 
 // 输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示
 //Javascript 描述
-function NumberOf1(n)
-{
-    var num=0;
-    while(n){
-        num++;
-        n=(n-1)&n;
-    }
-    return num;
+function NumberOf1(n) {    
+    var num = 0;    
+    while (n) {         num++;        
+        n = (n - 1) & n;     }    
+    return num;
 }
 
 // 判断一个数是否是2的方幂 
@@ -608,19 +601,72 @@ function NumberOf1(n)
 
 
 //
-function m(n,k){
+function m(n, k) {
     let bin = typeof(n) == 'number' ? (n).toString(k) : n.toString(k);
     //console.log(bin);
-    let base7 = ['f','c','e','2','0','1','7'];
+    let base7 = ['f', 'c', 'e', '2', '0', '1', '7'];
     var rtn = '';
-    bin.split('').forEach(function(v){// split 功能很强大  分割一个字符串为数组很方方便
-    		// str.split([separator[, limit]])  separator 可以是一个字符串或正则表达式 如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返
+    bin.split('').forEach(function(v) { // split 功能很强大  分割一个字符串为数组很方方便
+        // str.split([separator[, limit]])  separator 可以是一个字符串或正则表达式 如果分隔符为空字符串，则将str原字符串中每个字符的数组形式返
         rtn += base7[v]
     })
     return rtn;
 }
 // m(2017, 7) //17cc
 
+function convert(a, b){
+	let rtn = [];
+	while (a > 0) {
+		rtn.push( a % b );
+		a = Math.floor( a/b )
+	}
+	return rtn.reverse().join(''); //join 默认是英文逗号 split 默认是将字符串以字符形式分割
+}
+
+
+//求最大公约数
+//方案一 辗转相处法则
+function gcd(a, b) {
+    while (a % b != 0) {
+        var c = a % b;
+        a = b;
+        b = c;
+    }
+    return b;
+}
+
+// 求最小公倍数 最小公倍数 = 两个数的积 / 最大公约数
+function lcm(a, b) {
+    return a * b / gcd(a, b)
+}
+
+// 10进制转化成62进制
+function string10to62(number) {
+    var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ'.split(''),
+        radix = chars.length,
+        qutient = +number,
+        arr = [];
+    do {
+        mod = qutient % radix;
+        qutient = (qutient - mod) / radix;
+        arr.unshift(chars[mod]);
+    } while (qutient);
+    return arr.join('');
+}
+
+// 62进制转化成10进制
+function string62to10(number_code) {
+    var chars = '0123456789abcdefghigklmnopqrstuvwxyzABCDEFGHIGKLMNOPQRSTUVWXYZ',
+        radix = chars.length,
+        number_code = String(number_code),
+        len = number_code.length,
+        i = 0,
+        origin_number = 0;
+    while (i < len) {
+        origin_number += Math.pow(radix, i++) * chars.indexOf(number_code.charAt(len - i) || 0);
+    }
+    return origin_number;
+}
 
 
 
