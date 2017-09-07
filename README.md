@@ -3262,6 +3262,7 @@ Chrome|6|6
         document.getElementsByTagName('head')[0].appendChild(oScript);
     }
 
+    //先定义回调函数，在请求 不然请求返回的结果 函数没有定义
     function jsonpCallback(result){
       console.log(result)
     }
