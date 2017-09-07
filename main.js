@@ -31,9 +31,6 @@ function event(element, type, handler) {
 }
 
 
-
-
-
 //去重、排序、常用库函数实现其原理
 
 // 采用 indexOf
@@ -55,7 +52,7 @@ Array.prototype.unique = function() {
 
 Array.prototype.unique = function() {
     var result = [],
-        hash = {};
+        hash = {}
 
     this.forEach(function(val, index) {
         if (!hash[v]) {
@@ -72,7 +69,7 @@ Array.prototype.unique = function() {
 
 Array.prototype.unique = function() {
     var result = [],
-        hash = {};
+        hash = {}
 
     this.forEach(function(v) {
         var type = typeof(v); //获取元素类型
@@ -182,11 +179,29 @@ Function.prototype.bind = function(that) {
     return bounding;
 }
 
+export function bind (fn, ctx) {
+  function boundFn (a) {
+    const l = arguments.length
+    return l
+      ? l > 1
+        ? fn.apply(ctx, arguments)
+        : fn.call(ctx, a)
+      : fn.call(ctx)
+  }
+  // record original fn length
+  boundFn._length = fn.length
+  return boundFn
+}
 
+function foo(){
+	this.b = 100;
+	return this.a
+}
+var func = foo.bind({a:1})
+func();// 1;
+new func();//{b:100}
 
 // 手写数组扁平化（[1,2,3,[1,2,3],[2,[3,4],3]]>[1,2,3,1,2,3,2,3,4,3]）算法；
-
-
 function flatten(arr) {
     return arr.toString().split(',');
 }
@@ -210,7 +225,7 @@ function randMember(length) {
 
 
 
-//
+// 有问题
 
 function randomArray(length) {
     var i, index, temp, arr = [length];
@@ -233,57 +248,11 @@ function randomArray(length) {
 
 
 
-
-/*============ 排序算法 ==============
-*／
-
-// 冒泡排序(Bubble Sort)
-*/
-
-function bubbleSort(arr) {
-    var len = arr.length,
-        i, j, stop;
-    for (i = 0; i < len - 1; i++) {
-        for (j = 0, stop = len - 1 - i; j < stop; j++) {
-            if (arr[j] > arr[j + 1]) {
-                var temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-    return arr;
-}
-
-//可以改写，将交换拆出来，写成一个函数
-
-function swap(arr, n, m) {
-    var t = arr[n];
-    arr[n] = arr[m];
-    arr[m] = t;
-}
-
-function bubbleSort2(arr) {
-    var len = arr.length,
-        i, j, stop;
-
-    for (i = 0; i < len - 1; i++) {
-        for (j = 0, stop = len - 1 - i; j < stop; j++) {
-            if (arr[j] > arr[j + 1]) {
-                swap(arr, j, j + 1)
-            }
-        }
-    }
-
-    return arr;
-}
-
-
 // 快速排序
 //排序过程只需要三步：
 //　1.在数据集之中，找一个基准点
-　　 //  2.建立两个数组，分别存储左边和右边的数组
-　　 //  3.利用递归进行下次比较
+//  2.建立两个数组，分别存储左边和右边的数组
+//  3.利用递归进行下次比较
 
 
 function quickSort(arr) {
@@ -302,91 +271,6 @@ function quickSort(arr) {
 
     return quickSort(left).concat([key], quickSort(right)); //递归不断重复比较
 }
-
-
-// 选择排序 空间复杂度为O(1)
-
-function selectionSort(arr) {
-    var len = arr.length,
-        min;
-
-    for (i = 0; i < len; i++) {
-        min = i; //假设当前位为最小;
-        // 检查数组其余部分是否更小
-        for (j = i + 1; j < len; j++) {
-            if (arr[j] < arr[min]) {
-                min = j;
-            }
-        }
-        // 如果当前位置不是最小值，将其换为最小值
-        if (min != i) {
-            swap(arr, i, min)
-        }
-    }
-
-    return arr;
-}
-
-
-
-// 合并排序
-
-// 合并两个数组
-function merge(left, right) {
-    var result = [],
-        il = 0,
-        ir = 0;
-
-    while (il < left.length && ir < right.length) {
-        if (left[il] < right[ir]) {
-            result.push(left[il++])
-        } else {
-            result.push(right[ir++])
-        }
-    }
-
-    return result.concat(left.slice(il).concat(right.slice(ir)));
-}
-
-
-function mergeSort(arr) {
-    if (arr.length < 2) {
-        return arr;
-    }
-
-    var mid = Math.floor(arr.length / 2),
-        left = arr.slice(0, mid),
-        right = arr.slice(mid),
-        params = merge(mergeSort(left), mergeSort(right));
-
-    params.unshift(0, arr.length);
-    arr.splice.apply(arr, params);
-
-    return arr;
-}
-
-
-
-// 插入排序
-function insertSort(arr) {
-
-    var len = arr.length,
-        val, // 当前比较的值
-        i, // 未排序部分的当前位置
-        j; // 已排序部分的当前位置
-
-    for (i = 0; i < len; i++) {
-        val = arr[i];
-        //当已排序部分的当前元素大于value， 就将当前元素向后移一位，再将前一位与value比较
-        for (j = i - 1; j > -1 && arr[j] > val; j--) {
-            arr[j + 1] = arr[j]
-        }
-        arr[j + 1] = val;
-    }
-    return arr;
-}
-
-
 
 
 // 出现次数超过一半的数字
@@ -441,7 +325,7 @@ function getTempValue(temp, currentValue) {
         return {
             num: temp.num + 1,
             sum: temp.sum + currentValue
-        };
+        }
     } else {
         return {
             num: 1,
@@ -457,7 +341,7 @@ function getSubMaxSum(line) {
     var temp = {
         num: 1,
         sum: line[0]
-    };
+    }
     temps.push(temp);
 
     for (var i = 1, len = line.length; i < len; i++) {
@@ -500,7 +384,9 @@ function containe(arr, val) {
 
 function find_number(arr, val) {
     if (typeof val != 'number') return false;
-    arr.sort();
+    arr.sort(function(a, b){
+    	return a - b;
+    });
     var l = 0,
         r = arr.length;
     while (l <= r) {
@@ -512,7 +398,6 @@ function find_number(arr, val) {
         } else {
             return arr[mid];
         }
-
     }
     return false;
 }
@@ -531,19 +416,33 @@ function TreeNode(x) {    
     this.right = null;
 } 
 function reConstructBinaryTree(pre, vin) {    
-    if (vin.length === 0)         return null;         
+    if (vin.length === 0) return null;         
     var root = 0,
         i, j;    
     var left_pre = [],
         right_pre = [],
         left_in = [],
-        right_in = [];         
-    var head = new TreeNode(pre[0]);    
-    for (i = 0; i < vin.length; i++) {         if (vin[i] === pre[0]) {             root = i;             break;         }     }    
-    for (j = 0; j < root; j++) {         left_pre.push(pre[j + 1]);        
-        left_in.push(vin[j]);     }    
-    for (j = root + 1; j < vin.length; j++) {         right_pre.push(pre[j]);        
-        right_in.push(vin[j]);     }          head.left = reConstructBinaryTree(left_pre, left_in);    
+        right_in = [];      
+           
+    var head = new TreeNode(pre[0]);   
+     
+    for (i = 0; i < vin.length; i++) {         
+    	if (vin[i] === pre[0]) {             
+    			root = i;             
+    			break;        
+    	}     
+    } 
+       
+    for (j = 0; j < root; j++) {        
+        left_pre.push(pre[j + 1]);        
+        left_in.push(vin[j]);    
+    }  
+      
+    for (j = root + 1; j < vin.length; j++) {        
+        right_pre.push(pre[j]);        
+        right_in.push(vin[j]);    
+    }         
+    head.left = reConstructBinaryTree(left_pre, left_in);    
     head.right = reConstructBinaryTree(right_pre, right_in);         
     return head;     
 }
@@ -590,8 +489,10 @@ function swap_v2(first, second, third) {
 //Javascript 描述
 function NumberOf1(n) {    
     var num = 0;    
-    while (n) {         num++;        
-        n = (n - 1) & n;     }    
+    while (n) {        
+        num++;        
+        n = (n - 1) & n;    
+    }    
     return num;
 }
 
@@ -614,13 +515,13 @@ function m(n, k) {
 }
 // m(2017, 7) //17cc
 
-function convert(a, b){
-	let rtn = [];
-	while (a > 0) {
-		rtn.push( a % b );
-		a = Math.floor( a/b )
-	}
-	return rtn.reverse().join(''); //join 默认是英文逗号 split 默认是将字符串以字符形式分割
+function convert(a, b) {
+    let rtn = [];
+    while (a > 0) {
+        rtn.push(a % b);
+        a = Math.floor(a / b)
+    }
+    return rtn.reverse().join(''); //join 默认是英文逗号 split 默认是将字符串以字符形式分割
 }
 
 
@@ -669,6 +570,579 @@ function string62to10(number_code) {
 }
 
 
+// JS 栈
 
+function Stack() {
+    var items = [];
+    this.push = function(element) {
+        items.push(element);
+    };
+    this.pop = function() {
+        return items.pop();
+    };
+    this.peek = function() {
+        return items[items.length - 1];
+    };
+    this.isEmpty = function() {
+        return items.length == 0;
+    };
+    this.size = function() {
+        return items.length;
+    };
+    this.clear = function() {
+        items = [];
+    };
+    this.print = function() {
+        console.log(items.toString());
+    };
+}
+
+function Queue() {
+    var items = [];
+    this.enqueue = function(element) {
+        items.push(element);
+    };
+    this.dequeue = function() {
+        return items.shift();
+    };
+    this.front = function() {
+        return items[0];
+    };
+    this.isEmpty = function() {
+        return items.length == 0;
+    };
+    this.clear = function() {
+        items = [];
+    };
+    this.size = function() {
+        return items.length;
+    };
+    this.print = function() {
+        console.log(items.toString());
+    }
+}
+
+
+// 链表
+
+function LinkedList() {
+    var Node = function(element) {
+        this.element = element;
+        this.next = null;
+    };
+    var length = 0;
+    var head = null;
+    this.append = function(element) {
+        var node = new Node(element), current;
+        if (head === null) { //列表中第一个节点 
+        	head = node;
+        } else {
+          current = head; 
+          //循环列表，直到找到最后一项 
+          while(current.next){
+	          current = current.next;
+        	}
+	        //找到最后一项，将其next赋为node，建立链接
+	        current.next = node; 
+      	}
+    	length++; //更新列表的长度 
+    };
+    this.insert = function(position, element) {
+        //检查越界值
+        if (position >= 0 && position <= length) { 
+            var node = new Node(element),
+                current = head,
+                previous,
+                index = 0;
+            if (position === 0) { //在第一个位置添加 node.next = current; 
+                head = node;
+            } else {
+                while (index++ < position) { 
+                    previous = current;
+                    current = current.next;
+                }
+                node.next = current; 
+                previous.next = node; 
+            }
+            length++; //更新列表的长度
+            return true;
+        } else {
+            return false; 
+        }
+    };
+    this.removeAt = function(position) {
+        //检查越界值
+        if (position > -1 && position < length) { 
+            var current = head, 
+                previous, 
+                index = 0; 
+            //移除第一项
+            if (position === 0) { 
+                head = current.next;
+            } else {
+                while (index++ < position) { 
+                    previous = current; 
+                    current = current.next; 
+                }
+                //将previous与current的下一项链接起来:跳过current，从而移除它
+                previous.next = current.next; 
+            }
+            length--; 
+            return current.element;
+        } else {
+            return null; 
+        }
+    };
+    this.remove = function(element) {
+    	var index = this.indexOf(element);
+    	return this.removeAt(index);
+    };
+    this.indexOf = function(element) {
+        var current = head,
+            index = -1;
+        while (current) {
+            if (element === current.element) {
+                return index;
+            }
+            index++;
+            current = current.next;
+        }
+        return -1;
+    };
+    this.isEmpty = function() {
+    	return length === 0;
+    };
+    this.size = function() {
+    	return length;
+    };
+    this.getHead = function(){
+      return head;
+		};
+    this.toString = function() {
+    	var current = head, string = '';
+    	while (current) {
+    		string += current.element
+    		current = current.next
+    	}
+    	return string.split('').join();
+    };
+    this.print = function() {};
+}
+
+
+// 集合
+function Set(){
+	var items = {};
+	this.add = function (value){
+		if (!this.has(value)){
+        items[value] = value; 
+        return true;
+    }
+    return false;
+	}
+	this.remove = function(value) {
+    if (this.has(value)) {
+        delete items[value]; 
+        return true;
+    }
+    return false;
+	}
+	this.has = function (value){
+		return value in items; // return items.hasOwnProperty(value); 
+	}
+	this.clear = function(){
+		items = {}; 
+	}
+	this.size = function(){
+		return Object.keys(items).length;
+	}
+	this.values = function (){
+		return Object.keys(items);
+	}
+	//并集
+	this.union = function(otherSet) {
+	    var unionSet = new Set();
+	    var values = this.values();
+	    for (var i = 0; i < values.length; i++) {
+	        unionSet.add(values[i]);
+	    }
+	    values = otherSet.values();
+	    for (var i = 0; i < values.length; i++) {
+	        unionSet.add(values[i]);
+	    }
+	    return unionSet;
+	}
+
+	// 交集
+	this.intersection = function(otherSet) {
+	    var intersectionSet = new Set();
+	    var values = this.values();
+	    for (var i = 0; i < values.length; i++) {
+	        if (otherSet.has(values[i])) {
+	            intersectionSet.add(values[i]);
+	        }
+	    }
+	    return intersectionSet;
+	}
+
+	// 差集
+	this.difference = function(otherSet) {
+	    var differenceSet = new Set();
+	    var values = this.values();
+	    for (var i = 0; i < values.length; i++) {
+	        if (!otherSet.has(values[i])) {
+	            differenceSet.add(values[i]);
+	        }
+	    }
+	    return differenceSet;
+	}
+
+	// 子集
+	this.subset = function(otherSet) {
+    if (this.size() > otherSet.size()) {
+        return false;
+    } else {
+        var values = this.values();
+        for (var i = 0; i < values.length; i++) {
+            if (!otherSet.has(values[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+	}
+}
+
+// 字典 => es6 Map
+
+function Dictionary() {
+  var items = {};
+
+  this.set = function(key, value){
+  	items[key] = value
+  }
+  this.remove = function(key){
+  	if(this.has(key)){
+  		delete items[key]
+  		return true;
+  	}
+  	return false
+  }
+  this.has = function(key){
+  	return key in items;
+  }
+  this.get = function(key){
+  	 return this.has(key) ? items[key] : undefined;
+  }
+  this.keys = function () {
+  	return Object.keys(items);
+  }
+  this.clear = function(){
+		items = {}; 
+	}
+	this.size = function(){
+		return Object.keys(items).length;
+	}
+  this.values = function() {
+      var values = [];
+      for (var k in items) {
+          if (this.has(k)) {
+              values.push(items[k]);
+          }
+      }
+      return values;
+  }
+}
+
+
+// 树 二叉搜索树（BST） 只允许你在左侧节点存储(比父节点)小的值， 在右侧节点存储(比父节点)大(或者等于)的值
+function BinarySearchTree() {
+  var Node = function(key) {
+      this.key = key;
+      this.left = null;
+      this.right = null;
+  };
+  var root = null;
+
+	this.insert = function(key) {
+	    var newNode = new Node(key);
+	    if (root === null) {
+	        root = newNode;
+	    } else {
+	        insertNode(root, newNode);
+	    }
+	};
+
+	var insertNode = function(node, newNode) {
+	    if (newNode.key < node.key) {
+	        if (node.left === null) {
+	          node.left = newNode;
+	        } else {
+	          insertNode(node.left, newNode);
+	        }
+	    } else {
+	        if (node.right === null) {
+	          node.right = newNode;
+	        } else {
+	          insertNode(node.right, newNode);
+	        }
+	    }
+	}
+
+	// 中序
+	this.inOrderTraverse = function(callback) {
+	    inOrderTraverseNode(root, callback);
+	}
+	var inOrderTraverseNode = function(node, callback) {
+	    if (node !== null) {
+	        inOrderTraverseNode(node.left, callback);
+	        callback(node.key);
+	        inOrderTraverseNode(node.right, callback);
+	    }
+	}
+
+	//先序
+	this.preOrderTraverse = function(callback) {
+	    preOrderTraverseNode(root, callback);
+	}
+	var preOrderTraverseNode = function(node, callback) {
+	    if (node !== null) {
+	        callback(node.key);
+	        preOrderTraverseNode(node.left, callback);
+	        preOrderTraverseNode(node.right, callback);
+	    }
+	}
+
+	//后序
+	this.postOrderTraverse = function(callback) {
+	    postOrderTraverseNode(root, callback);
+	}
+	var postOrderTraverseNode = function(node, callback) {
+	    if (node !== null) {
+	        postOrderTraverseNode(node.left, callback);
+	        postOrderTraverseNode(node.right, callback);
+	        callback(node.key);
+	    }
+	}
+
+	// 最小值
+	this.min = function() {
+    return minNode(root);
+	}
+	var minNode = function(node) {
+	    if (node) {
+	        while (node && node.left !== null) {
+	            node = node.left;
+	            return node.key;
+	        }
+	        return null;
+	    }
+	}
+
+	// 最大值
+	this.max = function() {
+	    return maxNode(root);
+	}
+	var maxNode = function(node) {
+	    if (node) {
+	        while (node && node.right !== null) {
+	            node = node.right;
+	        }
+	        return node.key;
+	    }
+	    return null;
+	}
+
+	// 按值搜索
+	this.search = function(key) {
+	    return searchNode(root, key);
+	}
+	var searchNode = function(node, key) {
+	    if (node === null) {
+	        return false;
+	    }
+	    if (key < node.key) {
+	        return searchNode(node.left, key);
+	    } else if (key > node.key) {
+	        return searchNode(node.right, key);
+	    } else {
+	        return true;
+	    }
+	}
+
+	this.remove = function(key) {
+	    root = removeNode(root, key);
+	};
+
+	var removeNode = function(node, key) {
+	    if (node === null) {
+	        return null;
+	    }
+	    if (key < node.key) {
+	        node.left = removeNode(node.left, key);
+	        return node;
+	    } else if (key > node.key) {
+	        node.right = removeNode(node.right, key);
+	        return node;
+	    } else { //键等于node.key
+	        //第一种情况——一个叶节点
+        if (node.left === null && node.right === null) {
+            node = null;
+            return node;
+        }
+        //第二种情况——一个只有一个子节点的节点 
+        if (node.left === null){
+	        node = node.right;
+	        return node;
+		    } else if (node.right === null) { 7 
+		    		node = node.left;
+		        return node;
+		    }
+	    //第三种情况——一个有两个子节点的节点 7 
+	    var aux = findMinNode(node.right);
+	    node.key = aux.key;
+	    node.right = removeNode(node.right, aux.key);
+	    return node; 
+		}
+	}
+}
+
+function ArrayList() {
+    var array = [];
+    this.insert = function(item) {
+        array.push(item);
+    }
+    this.toString = function() {
+        return array.join();
+    }
+
+    this.bubbleSort = function(){
+    	var len = array.length,
+        i, j, stop;
+	    for (i = 0; i < len - 1; i++) {
+	        for (j = 0, stop = len - 1 - i; j < stop; j++) {// 已经排序过的不在排列
+	            if (array[j] > array[j + 1]) {
+	                swap(array, j, j + 1)
+	            }
+	        }
+	    }
+    }
+
+    var swap = function(i, j) {
+        var tem = array[i];
+        array[i] = array[i];
+        array[i] = tem;
+    }
+
+    this.selectionSort = function() {
+        var length = array.length,
+            indexMin;
+        for (var i = 0; i < length - 1; i++) {
+            indexMin = i;//假设当前位为最小;
+
+            // 检查数组其余部分是否更小
+            for (var j = i; j < length; j++) {
+            	if (array[indexMin] > array[j]) {
+		            indexMin = j;
+		          }
+            }
+        }
+        // 如果当前位置不是最小值，将其换为最小值
+        if (i !== indexMin) {
+            swap(i, indexMin);
+        }
+    }
+
+    //它将数组分成“已排序”和“未排序”两部分
+    this.insertionSort = function() {
+        var length = array.length,
+            j, temp;
+        for (var i = 1; i < length; i++) {// 认为第一项已经是排序的
+            j = i;
+            temp = array[i];
+            //当已排序部分的当前元素大于value， 就将当前元素向后移一位，再将前一位与value比较
+            while (j > 0 && array[j - 1] > temp) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = temp;
+        }
+    }
+
+    this.mergeSort = function() {
+        array = mergeSortRec(array);
+    };
+
+    var mergeSortRec = function(array) {
+        var length = array.length;
+        if (length === 1) { 
+            return array; 
+        }
+        var mid = Math.floor(length / 2),
+            left = array.slice(0, mid),
+            right = array.slice(mid, length); 
+        return merge(mergeSortRec(left), mergeSortRec(right));  
+    };
+
+		var merge = function(left, right) {
+		    var result = [],
+		        il = 0,
+
+		        ir = 0;
+		    while (il < left.length && ir < right.length) {
+		        if (left[il] < right[ir]) {
+		            result.push(left[il++]);
+		        } else {
+
+		            result.push(right[ir++]);
+		        }
+		    }
+		    while (il < left.length) {
+		        result.push(left[il++]);
+		    }
+		    while (ir < right.length) {
+		        result.push(right[ir++]);
+		    }
+		    return result;
+		};
+
+		this.quickSort = function() {
+			//1、找个基准点 2、将数组分成两部分 3、递归
+		    if (array.length <= 1) return array; //如果数组只有一个数，就直接返回；
+
+		    var index = Math.floor(array.length / 2); //找到中间数的索引值，如果是浮点数，则向下取整
+
+		    var key = array.splice(index, 1)[0]; //找到中间数的值
+
+		    var left = [],
+		        right = [];
+
+		    array.forEach(function(v) {
+		        v <= key ? left.push(v) : right.push(v); //基准点的左边的数传到左边数组、右边的数传到右边数组
+		    });
+
+		    return quickSort(left).concat([key], quickSort(right)); //递归不断重复比较
+		};
+
+		// 二分查找
+		this.binarySearch = function(item) {
+		    this.quickSort();
+		    var low = 0,
+		        high = array.length - 1,
+		        mid, element;
+		    while (low <= high) {
+		        mid = Math.floor((low + high) / 2);
+		        element = array[mid];
+		        if (element < item) {
+		            low = mid + 1;
+		        } else if (element > item) {
+		            high = mid - 1;
+		        } else {
+		            return mid;
+		        }
+		    }
+		    return -1;
+		}
+}
 
 
