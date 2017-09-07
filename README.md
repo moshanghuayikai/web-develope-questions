@@ -665,6 +665,13 @@ lang(language)
 
 
 
+> CSS分辨率就是 物理分辨率 / 设备像素比（dpr或者dppx）
+
+> 物理分辨率就是设备的显示屏物理像素分辨率
+
+
+
+
 > 说说你对语义化的理解？
 
 ```
@@ -889,6 +896,7 @@ lang(language)
     W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。
 ```
 
+> [块格式化上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 
 
 > 能够触发BFC的元素有？ 一般可以通过触发元素的 BFC 达到清除浮动的目的
@@ -1085,9 +1093,9 @@ output
 > `data-`属性的作用是什么？
 
 ```
-`data-`为H5新增的为前端开发者提供自定义的属性，这些属性集可以通过对象的 `dataset` 属性获取，不支持该属性的浏览器可以通过 `getAttribute` 方法获取 :
+data- 为H5新增的为前端开发者提供自定义的属性，这些属性集可以通过对象的  dataset  属性获取，不支持该属性的浏览器可以通过  getAttribute  方法获取 :
 
-需要注意的是：`data-`之后的以连字符分割的多个单词组成的属性，获取的时候使用驼峰风格。 所有主流浏览器都支持 data-* 属性。
+需要注意的是： data- 之后的以连字符分割的多个单词组成的属性，获取的时候使用驼峰风格。 所有主流浏览器都支持 data-* 属性。
 即：当没有合适的属性和元素时，自定义的 data 属性是能够存储页面或 App 的私有的自定义数据。
 ```
 
@@ -2039,70 +2047,7 @@ label 标签的 for 对应一个 id 用于二者的关联
 ```
 
 
-
-
-#### 说说你对Promise的理解
-
-> Promises的写法
-
-```
-// 
-(new Promise(step1))
-  .then(step2)
-  .then(step3)
-  .then(step4);
-```
-
-
-> 依照 `Promise` 的定义，`Promise` 有三种状态：
-
-    异步操作“未完成”（pending）
-    
-    异步操作“已完成”（resolved，又称fulfilled）
-    
-    异步操作“失败”（rejected）
-
-
-> 这三种的状态的变化途径只有两种。
-
-    异步操作从“未完成”到“已完成”
-    
-    异步操作从“未完成”到“失败”。
-
-
-> 另外， `fulfilled` 与 `rejected` 一起合称 `settled`。
-
-> `Promise` 对象用来进行延迟(deferred) 和异步(asynchronous ) 计算。
-
-> Promise 的构造函数，最基本的用法如下：
-
-
-```js
-  var promise = new Promise(function(resolve, reject) {
-
-      if (...) {  // succeed
-
-          resolve(result);
-
-      } else {   // fails
-
-          reject(Error(errMessage));
-
-      }
-  });
-```
-
-
-> `Promise` 实例拥有 `then` 方法（具有 `then` 方法的对象，通常被称为 `thenable`）。它的使用方法如下：
-
-```js
-  promise.then(onFulfilled, onRejected)
-  
-  //接收两个函数作为参数，一个在 `fulfilled` 的时候被调用，一个在 `rejected` 的时候被调用，
-  //接收参数就是 `future，onFulfilled` 对应 `resolve`, `onRejected` 对应 `reject`。
-  //then方法可以链式使用
-
-```
+> [Promise](#Promise)
 
 
 
@@ -2367,7 +2312,7 @@ Infinity 不是常量，可以把它设置为其他值。
 
 ![](./images/event-loop.png)
 
-> 上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。
+> 上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。栈会记录所有的函数调用信息，堆则存放了大量的非结构化数据，譬如程序分配的变量与对象
 
 
 *图/文* 来自阮一峰
@@ -2376,6 +2321,8 @@ Infinity 不是常量，可以把它设置为其他值。
 
 
 > [并发模型与事件循环](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/EventLoop)
+
+> [JavaScript Event Loop 机制详解与 Vue.js 中实践应用](https://segmentfault.com/a/1190000011044242)
 
 
 > preventDefault()、stopPropagation()、cancelBubble() 🏀
@@ -2719,6 +2666,7 @@ kebab-case: 短横线命名
 ```
 
 
+
 > [编程类详细见](main.js) 
 
 
@@ -3044,19 +2992,19 @@ kebab-case: 短横线命名
 > TCP 如何保证数据的可靠性？ 总结来说，如下：
 
 ```
-  应用数据被分割成TCP认为最合适发送的数据块。这和UDP完全不同，应用程序产生的数据报长度将保持不变。由TCP传递给TP的信息单位被称为报文段或段(segment)
+  1.应用数据被分割成TCP认为最合适发送的数据块。这和UDP完全不同，应用程序产生的数据报长度将保持不变。由TCP传递给TP的信息单位被称为报文段或段(segment)
 
-  当TCP发出一个段后，它启动一个定时器🌚，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段(自适应的超时重发策略)。
+  2.当TCP发出一个段后，它启动一个定时器🌚，等待目的端确认收到这个报文段。如果不能及时收到一个确认，将重发这个报文段(自适应的超时重发策略)。
 
-  当TCP收到发自TCP连接另一端，它将发送一个确认。这个确认不是立即发送，通常将推迟几分之一秒。🥄
+  3.当TCP收到发自TCP连接另一端，它将发送一个确认。这个确认不是立即发送，通常将推迟几分之一秒。🥄
 
-  TCP将保持它首部和数据的检验和🍽。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如收到段的检验和有差错，TCP将丢弃这个报文段和不确认收到此报文段(希望发送端超时重发)。
+  4.TCP将保持它首部和数据的检验和🍽。这是一个端到端的检验和，目的是检测数据在传输过程中的任何变化。如收到段的检验和有差错，TCP将丢弃这个报文段和不确认收到此报文段(希望发送端超时重发)。
 
-  既然TCP报文段作为IP数据报来传输，而IP数据报的到达可能会失序，因此TCP报文段的到达也可能会失序，如果有必要，TCP将对受到的数据进行重新排序🥂，将收到的数据以正确顺序交给应用层。
+  5.既然TCP报文段作为IP数据报来传输，而IP数据报的到达可能会失序，因此TCP报文段的到达也可能会失序，如果有必要，TCP将对受到的数据进行重新排序🥂，将收到的数据以正确顺序交给应用层。
 
-  既然IP数据包会发生重复，TCP的接收端必须丢弃重复的数据🍼。
+  6.既然IP数据包会发生重复，TCP的接收端必须丢弃重复的数据🍼。
 
-  TCP还能提供流量控制。TCP连接的每一方都有固定大小的缓存空间🍭。TCP的接受端只允许另一端发送接收端缓存区所能够接纳的数据。这将防止较快主机导致使较慢主机缓存区溢出。
+  7.TCP还能提供流量控制。TCP连接的每一方都有固定大小的缓存空间🍭。TCP的接受端只允许另一端发送接收端缓存区所能够接纳的数据。这将防止较快主机导致使较慢主机缓存区溢出。
 ```
 
 
@@ -4014,6 +3962,106 @@ Chrome|6|6
 
     });
 ```
+
+
+
+<h4 id="Promise">Promise</h4>
+
+
+
+#### 说说你对 Promise 的理解
+
+> Promises的写法
+
+```
+// 
+(new Promise(step1))
+  .then(step2)
+  .then(step3)
+  .then(step4);
+```
+
+
+> 依照 `Promise` 的定义，`Promise` 有三种状态：
+
+    异步操作“未完成”（pending）
+    
+    异步操作“已完成”（resolved，又称fulfilled）
+    
+    异步操作“失败”（rejected）
+
+
+> 这三种的状态的变化途径只有两种。
+
+    异步操作从“未完成”到“已完成”
+    
+    异步操作从“未完成”到“失败”。
+
+
+> 另外， `fulfilled` 与 `rejected` 一起合称 `settled`。
+
+> `Promise` 对象用来进行延迟(deferred) 和异步(asynchronous ) 计算。
+
+> Promise 的构造函数，最基本的用法如下：
+
+
+```js
+  var promise = new Promise(function(resolve, reject) {
+
+      if (...) {  // succeed
+
+          resolve(result);
+
+      } else {   // fails
+
+          reject(Error(errMessage));
+
+      }
+  });
+```
+
+
+> `Promise` 实例拥有 `then` 方法（具有 `then` 方法的对象，通常被称为 `thenable`）。它的使用方法如下：
+
+```js
+  promise.then(onFulfilled, onRejected)
+  
+  //接收两个函数作为参数，一个在 `fulfilled` 的时候被调用，一个在 `rejected` 的时候被调用，
+  //接收参数就是 `future，onFulfilled` 对应 `resolve`, `onRejected` 对应 `reject`。
+  //then方法可以链式使用
+
+```
+
+
+> Promise.then 是异步执行的，而创建 Promise 实例 （executor） 是同步执行的，譬如下述代码
+
+```
+  (function test() {
+      setTimeout(function() {console.log(4)}, 0);
+      new Promise(function executor(resolve) {
+          console.log(1);
+          for( var i=0 ; i<10000 ; i++ ) {
+              i == 9999 && resolve();
+          }
+          console.log(2);
+      }).then(function() {
+          console.log(5);
+      });
+      console.log(3);
+  })()
+
+  // 输出结果为：
+  // 1
+  // 2
+  // 3
+  // 5
+  // 4
+
+```
+
+
+
+
 
 
 <h2 id="3.3">前端框架</h2>
