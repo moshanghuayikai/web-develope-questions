@@ -4517,6 +4517,12 @@ Chrome|6|6
     如果网站不需要再浏览器端对 cookie  进行操作，可以在 Set-Cookie  末尾加上 HttpOnly  来防止 javascript  代码直接获取 cookie  。
 
 
+    cookie 增加安全性
+
+    secure
+    HttpOnly
+  
+
     尽量采用 POST 而非 GET 提交表单
 
 ```

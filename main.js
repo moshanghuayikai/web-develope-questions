@@ -151,6 +151,15 @@ function forEach(obj, fn) {
 }
 
 
+function huo(x){
+	let count = 0;
+	while(x){
+		count ++;
+		x= x&(x-1);
+	}
+	return count;
+}
+
 
 // 实现 bind() 
 // bind() 方法创建一个新的函数, 当被调用时，将其this关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。
@@ -200,6 +209,8 @@ function foo(){
 var func = foo.bind({a:1})
 func();// 1;
 new func();//{b:100}
+
+
 
 // 手写数组扁平化（[1,2,3,[1,2,3],[2,[3,4],3]]>[1,2,3,1,2,3,2,3,4,3]）算法；
 function flatten(arr) {
