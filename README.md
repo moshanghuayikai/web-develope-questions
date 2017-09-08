@@ -4035,7 +4035,7 @@ Chrome|6|6
 
 > Promise.then 是异步执行的，而创建 Promise 实例 （executor） 是同步执行的，譬如下述代码
 
-```
+```js
   (function test() {
       setTimeout(function() {console.log(4)}, 0);
       new Promise(function executor(resolve) {
