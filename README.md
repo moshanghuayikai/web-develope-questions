@@ -918,7 +918,7 @@ lang(language)
 > 上下margin重合问题
 
 ```css
-    IE和FF都存在，相邻的两个div的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生塌陷，
+    IE和FF都存在，相邻的两个div(块级元素)的margin-left和margin-right不会重合，但是margin-top和margin-bottom却会发生塌陷，
 
         塌陷的最终尺寸是两个值中较大的一个。
 
@@ -1143,6 +1143,11 @@ data- 为H5新增的为前端开发者提供自定义的属性，这些属性集
 JS引擎则：解析和执行 javascript 来实现网页的动态效果。
 最开始渲染引擎和JS引擎并没有区分的很明确，后来 JS 引擎越来越独立，内核就倾向于只指渲染引擎。
 ```
+
+
+分析：[Web图片资源的加载与渲染时机](https://segmentfault.com/a/1190000010032501)
+
+
 
 > 什么是 FOUC（无样式内容闪烁）？你如何来避免 FOUC？
 
@@ -1422,6 +1427,7 @@ label 标签的 for 对应一个 id 用于二者的关联
 ```
 
 
+
 > HTML5 应用程序缓存和浏览器缓存有什么区别？
 
 ```html
@@ -1433,6 +1439,9 @@ label 标签的 for 对应一个 id 用于二者的关联
  
 与传统浏览器缓存相比，它不强制用户访问的网站内容被缓存。
 ```
+
+> [使用应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache)
+
 
 
 
@@ -1491,6 +1500,25 @@ label 标签的 for 对应一个 id 用于二者的关联
 ```html
 <marquee scrolldelay="300" direction="left">Welcome!</marquee>
 ```
+
+
+
+> 去除inline-block元素间间距的N种方法
+
+```
+使用font-size:0 
+
+使用letter-spacing
+
+使用word-spacing
+```
+
+
+[去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
+
+
+
+
 
 
 <h2 id="1.2">JavaScript</h2>
@@ -1582,9 +1610,28 @@ label 标签的 for 对应一个 id 用于二者的关联
 ```
 
 
+
+> 基本包装类型 (Boolean、Number、String)
+
+```js
+  console.log(new Boolean(1))
+  VM1056:1 Boolean {[[PrimitiveValue]]: true}__proto__: Boolean[[PrimitiveValue]]: true
+  
+  console.log(new Number(1))
+  VM1058:1 Number {[[PrimitiveValue]]: 1}
+
+  console.log(new String('A'))
+  VM1060:1 String {0: "A", length: 1, [[PrimitiveValue]]: "A"}
+```
+
+
+
+
 > 抽象(宽松)相等比较 (==) 与 严格相等比较 (===)
 
 [JavaScript 中的相等性判断](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+
 
 
 > Object.prototype.toString
@@ -3114,8 +3161,7 @@ Chrome|6|6
 
 详情：[从输入 URL 到浏览器接收的过程中发生了什么事情？](http://fex.baidu.com/blog/2014/05/what-happen/)
 
-分析：[浏览器的渲染原理简介](http://liuwanlin.info/liu-lan-qi-de-xuan-ran-yuan-li-jian-jie/)
-
+分析：[Web图片资源的加载与渲染时机](https://segmentfault.com/a/1190000010032501)
 
 
 #### 什么是Etag？
@@ -3329,6 +3375,84 @@ Chrome|6|6
 
 
 
+> IPv6
+
+```
+  IPv6 的地址长度为128b，最大地址个数为2^128，是IPv4地址长度的4倍。Pv6有3种表示方法。
+
+  1.冒分十六进制表示法 //格式为X:X:X:X:X:X:X:X
+ 
+  2.0位压缩表示法
+ 
+  3.内嵌IPv4地址表示法
+
+  相比IPv4特点
+
+  IPv6具有更大的地址空间、更小的路由表、主机地址自动配置、具有更高的安全性、良好的扩展性、简化的报文头格式
+```
+
+> Pv6实现了IP级的安全
+
+```
+1.安全协议套：是发送者和接收者的双向约定，只由目标地址和安全参数索引（SPI）确定。
+
+2.包头认证：提供了数据完整性和分组的鉴权。
+
+3.安全包头封装：ESP根据用户的不同需求，支持IP分组的私密和数据完整性。 它既可用于传送层（如TCP、UDP、ICMP）的加密， 称传送层模式ESP，同时又可用于整个分组的加密，称隧道模式ESP。
+
+4.ESPDES-CBC方式：ESP处理一般必须执行DES-CBC加密算法，数据分为以64位为单位的块进行处理，解密逻辑的输入是现行数据和先前加密数据块的与或。
+
+5.鉴权加私密方式：根据不同的业务模式，两种IP安全机制可以按一定的顺序结合，从而达到分组传送加密的目的。按顺序的不同，分为鉴权之前加密和加密之前鉴权[15]  。
+```
+
+
+
+> IPv4
+
+```
+IPv4中规定IP地址长度为32，最大地址个数为2^32。
+```
+
+
+
+> 如果将网络IP段40.15.128.0/17划分成2个子网,则第一个子网IP段为40.15.128.0/18,则第二个子网为:
+
+[答案解析](https://www.nowcoder.com/questionTerminal/2f2f014967bf4cbd964245ec6d563e28)
+
+
+
+> 属于“10.174.20.176/28”该网段的有效IP地址是：
+
+
+[答案解析](https://www.nowcoder.com/questionTerminal/9677dcf28f474477b30300e02bb97c2f?pos=15&mutiTagIds=604&orderByHotValue=0&done=0)
+
+
+
+> 如何模拟网络不佳的情况？
+
+```
+  WANem能模拟延迟，丢包，低带宽。支持tcp和Udp
+
+  Linux下TC
+
+  Windows下Network Emulator for Windows Toolkit
+
+  有钱的单位可以使用网络损伤仪等硬件产品
+```
+
+
+
+> 内网穿透，即NAT穿透 Network Address Translator(网络地址转换器)
+
+```
+  1.实现内网之间机器的网络通信。
+  2.需要解决UDP出现的数据传输不稳定问题。
+```
+![](./images/nat.png)
+
+
+
+
 
 <h1 id="2">编程能力</h1>
 
@@ -3464,6 +3588,9 @@ Chrome|6|6
 
 ```
 
+> 链表在物理存储单元上的存储结构： 非连续存储、非顺序存储，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。
+
+
 > 栈和队列的区别?
 
 ```
@@ -3478,13 +3605,15 @@ Chrome|6|6
 > 栈和堆的区别？
 
 ```
-    栈区（stack）：由编译器自动分配释放，存放函数的参数值，局部变量的值等。
+    栈区（stack）：由编译器自动分配释放，存放函数的参数值，局部变量的值等。// 系统自动分配,系统收回;
 
-    堆区（heap） ：一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收。
+    堆区（heap） ：一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收。// 需要程序员自己申请
 
     堆（数据结构）：堆可以被看成是一棵树，如：堆排序；
 
     栈（数据结构）：一种后进先出的数据结构。
+
+    栈是编译时分配空间，而堆是动态分配（运行时分配空间），所以栈的速度快
 ```
 
 
@@ -3497,6 +3626,7 @@ Chrome|6|6
 | 插入排序 | 数组、链表 |   ✅ | O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(n<sup>2</sup>) |  O(1)  |  （有序区，无序区）。把无序区的第一个元素插入到有序区的合适的位置。对数组：比较得少，换得多 | 
 | 归并排序 | 数组、链表 |   ✅ | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(nlog<sub>2</sub>n) | O(n) | 把数据分为两段，从两段中逐个选最小的元素移入新数据段的末尾。可从上到下或从下到上进行 | 
 | 基数排序 | 数组、链表 |   ✅ | O(d(n+r))|  O(d(n+r)) |  O(d(n+r)) |  O(r) | 一种多关键字的排序算法，可用桶排序实现 | 
+| 计数排序 | 线性表 | 稳定 | Ο(n+k)  |  |  |  | 非基于比较的排序算法| 
 | 选择排序 | 数组、链表| 数组 ✅<br> 链表 ❌ |  O(n<sup>2</sup>) | O(n<sup>2</sup>) | O(n<sup>2</sup>) |  O(1)  |  (有序区，无序区）。在无序区里找一个最小的元素跟在有序区的后面。对数组：比较得多，换得少 | 
 | 快速排序 | 数组  |  ❌ | O(nlog<sub>2</sub>n) |  O(n<sup>2</sup>) | O(nlog<sub>2</sub>n) | O(log<sub>2</sub>n)、O(n)  |  小数，枢纽元，大数
 | 希尔排序 |  数组  |  ❌ | O(n<sup>1.3</sup>) | |  O(n<sup>2</sup>)  |  O(1) | 每一轮按照事先决定的间隔进行插入排序，间隔会依次缩小，最后一次一定要是1 | 
