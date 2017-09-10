@@ -983,13 +983,13 @@ lang(language)
 
 > 查找
 
-          document.querySelector() //匹配该选择器的元素节点(若匹配多个则返回第一个) 空则返回null 但是，它们不支持CSS伪元素的选择器
+          Element | document.querySelector() //匹配该选择器的元素节点(若匹配多个则返回第一个) 空则返回null 但是，它们不支持CSS伪元素的选择器
 
-          document.querySelectorAll() //返回 NodeList 对象，包含所有匹配给定选择器的节点 
+          Element | document.querySelectorAll() //返回 NodeList 对象，包含所有匹配给定选择器的节点 
 
-          document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的 HTMLCollection 对象 集合
+          Element | document.getElementsByTagName()    //通过标签名称 返回值是一个类似数组的 HTMLCollection 对象 集合
 
-          document.getElementsByClassName()   //返回值是一个类似数组的 HTMLCollection 对象 集合
+          Element | document.getElementsByClassName()   //返回值是一个类似数组的 HTMLCollection 对象 集合
 
           document.getElementsByName()   //返回一个类似数组的 NodeList 对象的实例 仅限使用于拥有name属性的HTML元素
 
@@ -1004,6 +1004,42 @@ lang(language)
 
   typeof HTMLCollection // "function"
 ```
+
+
+
+> 盒状模型相关属性
+
+
+> Element.clientHeight，Element.clientWidth
+> 这两个属性的值包括Padding、但不包括滚动条、边框和Margin，单位为像素
+
+
+> Element.clientLeft (元素节点左边框（left border）的宽度)，Element.clientTop
+> 这两个属性包括滚动条的宽度，但不包括Margin和Padding，元素的显示设为display: inline，它的clientLeft属性一律为0
+
+
+> Element.scrollHeight，Element.scrollWidth
+> 某个网页元素的总高度，总宽度（都包括由于溢出容器而无法显示在网页上的那部分高度或宽度）
+
+
+> Element.scrollLeft，Element.scrollTop
+> 网页元素的水平滚动条向右(向下)侧滚动的像素数量
+
+
+> Element.offsetHeight，Element.offsetWidth
+> 这两个属性值包括Padding和Border、以及滚动条。这也意味着，如果不存在内容溢出，Element.offsetHeight只比Element.clientHeight多了边框的高度
+
+
+> Element.offsetLeft，Element.offsetTop
+> 
+
+
+> Element.style
+
+
+> 某个网页元素距离视口左上角的坐标，使用 Element.getBoundingClientRect 方法读取。
+
+
 
 > DOM模型中节点类型有？
           
@@ -4602,6 +4638,7 @@ Chrome|6|6
 
 ```
 
+> 轮播效果的主要原理就是：父元素:overflow:hidden; 采用每个子元素margin 采用负数的方法
 
 
 > 上拉加载、下拉刷新
