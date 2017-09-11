@@ -86,6 +86,10 @@ Array.prototype.unique = function() {
     return result;
 }
 
+Array.prototype.unique = function(a) {
+  return Array.from(new Set(a));
+}
+
 
 
 // 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
