@@ -92,6 +92,84 @@ Array.prototype.unique = function(a) {
 
 
 
+Array.prototype.map = function(callback, thisArg) {
+
+  var T, A, k;
+
+  if (this == null) {
+    throw new TypeError(" this is null or not defined");
+  }
+
+  // 1. 将O赋值为调用map方法的数组.
+  var O = Object(this);
+
+  // 2.将len赋值为数组O的长度.
+  var len = O.length >>> 0; // >> 右移,高位补符号位” 这里右移一位表示除2 “>>> 无符号右移 高位补0
+
+  // 3.如果callback不是函数,则抛出TypeError异常.
+  if (Object.prototype.toString.call(callback) != "[object Function]") {
+    throw new TypeError(callback + " is not a function");
+  }
+
+  // 4. 如果参数thisArg有值,则将T赋值为thisArg;否则T为undefined.
+  if (thisArg) {
+    T = thisArg;
+  }
+
+  // 5. 创建新数组A,长度为原数组O长度len
+  A = new Array(len);
+
+  // 6. 将k赋值为0
+  k = 0;
+
+  // 7. 当 k < len 时,执行循环.
+  while(k < len) {
+
+    var kValue, mappedValue;
+
+    //遍历O,k为原数组索引
+    if (k in O) {
+
+      //kValue为索引k对应的值.
+      kValue = O[ k ];
+
+      // 执行callback,this指向T,参数有三个.分别是kValue:值,k:索引,O:原数组.
+      mappedValue = callback.call(T, kValue, k, O);
+
+      // 返回值添加到新数组A中.
+      A[ k ] = mappedValue;
+    }
+    // k自增1
+    k++;
+  }
+
+  // 8. 返回新数组A
+  return A;
+};      
+
+Array.prototype.some = function(fun /*, thisArg */)
+{
+  'use strict';
+
+  if (this === void 0 || this === null)
+    throw new TypeError();
+
+  var t = Object(this);
+  var len = t.length >>> 0;
+  if (typeof fun !== 'function')
+    throw new TypeError();
+
+  var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+  for (var i = 0; i < len; i++)
+  {
+    if (i in t && fun.call(thisArg, t[i], i, t))
+      return true;
+  }
+
+  return false;
+};
+
+
 // 实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
 function clone(obj) {
     var o;
@@ -135,7 +213,49 @@ function clone(obj) {
     return o;
 }
 
+  
 
+var remove = function (obj, k){
+	for (key in obj) {
+		if (obj.hasOwnProperty(key) && key == k) {
+			delete obj[k]
+			return true
+		}
+	}
+	return false;
+}
+
+// 继承给Object
+Object.prototype.remove = function ( k ){
+	if (this === void 0 || this === null)
+    throw new TypeError();
+
+  var obj = Object(this);
+	for (key in obj) {
+		if (obj.hasOwnProperty(key) && key == k) {
+			delete obj[k]
+			return true
+		}
+	}
+	return false;
+}
+
+
+var compose = function(...args) {
+    var len = args.length
+    var count = len - 1
+    var result
+    return function f1(...args1) {
+        result = args[count].apply(this, args1)
+        if (count <= 0) {
+            count = len - 1
+            return result
+        } else {
+            count--
+            return f1.call(null, result)
+        }
+    }
+}
 
 
 //  实现一个forEach函数，即可遍历数组，也可以遍历对象

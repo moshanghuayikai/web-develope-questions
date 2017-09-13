@@ -12,7 +12,6 @@
 
     - [HTML/CSS](#1.1)
 
-
     - [JavaScript](#1.2)
 
     - [网络](#1.3)
@@ -929,7 +928,7 @@ lang(language)
 > 对WEB标准以及W3C的理解与认识?
 
 ```
-标签闭合、标签小写、不乱嵌套、提高搜索机器人搜索几率、使用外 链css和 js 脚本、结构行为表现的分离、
+标签闭合、标签小写、不乱嵌套、提高搜索机器人搜索机率、使用外 链css和 js 脚本、结构行为表现的分离、
 文件下载与页面速度更快、内容能被更多的用户所访问、内容能被更广泛的设备所访问、更少的代码和组件，
 容易维 护、改版方便，不需要变动页面内容、提供打印版本而不需要复制内容、提高网站易用性。
 ```
@@ -1076,27 +1075,39 @@ B ~ E       B元素后面的拥有共同父元素的兄弟元素E
 
 
 > Element.clientHeight，Element.clientWidth
+
 > 这两个属性的值包括Padding、但不包括滚动条、边框和Margin，单位为像素
 
 
+
 > Element.clientLeft (元素节点左边框（left border）的宽度)，Element.clientTop
+
 > 这两个属性包括滚动条的宽度，但不包括Margin和Padding，元素的显示设为display: inline，它的clientLeft属性一律为0
 
 
+
 > Element.scrollHeight，Element.scrollWidth
+
 > 某个网页元素的总高度，总宽度（都包括由于溢出容器而无法显示在网页上的那部分高度或宽度）
 
 
+
 > Element.scrollLeft，Element.scrollTop
+
 > 网页元素的水平滚动条向右(向下)侧滚动的像素数量
 
 
+
+
 > Element.offsetHeight，Element.offsetWidth
+
 > 这两个属性值包括Padding和Border、以及滚动条。这也意味着，如果不存在内容溢出，Element.offsetHeight只比Element.clientHeight多了边框的高度
+
 
 
 > Element.offsetLeft，Element.offsetTop
 > 
+
 
 
 > Element.style
@@ -1117,7 +1128,7 @@ B ~ E       B元素后面的拥有共同父元素的兄弟元素E
           DocumentFragment节点（代表一个文档的片段，本身就是一个完整的DOM树形结构）
 
 
-#### HTML5 有哪些新特性、移除了那些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？作用
+#### HTML5 有哪些新特性、移除了哪些元素？如何处理HTML5新标签的浏览器兼容问题？如何区分 HTML 和 HTML5？作用
 
 
       HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。
@@ -2883,9 +2894,9 @@ kebab-case: 短横线命名
   数据链路： PPP 、 FR 、 HDLC 、 VLAN 、 MAC （网桥，交换机） - 
   网络层： IP 、 ICMP 、 ARP 、 RARP 、 OSPF 、 IPX 、 RIP 、 IGRP 、 （路由器） - 
   传输层： TCP 、 UDP 、 SPX - 
-  会话层： NFS 、 SQL 、 NETBIOS 、 RPC - 
+  会话层： SQL 、RPC、 NFS 、NETBIOS 、  - 
   表示层： JPEG 、 MPEG 、 ASII - 
-  应用层： FTP 、 DNS 、 Telnet 、 SMTP 、 HTTP 、 WWW 、 NFS
+  应用层： HTTP 、FTP 、 DNS 、 Telnet 、 SMTP 、 SNMP、 WWW 、 NFS
 ```
 
 > 各种协议
@@ -2955,7 +2966,6 @@ kebab-case: 短横线命名
     503 Service Unavailable 服务器端暂时无法处理请求（可能是过载或维护）。
 
 ```
-
 
 #### GET和POST的区别，何时使用POST？
 
@@ -5004,6 +5014,8 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
 
 传送门 [2018 IT名企校招指南](https://www.nowcoder.com/activity/campus2018)
 
+
+跳跃表 redis
 
 
 不能停留、不能思考、不能留恋
