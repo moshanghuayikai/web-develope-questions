@@ -4164,6 +4164,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
 
 详见：[ECMAScript 6 入门](http://es6.ruanyifeng.com/)
 
+> [ES6 图解](https://github.com/Aierui/es6)
 
 > ES6 模块与 CommonJS 模块的差异
 
