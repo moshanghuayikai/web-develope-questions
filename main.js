@@ -1282,3 +1282,104 @@ function ArrayList() {
 
 
 
+
+// 观察者模式
+class EventEmitter {
+    constructor() {
+        this._events = {}
+    }
+    // publish
+    on(event, callback) {
+        let callbacks = this._events[event] || []
+        callbacks.push(callback)
+        this._events[event] = callbacks
+        return this
+    }
+    // remove
+    off(event, callback) {
+        let callbacks = this._events[event]
+        this._events[event] = callbacks && callbacks.filter(fn => fn !== callback)
+        return this
+    }
+    // Subscribe
+    emit(...args) {
+        const event = args[0]
+        const params = [].slice.call(args, 1)
+        const callbacks = this._events[event]
+        callbacks.forEach(fn => fn.apply(this, params))
+        return this
+    }
+    // Ensure a function is called only once.
+    once(event, callback) {
+        let wrapFunc = (...args) => {
+            callback.apply(this, args)
+            this.off(event, wrapFunc)
+        }
+        this.on(event, wrapFunc)
+        return this
+    }
+    toggle(event, callback) {
+        this.has(event, callback) ? this.off(event, callback) : this.on(event, callback)
+        return this
+    }
+    has(event, callback) {
+        let callbacks = this._events[event]
+        let rtn = false
+        callbacks.forEach(fn => fn === callback ? rtn = true : null)
+        return rtn
+    }
+}
+
+
+// 测试
+let ee = new EventEmitter();
+console.log(ee)
+function a() {
+    console.log('a')
+}
+function b() {
+    console.log('b')
+}
+function c() {
+    console.log('c')
+}
+function d(...a) {
+    console.log('d',...a)
+}
+ee.on('TEST1', a).on('TEST2', b).once('TEST2', c).on('TEST2',d);
+ee.emit('TEST1');
+console.log(ee.has('TEST1',a));
+ee.toggle('TEST1', function(){console.log('123456789=====>>>><<<<<>>>>>>')})
+console.log('....')
+ee.emit('TEST2');
+// In test2
+// In test2 again
+console.log('....')
+ee.emit('TEST2');
+
+
+// 单例模式
+class Single{
+  constructor(){
+    this._instance = null
+  }
+  sing(...args){
+    console.log('sing', ...args)
+  }
+  instance(...args){
+    if(!this._instance){
+      this._instance = this.sing(...args)
+    }
+    return this._instance
+  }
+}
+
+var s = new Single();
+s.instance('1')
+s.instance('2')
+s.instance('3')
+
+
+
+
+
