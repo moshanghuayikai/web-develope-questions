@@ -383,6 +383,40 @@ b、元素定位参考的是离自身最近的定位祖先元素，要满足两�
 详见： [圣杯布局和双飞翼布局（前端面试必看）](http://www.jianshu.com/p/f9bcddb0e8b4)
 延伸：双飞翼、多栏、弹性、流式、瀑布流、响应式布局
 
+
+> 纯 CSS 实现自适应正方形
+
+```html
+<div class="box"></div>
+```
+
+```css
+  //方案一
+  .box{// 利用VW单位
+    width: 100%;
+    height: vw;
+  }
+
+  //方案二
+  .box{// 利用padding的百分比，width和padding-bottom的百分比一致即可
+    width: 100%;
+    height:0;
+    padding-bottom: 100%;
+  }  
+
+  //方案三
+  .box{//
+    width: 100%;
+    overflow: hidden;
+  }
+  .box:after{
+    content: '';
+    display: block;
+    margin-top: 100%;
+  }
+```
+
+
 > 各个的浏览器前缀
 
 ```
@@ -3003,6 +3037,8 @@ kebab-case: 短横线命名
   TRACE
 
   OPTIONS
+
+  CONNECT
 ```
 
 
@@ -3058,6 +3094,12 @@ kebab-case: 短横线命名
 ```
 
 传送门：[HTTP/2 新特性浅析](https://segmentfault.com/a/1190000002765886)
+
+
+
+>  HTTP 原理
+
+本机(DNS)-封装HTTP请求包-建议TCP连接-服务端响应-TCP断开-数据渲染-
 
 
 
@@ -3360,6 +3402,7 @@ Chrome|6|6
 
 传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
+> [Web缓存详解](https://segmentfault.com/a/1190000010894695)
 
 #### 如何解决跨域问题🤸‍♀️
 
