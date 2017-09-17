@@ -1,10 +1,10 @@
 - [基础基础](#1)
 
-    - [HTML/CSS](./html&css.md)
+    - [HTML/CSS](sections/fed/html&css.md)
 
-    - [JavaScript](./javascript.md)
+    - [JavaScript](sections/fed/javascript.md)
 
-    - [网络](./network.md)
+    - [网络](sections/fed/network.md)
 
 - [编程能力](#2)
 
