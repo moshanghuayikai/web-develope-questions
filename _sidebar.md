@@ -1,7 +1,7 @@
-- [Web-Front-End Interview](./fed/README.md)
+- [Web-Front-End Interview](sections/fed/)
 	
 
-- [PHP-Developer Interview](./PHP-Developer-Questions.md)
+- [PHP-Developer Interview](sections/php/)
 
 
-- [Interviews](./interviews/README.md)
+- [Interviews](sections/interviews/)
