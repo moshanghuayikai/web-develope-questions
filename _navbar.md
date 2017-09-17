@@ -1,4 +1,4 @@
-- [Home](sections/fed/)
+- [Home](/)
 
 - Web-Developer
 
