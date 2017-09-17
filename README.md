@@ -1762,7 +1762,7 @@ label 标签的 for 对应一个 id 用于二者的关联
 > js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？
 
 
-![](./images/javascript_01020304.png)
+![](./assets/javascript_01020304.png)
 
 ```js
   function calc_float(arg1,arg2){
@@ -2557,7 +2557,7 @@ Infinity 不是常量，可以把它设置为其他值。
   主线程从"任务队列"中读取事件，这个过程是循环不断的，所以整个的这种运行机制又称为Event Loop（事件循环）
 ```
 
-![](./images/event-loop.png)
+![](./assets/event-loop.png)
 
 > 上图中，主线程运行的时候，产生堆（heap）和栈（stack），栈中的代码调用各种外部API，它们在"任务队列"中加入各种事件（click，load，done）。只要栈中的代码执行完毕，主线程就会去读取"任务队列"，依次执行那些事件所对应的回调函数。栈会记录所有的函数调用信息，堆则存放了大量的非结构化数据，譬如程序分配的变量与对象
 
@@ -3213,7 +3213,7 @@ kebab-case: 短横线命名
 
 > TCP 状态转换图
 
-![TCP 状态转换图](./images/TCP_translate_status.jpg)
+![TCP 状态转换图](./assets/TCP_translate_status.jpg)
 
 
 > [TCP连接建立的三次握手与连接断开四次挥手](http://www.nginx.cn/4696.html)
@@ -3426,7 +3426,7 @@ Chrome|6|6
 
 > 说了这么多，还不如来一张流程图
 
-![304-flow](./images/304-flow.png)
+![304-flow](./assets/304-flow.png)
 
 传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
@@ -3621,7 +3621,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
   1.实现内网之间机器的网络通信。
   2.需要解决UDP出现的数据传输不稳定问题。
 ```
-![](./images/nat.png)
+![](./assets/nat.png)
 
 
 
@@ -4697,7 +4697,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
   测试金字塔反映了需要写的单元测试、集成测试以及端到端测试的比例:
 
 ```
-![unit_tests.png](./images/unit_tests.png)
+![unit_tests.png](./assets/unit_tests.png)
 
 ```
   测试HTTP接口时应该是这样的:
