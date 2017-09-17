@@ -1759,6 +1759,34 @@ label 标签的 for 对应一个 id 用于二者的关联
 
 
 
+> js 中， 0.1 + 0.2 === 0.3 是否为 true ? 在不知道浮点数位数时应该怎样判断两个浮点数之和与第三数是否相等？
+
+
+![](./images/javascript_01020304.png)
+
+```js
+  function calc_float(arg1,arg2){
+    var r1,r2,m;
+      try{
+      r1=arg1.toString().split(".")[1].length
+    }catch(e){
+      r1=0
+    }
+      try{
+      r2=arg2.toString().split(".")[1].length
+    }catch(e){
+      r2=0
+    }
+    
+      m=Math.pow(10,Math.max(r1,r2))
+    
+      return (parseInt(arg1*m)+parseInt(arg2*m))/m
+  }
+```
+
+
+
+[传送门](http://blog.forga.me/2017/04/05/js-float-equal/)
 
 > Object.prototype.toString
 
