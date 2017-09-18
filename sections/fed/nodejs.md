@@ -140,8 +140,9 @@
   console.log(exports); //{}
 ```
 
+
 > es6 的export、import
-```
+```js
   export {name1,name2, …,nameN};
   export {variable1asname1,variable2asname2, …,nameN};
   export let name1,name2, …,nameN; // also var
