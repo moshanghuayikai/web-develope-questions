@@ -219,10 +219,12 @@
   使用letter-spacing
 
   使用word-spacing
+
+  // 都浮动 
 ```
 
 
-更多：[去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
+- 更多：[去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
 
 
 
@@ -417,7 +419,7 @@
 ```
   圣杯布局、双飞翼布局、flex布局
 ```
-更多： [圣杯布局和双飞翼布局（前端面试必看）](http://www.jianshu.com/p/f9bcddb0e8b4)
+- 更多： [圣杯布局和双飞翼布局（前端面试必看）](http://www.jianshu.com/p/f9bcddb0e8b4)
 延伸：双飞翼、多栏、弹性、流式、瀑布流、响应式布局
 
 
@@ -515,7 +517,7 @@
     align-self
 
 ```
-更多：[阮一峰老师的Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+- 更多：[阮一峰老师的Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
 
 
@@ -824,6 +826,7 @@
 > 解释下浮动和它的工作原理？清除浮动的技巧
 
 ```
+  浮动的实现主要是为了实现文字环绕效果 浮动不是bug，是特性(标准)，但浮动具有破坏性。
 
   浮动元素脱离文档流，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。
 
@@ -917,7 +920,7 @@
 ```
 
 
-更多： [块格式化上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+- 更多： [块格式化上下文](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
 
 
 
@@ -1160,7 +1163,7 @@ E:first-child   任一是其父母结点的第一个子节点的元素E
 ```
 
 
-更多：[CSS 继承属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inheritance)
+- 更多：[CSS 继承属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inheritance)
 
 
 > 优先级为
@@ -1210,7 +1213,7 @@ lang(language)
 太多了🏋️
 ```
 
-更多：[CSS 参考--选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#选择器)
+- 更多：[CSS 参考--选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference#选择器)
 
 
 > CSS3有哪些新特性？
@@ -1606,7 +1609,7 @@ lang(language)
   与传统浏览器缓存相比，它不强制用户访问的网站内容被缓存。
 ```
 
-更多：[使用应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache)
+- 更多：[使用应用缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Using_the_application_cache)
 
 
 

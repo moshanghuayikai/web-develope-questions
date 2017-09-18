@@ -182,3 +182,12 @@
 
 > 稳定排序有直接插入排序、折半插入排序、冒泡排序、归并排序、基数排序
 
+
+
+
+
+
+##### Final
+
+> 不断更新中…… 如果发现问题欢迎在 [issues](https://github.com/Aierui/web-develope-questions/issues) 中指出。如果有比较好的问题/知识点/指正，也欢迎提 PR。
+

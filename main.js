@@ -98,6 +98,15 @@ var unique = function (a){
 }
 
 
+function insertAfter(newElement,targetElement){  
+  var parent=targetElement.parentNode;  
+  if(parent.lastChild==targetElement){  
+    parent.appendChild(newElement);  
+  }else{  
+    parent.insertBefore(newElement,targetElement.nextSibling);  
+  }  
+}  
+
 Array.prototype.map = function(callback, thisArg) {
 
   var T, A, k;
