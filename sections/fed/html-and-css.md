@@ -1600,7 +1600,7 @@ lang(language)
   应用程序缓存是 HTML5  的重要特性之一，提供了离线使用的功能，让应用程序可以获取本地的网站内容，例如 HTML 、 CSS 、图片以及 JavaScript 。这个特性可以提高网站性能，它的实现借助于 manifest 文件，如下：
   <!doctype html>
   <html manifest=”example.appcache”>
-  …..
+   …..
   </html>
    
   与传统浏览器缓存相比，它不强制用户访问的网站内容被缓存。
@@ -1613,8 +1613,8 @@ lang(language)
 
 
 
+
 ##### Final
 
 > 不断更新中…… 如果发现问题欢迎在 [issues](https://github.com/Aierui/web-develope-questions/issues) 中指出。如果有比较好的问题/知识点/指正，也欢迎提 PR。
-
 
