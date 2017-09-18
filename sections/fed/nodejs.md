@@ -280,7 +280,7 @@
 
 > 请写一段代码 ，确保多个进程同时写入同一个文件成功
 
-```php
+```PHP
     function writeData($filepath, $data) 
     { 
         $fp = fopen($filepath,'a');  
@@ -346,5 +346,5 @@
 
 
 
-[🔍 如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
+👉 [如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
 
