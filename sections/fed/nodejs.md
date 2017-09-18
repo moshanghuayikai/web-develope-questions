@@ -118,6 +118,8 @@
 ```
 
 
+
+
 > 请简要说明module.exports与exports的关系
 
 ```js
@@ -139,6 +141,8 @@
 
   console.log(exports); //{}
 ```
+
+
 
 
 > es6 的export、import
@@ -168,6 +172,8 @@
   import defaultMember, * as name from "module-name";
   import "module-name";
 ```
+
+
 
 > Node.js在执行 require(id) 时是怎样找到一个模块的？（ require 加载规则 ）
 
@@ -201,6 +207,8 @@
 
 
 
+
+
 > 能否使用require('.json')的方式加载大量的JSON文件？
 
 ```
@@ -211,6 +219,8 @@
   当通过 .json 的方式加载文件时固然方便，但大量使用时会导致这些数据被缓存，大量数据驻留在内存中，导致GC频繁和内存泄露。
 
 ```
+
+
 
 
 > Node.js中的异步I/O是如何进行的？
@@ -232,6 +242,9 @@
 ```
 
 
+
+
+
 > Node的子进程有什么原理？
 
 ```
@@ -250,6 +263,7 @@
 ```
 
 > 进程／线程间的同步机制有？
+
 
 
 话题： [linux 下进程间的同步机制有哪些？](https://www.zhihu.com/question/36529093)
