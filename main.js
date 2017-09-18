@@ -86,10 +86,16 @@ Array.prototype.unique = function() {
     return result;
 }
 
-Array.prototype.unique = function(a) {
+var unique = function(a) {
   return Array.from(new Set(a));
 }
 
+
+var unique = function (a){
+  a.filter(function(ele,index,array){
+      return index===array.indexOf(ele)
+  })
+}
 
 
 Array.prototype.map = function(callback, thisArg) {
