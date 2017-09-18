@@ -11,11 +11,11 @@
 
 - [语义化、兼容性和渲染机制](#semantic)
 
-- [WEB-Api](#web-api)
+- [WEB-API](#web-api)
 
 - [COOKIE和SESSION](#cookie-and-session)
 
-- [AppCache](#appcache)
+- [APPCACHE](#appcache)
 
 
 <h3 id="antic">小技巧</h3>
