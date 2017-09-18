@@ -92,8 +92,6 @@
   
   expect(writeFileStub).to.be.called;
   writeFileStub.restore();
-
-
 ```
 
 
@@ -146,6 +144,7 @@
 
 
 > es6 的export、import
+
 ```js
   export {name1,name2, …,nameN};
   export {variable1asname1,variable2asname2, …,nameN};
@@ -202,7 +201,6 @@
   （目前自动加载扩展名可省略类型 .js、.json、.node ）
 
   .node文件在不同的平台下内容不同，在Windows下其实是.dll文件，其他平台下是.so文件
-
 ```
 
 
@@ -217,7 +215,6 @@
   因为在 require 成功之后会缓存起来，再次加载时直接从缓存读取，并没有额外开销。
 
   当通过 .json 的方式加载文件时固然方便，但大量使用时会导致这些数据被缓存，大量数据驻留在内存中，导致GC频繁和内存泄露。
-
 ```
 
 
@@ -238,7 +235,6 @@
   网络I/O 与 磁盘I/O 的差异在于他不需要线程池来进行处理，而是在每次事件循环的过程中通过
 
   IOCP/epoll/kqueue/event ports来获取网络的I/O的事件队列。
-
 ```
 
 
@@ -258,15 +254,13 @@
 
   当创建出来的子进程也是一个node进程时，可以在两个进程之间通信。Node内建了IPC机制，暴露的API为child.send()和process.on('message')。
 
-  其内部机制在不同的平台下有不同的实现，UNIX下为Domain Socket，Windows为Named Pipe。
-    
+  其内部机制在不同的平台下有不同的实现，UNIX下为Domain Socket，Windows为Named Pipe。 
 ```
 
 > 进程／线程间的同步机制有？
 
 
-
-话题： [linux 下进程间的同步机制有哪些？](https://www.zhihu.com/question/36529093)
+[话题： linux 下进程间的同步机制有哪些？](https://www.zhihu.com/question/36529093)
 
 
 > setTimeOut()
@@ -304,7 +298,6 @@
         
         return $res; 
     } 
-  
 ```
 
 
@@ -328,7 +321,6 @@
   当一个TCP链接从主进程发送到子进程后，子进程能够根据消息重建出TCP连接，这样 Cluster 可以决定fork出适合硬件资源的
 
   子进程数。这些子进程能够通过IPC的机制分享对同一个端口的侦听，另外，通过对进程间通信管道的处理，可以自动完成进程退出重启等
-
 ```
 
 
@@ -355,5 +347,5 @@
 
 
 
-🔍[如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
+[🔍如何通过饿了么 Node.js 面试](https://github.com/ElemeFE/node-interview)
 
