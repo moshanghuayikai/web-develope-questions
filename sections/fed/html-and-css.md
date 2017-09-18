@@ -196,16 +196,16 @@
 
 
 
-> 实现不使用 border 画出1px高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果？(这种题其实就是需要换个角度，实际谁TM会这个干)
+> 实现不使用 border 画出1px高的线，在不同浏览器的标准模式与怪异模式下都能保持一致的效果？
 
 ```html
   <div style="width:100%;height:1px;background-color:black"></div>
+  <!-- 这种题其实就是需要换个角度，实际谁TM会这个干 -->
 ```
 
 
-
-
 >  这个标签很神奇
+
 ```html
   <marquee scrolldelay="300" direction="left">Welcome!</marquee>
 ```
@@ -609,7 +609,6 @@
 <h3 id="semantic">语义化、兼容性和渲染机制</h3>
 
 
-##### 前端语义化、兼容性、渲染机制
 
 > 说说你对语义化的理解？
 
