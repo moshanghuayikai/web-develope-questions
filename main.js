@@ -228,7 +228,8 @@ function clone(obj) {
     return o;
 }
 
-
+// 没发拷贝方法，必须要符合json格式的数据
+// 会抛弃对象的constructor，也就是深复制之后，无论这个对象原本的构造函数是什么，在深复制之后都会变成Object
 function cloneObject(src) {
     var clone = JSON.parse(JSON.stringify(src));
     return clone;
@@ -241,7 +242,7 @@ function cloneObject(src) {
     //直接赋值依然会有引用问题（不是真正的clone引用变量）
     // 对于 Date
     if (src instanceof Date) {
-        clone = new Date(src.getDate());
+        clone = new Date(src.getTime());
         return clone;
     }
 
