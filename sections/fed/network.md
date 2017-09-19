@@ -140,7 +140,7 @@
 > 请求方法有哪些
 
 ```
-  GET
+  GET (safe method)
 
   POST
 
@@ -148,11 +148,11 @@
 
   PUT
 
-  HEAD
+  HEAD (safe method)
 
   TRACE
 
-  OPTIONS
+  OPTIONS (safe method)
 
   CONNECT
 ```
@@ -162,6 +162,8 @@
 
 ```
   Cache-control
+
+  Pragma
 
   Expires
 
@@ -473,17 +475,20 @@ Chrome|6|6
   Expires 要求客户端和服务端的时钟严格同步。 HTTP1.1 引入 Cache-Control 来克服Expires头的限制。
 
   如果max-age和Expires同时出现，则max-age有更高的优先级。
+
+  Expires 和 Cache-Control 都是强制缓存
+  强制缓存不发请求到服务器，协商缓存会发请求到服务器。
 ```
 
 
-```js
-    Cache-Control: no-cache, private, max-age=0
+```
+    Cache-Control: public, no-cache, private, max-age=0
 
     ETag: abcde
 
-    Expires: Thu, 15 Apr 2014 20:00:00 GMT
+    Expires: Thu, 15 Apr 2014 20:00:00 GMT // 该时间就过期了
 
-    Pragma: private
+    Pragma: private //和 cache-control 差不多 但是出现在请求头中，cache-control出现在响应头中
 
     Last-Modified: $now // RFC1123 format
 ```
@@ -530,13 +535,11 @@ Chrome|6|6
 ```
 
 
-> 说了这么多，还不如来一张流程图
 
 ![304-flow](./assets/304-flow.png)
 
-传送门：[HTTP状态码304原理](https://www.tanglei.name/blog/intern-in-tencent-http-304.html)
 
-> [Web缓存详解](https://segmentfault.com/a/1190000010894695)
+- 更多：[HTTP 缓存](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching_FAQ)
 
 
 
