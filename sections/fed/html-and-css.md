@@ -227,7 +227,29 @@
 - 更多：[去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
 
 
+> ELement.classList
 
+```css
+element.classList.add( String [, String] )
+  /* 添加指定的类值。如果这些类已经存在于元素的属性中，那么它们将被忽略 */
+
+element.classList.remove( String [,String] )
+  /* 删除指定的类值 */
+
+element.classList.item ( Number )
+  /* 按集合中的索引返回类值 */
+
+element.classList.toggle ( String [, force] )
+  /* 当只有一个参数时：切换 class value; 即如果类存在，则删除它并返回false，如果不存在，则添加它并返回true 
+     当存在第二个参数时：如果第二个参数的计算结果为true，则添加指定的类值，如果计算结果为false，则删除它
+  */
+
+element.classList.contains ( String )
+  /* 检查元素的类属性中是否存在指定的类值 */
+
+```
+
+- 更多：[Element.classList](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/classList)
 
 
 <h3 id="layout">常见的页面布局</h3>
@@ -414,38 +436,130 @@
 ```
 
 
-> 实现一个三栏布局，两边定宽中间自适应的布局
 
+
+> 左右固定，中间自适应
+
+```html
+  <div class="box">
+    <div class="left">left</div>
+    <div class="content">content</div>
+    <div class="right">right</div>
+  </div>
 ```
-  圣杯布局、双飞翼布局、flex布局
+
+- 方案一 采用浮动和margin
+
+```css
+  .box{
+    position: relative;
+  }
+  .left,.right{
+    width: 200px;
+    height: 800px;
+    background-color: #eee;
+  }
+  .left{
+    float: left;
+  }
+  .right{
+    float:right
+  }
+  .content{
+    margin: 0 200px;
+  }
 ```
-- 更多： [圣杯布局和双飞翼布局（前端面试必看）](http://www.jianshu.com/p/f9bcddb0e8b4)
-延伸：双飞翼、多栏、弹性、流式、瀑布流、响应式布局
+
+- 方案二：采用position和margin
+
+```css
+  .box{
+    position: relative;
+  } 
+  .left,.right{
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 800px;
+    background-color: #eee;
+  }
+  .left{
+    left: 0;
+  }
+  .right{
+    right: 0;
+  }
+  .content{
+    margin: 0 200px;
+  }
+```
+
+- 方案三：采用浮动margin负值
+
+```css
+  /*注意：如果父元素采用flex布局就不用改变dom结构，如果父元素不是felx，就需要调整dom结构，让content位于最前面。
+  */
+  .box{
+    display: flex;//如果不是就调整dom结构
+  }
+  .left, .right{
+    float: left;
+    width: 200px;
+    height: 800px;
+    background-color: #eee;
+  }
+  .left{
+    margin-left: -100%;/*浮动到最左侧*/
+  }
+  .right{
+    margin-left: -200px;
+  }
+  .content{
+    float: left;
+    width: 100%;
+    height: 800px;
+  }
+```
+
+
+- 更多： 圣杯布局、双飞翼布局、多栏、弹性、流式、瀑布流、响应式布局
 
 
 
 > 纯 CSS 实现自适应正方形
 
 ```html
-<div class="box"></div>
+  <div class="box"></div>
 ```
 
+
+- 方案一：利用VW单位
+
 ```css
-  //方案一
-  .box{// 利用VW单位
+  .box{
     width: 100%;
     height: vw;
   }
+```
 
-  //方案二
-  .box{// 利用padding的百分比，width和padding-bottom的百分比一致即可
+
+
+- 方案二：利用padding的百分比，width和padding-bottom的百分比一致即可
+
+```css
+  .box{// 
     width: 100%;
     height:0;
     padding-bottom: 100%;
   }  
 
-  //方案三
-  .box{//
+```
+
+
+- 方案三：利用伪类元素
+
+```css
+  .box{
     width: 100%;
     overflow: hidden;
   }
@@ -455,6 +569,11 @@
     margin-top: 100%;
   }
 ```
+
+
+
+
+
 
 
 > 各个的浏览器前缀
@@ -1073,7 +1192,7 @@ E:first-child   任一是其父母结点的第一个子节点的元素E
 ```
 
 
-##### 盒状模型相关属性
+##### 盒模型相关属性
 
 
 - Element.clientHeight，Element.clientWidth
@@ -1082,11 +1201,31 @@ E:first-child   任一是其父母结点的第一个子节点的元素E
  这两个属性的值包括Padding、但不包括滚动条、边框和Margin，单位为像素
 ```
 
-- Element.clientLeft (元素节点左边框（left border）的宽度)，Element.clientTop
+- Element.clientLeft (元素节点左边框（left border）的宽度)，Element.clientTop (top border）的宽度)
 
 ```
- 这两个属性包括滚动条的宽度，但不包括Margin和Padding，元素的显示设为display: inline，它的clientLeft属性一律为0
+ 这两个属性包括边框和滚动条的宽度，但不包括Margin和Padding，元素的显示设为display: inline，它的clientLeft属性一律为0
 ```
+
+
+- Element.offsetHeight，Element.offsetWidth
+
+```
+ 这两个属性值包括Padding和Border、以及滚动条。这也意味着，如果不存在内容溢出，Element.offsetHeight只比Element.clientHeight多了边框的高度
+```
+
+
+- Element.offsetLeft，Element.offsetTop
+
+```
+  Element.offsetLeft返回当前元素左上角相对于Element.offsetParent节点的水平位移
+  Element.offsetTop返回垂直位移，单位为像素。通常，这两个值是指相对于父节点的位移。
+
+  都和margin有关
+```
+
+
+![](./assets/css-model.png)
 
 
 - Element.scrollHeight，Element.scrollWidth
@@ -1104,18 +1243,12 @@ E:first-child   任一是其父母结点的第一个子节点的元素E
 
 
 
-- Element.offsetHeight，Element.offsetWidth
-
-```
- 这两个属性值包括Padding和Border、以及滚动条。这也意味着，如果不存在内容溢出，Element.offsetHeight只比Element.clientHeight多了边框的高度
-```
-
-
-- Element.offsetLeft，Element.offsetTop
 
 - Element.style
 
 - 某个网页元素距离视口左上角的坐标，使用 Element.getBoundingClientRect 方法读取。
+
+
 
 
 

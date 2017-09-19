@@ -4562,7 +4562,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
 
 - 请求带宽：压缩文件，开启 GZIP，
 
-
+ 
 
 > 代码层面的优化
 
@@ -4733,6 +4733,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
 
 `webpack` 是以` commonJS `的形式来书写脚本滴，但对 `AMD/CMD` 的支持也很全面，方便旧项目进行代码迁移。
 
+
 > `webpack`具有`requireJs`和`browserify`的功能，但仍有很多自己的新特性：
 
 
@@ -4778,6 +4779,7 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
 ```
 
 英文官方文档 [http://webpack.github.io/docs](http://webpack.github.io/docs)
+
 中文官方文档 [https://doc.webpack-china.org](https://doc.webpack-china.org)
 
 案例 [webpack-demos](https://github.com/ruanyf/webpack-demos)
@@ -4816,7 +4818,6 @@ IPv4中规定IP地址长度为32，最大地址个数为2^32。
   认证与会话管理、访问控制、加密算法与随机数、Web框架安全、应用层拒绝服务攻击、Web Server配置安全等
 
   浏览器端主要涉及：同源策略、沙箱等
-
 ```
 
 
