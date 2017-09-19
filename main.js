@@ -138,7 +138,7 @@ Array.prototype.map = function(callback, thisArg) {
   k = 0;
 
   // 7. 当 k < len 时,执行循环.
-  while(k < len) {
+  while(k < len) { 
 
     var kValue, mappedValue;
 
