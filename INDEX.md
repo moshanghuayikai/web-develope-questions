@@ -2404,7 +2404,7 @@ label 标签的 for 对应一个 id 用于二者的关联
 
     eval和arguments不能被重新赋值
 
-    arguments不会自动反映函数参数的变化
+    arguments 不会自动反映函数参数的变化
 
     不能使用arguments.callee
 
