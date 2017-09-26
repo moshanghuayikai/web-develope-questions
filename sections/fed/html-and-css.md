@@ -75,6 +75,27 @@
 ```
 
 
+> CSS如何实现文字两端对齐
+
+```html
+<div>要使文字两端对齐</div>
+```
+
+```css
+div{
+  width:500px;
+  border:1px solid red;
+  text-align: justify;
+}
+div:after {
+  content: " ";
+  display: inline-block;
+  width: 100%; 
+  /*padding-left: 100%;*/ 
+  /*padding-left: 100%和width:100%都可以达到效果，选用其一即可*/
+}
+```
+
 > 渐进增强和优雅降级
 
 ```
@@ -262,37 +283,30 @@ element.classList.contains ( String )
 
   ```html
     <div id="container">
-
       <div id="header">Header Section</div>
-
       <div id="page" class="clearfix">
-
        页面容容部分
-
       </div>
-
       <div id="footer">Footer Section</div>
-
     </div>
 
     <!-- 实现这页脚永远固定在页面的底部，我们只需要四个div，其中div#container是一个容器，在这个容器之中，我们包含了div#header（头部），div#page（页面主体部分，我们可以在这个div中增加更多的div结构，如上面的代码所示），div#footer（页脚部分） -->
 
   ```
-  ```css
 
+
+  ```css
     #container {
         min-height:100%;
         height: auto !important;
         height: 100%; /*IE6不识别min-height*/
         position: relative;
     }
-
     #page {
         width: 960px;
         margin: 0 auto;
         padding-bottom: 60px;/*等于footer的高度*/
     }
-
     #footer {
         position:absolute;
         bottom: 0;
@@ -301,7 +315,6 @@ element.classList.contains ( String )
         background: #6cf;
         clear:both;
     }
-
   ```
 
 
@@ -494,7 +507,7 @@ element.classList.contains ( String )
   }
 ```
 
-- 方案三：采用浮动margin负值
+- 方案三：采用flex、浮动和margin负值
 
 ```css
   /*注意：如果父元素采用flex布局就不用改变dom结构，如果父元素不是felx，就需要调整dom结构，让content位于最前面。
@@ -538,7 +551,7 @@ element.classList.contains ( String )
 ```css
   .box{
     width: 100%;
-    height: vw;
+    height: 100vw; // 1% == 1vw
   }
 ```
 
