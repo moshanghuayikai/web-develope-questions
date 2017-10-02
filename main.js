@@ -1517,12 +1517,49 @@ class Event{
     let callbacks = this.events[event];
     let rtn = false;
     callbacks.forEach(fn => fn === callback ? rtn = true : null);
+    callbacks.some(fn => fn === callback ? rtn = true : null);
     return rtn;
   }
   toggle(event, callback){
     this.has(event, callback) ? this.off(event, callback) : on (event, callback)
   }
 }
+
+
+/**
+请手动实现一个compose函数，满足以下功能：
+
+传入的参数为一个数组，数组每一个元素均为函数，当调用compose后，返回一个可依次执行数组内的每个函数的函数。
+
+PS: 数组内的函数有两个参数`value`与`next`，`value`为上一个函数执行后的返回值，`next`方法可调用下一个函数
+
+例：
+
+var arr = [func1, func2, func3];
+function func1 (ctx, next) {
+  ctx.index++
+  next();
+}
+function func2 (ctx, next) {
+  setTimeout(function() {
+    ctx.index++
+    next();
+  });
+}
+function func3 (ctx, next) {
+  console.log(ctx.index);
+}
+
+compose(arr)({index: 0}); 
+
+// out: 2
+*/
+
+function compose(arr) {
+   
+}
+
+
 
 
 
