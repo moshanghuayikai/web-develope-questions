@@ -1535,6 +1535,8 @@ PS: 数组内的函数有两个参数`value`与`next`，`value`为上一个函�
 
 https://segmentfault.com/q/1010000011234942/
 
+
+
 例：
 
 var arr = [func1, func2, func3];
