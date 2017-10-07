@@ -1536,7 +1536,6 @@ PS: 数组内的函数有两个参数`value`与`next`，`value`为上一个函�
 https://segmentfault.com/q/1010000011234942/
 
 
-
 例：
 
 var arr = [func1, func2, func3];
@@ -1562,7 +1561,21 @@ compose(arr)({index: 0});
 function compose(arr) {
    
 }
+var interval_id = setInterval(function() {
 
+    $('#zh-load-more')[0].click();
+    $('.zm-person-item>div>h2>a').each(function() { 
+        if($(this).text() == '石金融'){
+            console.log($(this).text() + ' http://zhihu.com' + $(this).attr('href')) 
+        }
+    });
+    $('.zm-person-item').remove(); 
+
+}, 1000);
+
+var no_more_monkey = function() { 
+    clearInterval(interval_id); 
+}
 
 
 
