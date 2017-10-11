@@ -169,6 +169,7 @@ var values = [].map.call(elems, function(obj) {
   return obj.value;
 });
 
+
 // 下面的语句返回什么呢:
 ["1", "2", "3"].map(parseInt);
 // 你可能觉的会是[1, 2, 3]
@@ -268,6 +269,10 @@ function clone(obj) {
 function cloneObject(src) {
     var clone = JSON.parse(JSON.stringify(src));
     return clone;
+ }
+
+ function extend(){
+    
  }
 
  function cloneObject(src) {
@@ -1528,16 +1533,12 @@ class Event{
 
 /**
 请手动实现一个compose函数，满足以下功能：
-
 传入的参数为一个数组，数组每一个元素均为函数，当调用compose后，返回一个可依次执行数组内的每个函数的函数。
-
 PS: 数组内的函数有两个参数`value`与`next`，`value`为上一个函数执行后的返回值，`next`方法可调用下一个函数
 
 https://segmentfault.com/q/1010000011234942/
 
-
 例：
-
 var arr = [func1, func2, func3];
 function func1 (ctx, next) {
   ctx.index++
@@ -1576,6 +1577,7 @@ var interval_id = setInterval(function() {
 var no_more_monkey = function() { 
     clearInterval(interval_id); 
 }
+
 
 
 
