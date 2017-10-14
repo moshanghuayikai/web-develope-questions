@@ -271,10 +271,6 @@ function cloneObject(src) {
     return clone;
  }
 
- function extend(){
-    
- }
-
  function cloneObject(src) {
     var clone = src;
 
@@ -311,7 +307,6 @@ function cloneObject(src) {
     // 对于 数字 字符串 布尔 null undefined
     return src;
 }
-
 
 
 var remove = function (obj, k){
