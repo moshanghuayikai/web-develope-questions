@@ -41,7 +41,7 @@
   数据链路： PPP 、 FR 、 HDLC 、 VLAN 、 MAC （网桥，交换机） - 
   网络层： IP 、 ICMP 、 ARP 、 RARP 、 OSPF 、 IPX 、 RIP 、 IGRP 、 （路由器） - 
   传输层： TCP 、 UDP 、 SPX - 
-  会话层： SQL 、RPC、 NFS 、NETBIOS 、  - 
+  会话层： SQL 、RPC、SSH、NFS 、NETBIOS 、  - 
   表示层： JPEG 、 MPEG 、 ASII - 
   应用层： HTTP 、FTP 、 DNS 、 Telnet 、 SMTP 、 SNMP、 WWW 、 NFS
 ```
