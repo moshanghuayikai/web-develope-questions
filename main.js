@@ -1575,6 +1575,19 @@ var no_more_monkey = function() {
 
 
 
+//  32二进制转化成IP
+function s_chunk(s, n){
+    console.log(n,'n====')
+    let r = '', re = new RegExp("\\d{"+ n +"}", 'g');
+    console.log(re,'re====')
+
+    s.replace(re, function(match, ch){
+        r+= parseInt(match, 2) + '.';
+    })
+    return r.substr(0, r.length-1);
+}
+s_chunk('11111111111111111111111100000000', 8)
+
 
 
 
