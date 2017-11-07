@@ -38,7 +38,7 @@
 
 ```
   物理层： RJ45 、 CLOCK 、 IEEE802.3 （中继器，集线器，网关） - 
-  数据链路： PPP 、 FR 、 HDLC 、 VLAN 、 MAC （网桥，交换机） - 
+  数据链路： MAC、 PPP 、 FR 、 HDLC 、 VLAN （网桥，交换机） - 
   网络层： IP 、 ICMP 、 ARP 、 RARP 、 OSPF 、 IPX 、 RIP 、 IGRP 、 （路由器） - 
   传输层： TCP 、 UDP 、 SPX - 
   会话层： SQL 、RPC、SSH、NFS 、NETBIOS 、  - 
