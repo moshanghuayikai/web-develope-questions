@@ -4,6 +4,7 @@
 
 - [Redis 设计与实现](https://www.kancloud.cn/kancloud/redisbook/63822)
 
+- [Redis 数据结构和命令](http://blog.shijinrong.cn/a/17062301/)
 
 ### 简单动态字符串（SDS）
 
