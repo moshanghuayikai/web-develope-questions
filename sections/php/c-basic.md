@@ -27,7 +27,7 @@ int main(void)
 
 
 
-关键字 | 	 位长(字节)	|  范围	|  | 格式化字符串
+关键字 | 	 位长(字节)	|  范围 | 格式化字符串
 ----|-----|------|----
 char	| 1 bytes	| -128..127（或0..255，与体系结构相关）	|  %c
 unsigned char	| 1bytes	| 0..255	|  %c, %hhu
@@ -54,7 +54,7 @@ long double	| 10bytes或 16bytes	| 7.065x10-9865..1.415x109864 (18 sf或33 sf)	|
 
 结构数据类型允许构造由多个基础数据类型组合而成的复杂结构，结构数据类型为面向对象的蓝本。以下的结构数据类型通过指针实现了二叉树结构：
 
-```
+```c
 typedef struct Bintree {
   int data;
   struct bintree *lchild; // left child of the node
@@ -66,7 +66,7 @@ typedef struct Bintree {
 
 为结构数据类型定义变量时通常会用到动态内存分配：
 
-```
+```c
 #define mktree() (bintree *)malloc(sizeof(bintree)) // 分配该结构所需的内存单元数量
 bintree *tree;
 tree = mktree(); // 分配到 tree 指针
@@ -90,7 +90,7 @@ tree->lchild = mktree();
 
 例如：
 
-```
+```c
 int myvector [100]；/* 從myvector[0]至[99]共100個元素 */
 char mystring [80]；
 // 声明时初始化
@@ -104,7 +104,7 @@ int a[3][4]；
 上面最后一个例子创建了一个数组，但也可以把它看成是一个多维数组。注意数组的下标从0开始。这个数组的结构如下：
 
 
-```
+```c
 a[0][0]	a[0][1]	a[0][2]	a[0][3]
 a[1][0]	a[1][1]	a[1][2]	a[1][3]
 a[2][0]	a[2][1]	a[2][2]	a[2][3]
@@ -123,6 +123,11 @@ a[2][0]	a[2][1]	a[2][2]	a[2][3]
 
 
 ## 函数
+
+
+
+
+
 
 ## 指针
 
