@@ -72,6 +72,13 @@
   /*首先，需要把元素的宽度、高度设为0,然后设置边框样式。
 
   要做倒立三角形、向右的、或者向左的三角形，只需要为三角形底部设置边框，两腰边框透明即可。*/
+
+  /* 之外我们还可以用 box-sizing 和 border 属性*/
+  .caret{
+    box-sizing: border-box;
+    border: 50px solid;
+    border-color: transparent transparent transparent #eee;
+  }
 ```
 
 
