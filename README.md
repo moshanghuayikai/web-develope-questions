@@ -1,4 +1,4 @@
-## Web Develope Questions
+## Web Develope
 
 Learning from each other.
 
